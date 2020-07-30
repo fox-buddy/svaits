@@ -1,7 +1,24 @@
 <mat-toolbar>
-  <!-- <button mat-icon-button aria-label="icon-button with menu icon">
+  <button mat-icon-button [mat-menu-trigger-for]="toolBarMenu" aria-label="icon-button with menu icon">
     <mat-icon>menu</mat-icon>
-  </button> -->
+  </button>
+
+  <mat-menu #toolBarMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>info</mat-icon>
+      <span>Info</span>
+    </button>
+
+    <button mat-menu-item>
+      <mat-icon>work</mat-icon>
+      <span>Impressum/Disclaimer</span>
+    </button>
+
+    <button mat-menu-item>
+      <mat-icon>contact_page</mat-icon>
+      <span>Kontakt</span>
+    </button>
+  </mat-menu>
 
   <span class="root-link" routerLink="/welcome">Inside Stocks</span>
 

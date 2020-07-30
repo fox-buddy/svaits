@@ -13,17 +13,16 @@
 
 
 
-  <mat-grid-tile *ngFor="let feature of pageHints" [colspan]="feature.cols" [rowspan]="feature.rows">
+  <mat-grid-tile *ngFor="let feature of pageHintsForTemplate" [colspan]="feature.cols" [rowspan]="feature.rows">
     <div>
-      <mat-card class="feature-card">
+      <mat-card class="feature-card animate__animated animate__fadeIn animate__slow">
         <mat-card-header><mat-card-title>{{feature.heading}}</mat-card-title></mat-card-header>
         <mat-card-content><p>{{feature.description}}</p></mat-card-content>
       </mat-card>
     </div>
   </mat-grid-tile>
 
-
-  <mat-grid-tile  [colspan]="4"  [rowspan]="5">
+  <!-- <mat-grid-tile [colspan]="4"  [rowspan]="5" class="animate__animated animate__fadeIn animate__slower">
     <div>
       <p class="mat-body page-description">
         Zur Förderung der Aktienkultur in Deutschland, habe ich diese App programmiert.
@@ -36,5 +35,7 @@
         Solltest du Anregungen haben, zögere bitte nicht mich einfach anzuschreiben.
       </p>
     </div>
-  </mat-grid-tile>
+  </mat-grid-tile> -->
+
+
 </mat-grid-list>

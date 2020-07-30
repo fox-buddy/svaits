@@ -14,7 +14,7 @@ interface IPageHints {
 })
 export class WelcomeComponent implements OnInit {
 
-  public pageHints: IPageHints[] = [
+  private pageHints: IPageHints[] = [
     {
       heading: "Anzeige der finanziellen Stabilität", description: "Kennzahlen zur Wirtschaftlichkeit des Unternehmens", cols: 4, rows: 2
     },
@@ -27,11 +27,36 @@ export class WelcomeComponent implements OnInit {
     {
       heading: "Discounted Cash Flow", description: "Zeigt den inneren Wert des Unternehmens auf Basis der Free Cash Flows", cols: 4, rows: 2
     }
-  ]
+  ];
+  private pageHintsTemplateFillInterval: any;
+  private lenOfPageHints: number;
+  private currentItem: number = 0;
+
+  public pageHintsForTemplate: IPageHints[] = [];
+  public showFooterText: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.fillPageHintsForTemplate();
   }
 
+  private fillPageHintsForTemplate() {
+    this.lenOfPageHints = this.pageHints.length;
+
+    this.pageHintsTemplateFillInterval = setInterval(() => {
+      this.pageHintsForTemplate.push(this.pageHints[this.currentItem]);
+      this.currentItem += 1
+
+      if(this.currentItem >= this.lenOfPageHints-1) {
+        this.clearPageFillInterval
+      }
+    }, 1000);
+  }
+
+  private clearPageFillInterval() {
+    this.showFooterText = true;
+    clearInterval(this.pageHintsTemplateFillInterval);
+
+  }
 }
