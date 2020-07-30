@@ -1,0 +1,40 @@
+
+<mat-grid-list cols=4 rowHeight="50px">
+
+  <mat-grid-tile [colspan]="4"  [rowspan]="1">
+    <button mat-raised-button color="primary">
+      Stock Values berechnen
+    </button>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <h1 class="mat-headline">Features</h1>
+  </mat-grid-tile>
+
+
+
+  <mat-grid-tile *ngFor="let feature of pageHints" [colspan]="feature.cols" [rowspan]="feature.rows">
+    <div>
+      <mat-card class="feature-card">
+        <mat-card-header><mat-card-title>{{feature.heading}}</mat-card-title></mat-card-header>
+        <mat-card-content><p>{{feature.description}}</p></mat-card-content>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+
+
+  <mat-grid-tile  [colspan]="4"  [rowspan]="5">
+    <div>
+      <p class="mat-body page-description">
+        Zur Förderung der Aktienkultur in Deutschland, habe ich diese App programmiert.
+        Die zu Grunde liegenden Berechnungen, haben mir bei der Auswahl einiger Aktien geholfen.
+        Ich übernehme keine Garantie für die Richtigkeit der angezeigten Werte.
+        Dennoch bin ich gerne bereit zu helfen, sofern es Fragen zu der App Gibt.
+      </p>
+
+      <p class="mat-body page-description">
+        Solltest du Anregungen haben, zögere bitte nicht mich einfach anzuschreiben.
+      </p>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

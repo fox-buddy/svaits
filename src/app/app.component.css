@@ -1,0 +1,15 @@
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+
+/* Make header Image or Text nice looking clickable link */
+.root-link:focus {
+  outline: none;
+}
+
+.root-link:hover {
+  cursor: pointer;
+}
+/* End of Link Config */
+

@@ -19,14 +19,16 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { FormsModule } from '@angular/forms';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import { FormsModule } from '@angular/forms';
     MatExpansionModule,
     MatDividerModule,
     MatCheckboxModule,
+    MatGridListModule,
 
     FormsModule
   ],
