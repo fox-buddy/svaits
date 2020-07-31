@@ -19,6 +19,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -61,6 +63,7 @@ import { StockDataCalculationComponent } from './stock-data-calculation/stock-da
     MatCheckboxModule,
     MatGridListModule,
     MatMenuModule,
+    MatDialogModule,
 
     FormsModule
   ],

@@ -1,1 +1,12 @@
-<p>stock-naming-dialog works!</p>
+<h1 mat-dialog-title>Aktie benennen</h1>
+<div mat-dialog-content>
+  <p>Welche Aktie willst du bewerten</p>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="stockNamingData.stockName">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="abortNaming()">Abbruch</button>
+  <button mat-button [mat-dialog-close]="stockNamingData.stockName" cdkFocusInitial>OK</button>
+</div>
