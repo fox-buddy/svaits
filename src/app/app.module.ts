@@ -24,12 +24,24 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { FormsModule } from '@angular/forms';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { InfoComponent } from './info/info.component';
+import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+import { ContactpageComponent } from './contactpage/contactpage.component';
+import { StockOverviewComponent } from './stock-overview/stock-overview.component';
+import { StockNamingDialogComponent } from './stock-naming-dialog/stock-naming-dialog.component';
+import { StockDataCalculationComponent } from './stock-data-calculation/stock-data-calculation.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    InfoComponent,
+    DisclaimerComponent,
+    ContactpageComponent,
+    StockOverviewComponent,
+    StockNamingDialogComponent,
+    StockDataCalculationComponent
   ],
   imports: [
     BrowserModule,

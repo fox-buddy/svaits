@@ -4,23 +4,23 @@
   </button>
 
   <mat-menu #toolBarMenu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item routerLink="/info">
       <mat-icon>info</mat-icon>
       <span>Info</span>
     </button>
 
-    <button mat-menu-item>
+    <button mat-menu-item routerLink="/disclaimer">
       <mat-icon>work</mat-icon>
       <span>Impressum/Disclaimer</span>
     </button>
 
-    <button mat-menu-item>
+    <button mat-menu-item routerLink="/contact">
       <mat-icon>contact_page</mat-icon>
       <span>Kontakt</span>
     </button>
   </mat-menu>
 
-  <span class="root-link" routerLink="/welcome">Inside Stocks</span>
+  <span class="root-link" routerLink="/welcome">Stock Insider</span>
 
   <span class="toolbar-spacer"></span>
 
