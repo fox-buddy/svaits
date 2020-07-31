@@ -7,5 +7,12 @@
     </button>
   </mat-grid-tile>
 
-
 </mat-grid-list>
+
+
+
+<mat-card *ngFor="let stock of _stockSrv.stockCollection">
+  <mat-card-header>
+    {{stock.stockName}}
+  </mat-card-header>
+</mat-card>

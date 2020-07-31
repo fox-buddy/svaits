@@ -6,7 +6,15 @@ import { IStock } from './IStockData'
 })
 export class StockService {
 
-  public stockCollection: IStock[];
+  public stockCollection: IStock[] = [];
 
   constructor() { }
+
+  public addNewStockEntry(keyName: string) {
+    this.stockCollection.push({
+      stockName: keyName, inputData: {}, resultData: {}
+    });
+
+    debugger;
+  }
 }

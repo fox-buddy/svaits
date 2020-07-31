@@ -11,6 +11,18 @@ import { StockService } from '../core/stock.service';
 })
 export class StockOverviewComponent implements OnInit {
 
+  public testList = [
+    {
+      id: 5
+    },
+    {
+      id: 5
+    },
+    {
+      id: 5
+    }
+  ]
+
   constructor(private dialog: MatDialog, public _stockSrv: StockService) { }
 
   ngOnInit(): void {
@@ -22,7 +34,7 @@ export class StockOverviewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      this._stockSrv.addNewStockEntry(result);
     })
   }
 }
