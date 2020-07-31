@@ -1,1 +1,11 @@
-<p>stock-overview works!</p>
+
+<mat-grid-list cols=4 rowHeight="50px">
+  <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <button mat-raised-button (click)="stockNamingDialogToNameNewStock()" color="primary">
+      <mat-icon>add</mat-icon>
+      <span>Neue Aktie hinzufügen</span>
+    </button>
+  </mat-grid-tile>
+
+
+</mat-grid-list>

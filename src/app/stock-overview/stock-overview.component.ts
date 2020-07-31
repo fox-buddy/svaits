@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IDialogData } from '../stock-naming-dialog/stock-naming-dialog.component';
+import { StockNamingDialogComponent } from '../stock-naming-dialog/stock-naming-dialog.component';
+
+import { StockService } from '../core/stock.service';
 
 @Component({
   selector: 'app-stock-overview',
@@ -9,9 +11,18 @@ import { IDialogData } from '../stock-naming-dialog/stock-naming-dialog.componen
 })
 export class StockOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog, public _stockSrv: StockService) { }
 
   ngOnInit(): void {
   }
 
+  public stockNamingDialogToNameNewStock() {
+    const dialogRef = this.dialog.open(StockNamingDialogComponent, {
+      maxWidth: "250px", data: {stockName: ''}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    })
+  }
 }

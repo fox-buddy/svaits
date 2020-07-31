@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stock-data-calculation',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stock-data-calculation.component.css']
 })
 export class StockDataCalculationComponent implements OnInit {
+
+  @Input() stockKeyString: string;
 
   constructor() { }
 
