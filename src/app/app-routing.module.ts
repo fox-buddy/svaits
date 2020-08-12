@@ -7,6 +7,7 @@ import { ContactpageComponent } from './contactpage/contactpage.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { InfoComponent } from './info/info.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
+import { StockDataCalculationComponent } from './stock-data-calculation/stock-data-calculation.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'overview',
     component: StockOverviewComponent
+  },
+  {
+    path: 'calculation/:stockname/:stockindex',
+    component: StockDataCalculationComponent
   },
   {
     path: '**',

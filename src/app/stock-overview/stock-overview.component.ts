@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { StockNamingDialogComponent } from '../stock-naming-dialog/stock-naming-dialog.component';
-
+import { Router } from '@angular/router';
 import { StockService } from '../core/stock.service';
 
 @Component({
@@ -11,19 +11,7 @@ import { StockService } from '../core/stock.service';
 })
 export class StockOverviewComponent implements OnInit {
 
-  public testList = [
-    {
-      id: 5
-    },
-    {
-      id: 5
-    },
-    {
-      id: 5
-    }
-  ]
-
-  constructor(private dialog: MatDialog, public _stockSrv: StockService) { }
+  constructor(private dialog: MatDialog, public _stockSrv: StockService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -37,4 +25,5 @@ export class StockOverviewComponent implements OnInit {
       this._stockSrv.addNewStockEntry(result);
     })
   }
+
 }

@@ -1,5 +1,6 @@
 export interface IStockResults {
-
+  fairValue: Number;
+  eigenkapitalquote: Number;
 }
 
 export interface IStockInputs {

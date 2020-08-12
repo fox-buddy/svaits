@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { StockService } from '../core/stock.service';
 
 @Component({
   selector: 'app-stock-data-calculation',
@@ -7,9 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StockDataCalculationComponent implements OnInit {
 
-  @Input() stockKeyString: string;
+  private stockName: string;
+  private stockIndex: Number;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private stockSrv: StockService) {
+
+    this.stockName = this.route.snapshot.paramMap.get('stockname');
+    this.stockIndex = Number(this.route.snapshot.paramMap.get('stockindex'));
+    console.log(this.stockName);
+    console.log(this.stockIndex);
+  }
 
   ngOnInit(): void {
   }

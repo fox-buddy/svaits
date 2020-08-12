@@ -7,12 +7,20 @@
     </button>
   </mat-grid-tile>
 
+
+  <mat-grid-tile [colspan]="4" [rowspan]="2" *ngFor="let stock of _stockSrv.stockCollection; index as j">
+    <mat-card class="stock-card animate__animated animate__slideInLeft animate__fast" [routerLink]="['/calculation', stock.stockName, j]">
+      <mat-card-header>{{stock.stockName}}</mat-card-header>
+      <mat-card-content>
+
+          <p>Fair Value: {{stock.resultData.fairValue}} €</p>
+          <p>Eigenkapitalquote: {{stock.resultData.eigenkapitalquote}} %</p>
+
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
 </mat-grid-list>
 
 
 
-<mat-card *ngFor="let stock of _stockSrv.stockCollection">
-  <mat-card-header>
-    {{stock.stockName}}
-  </mat-card-header>
-</mat-card>
