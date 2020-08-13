@@ -29,6 +29,9 @@ export class StockService {
 
   private inputDataEmpty(): IStockInputs {
     return {
+      anzahlAktien: 0,
+      anzahlAktienDescription: 'Die gesamte Anzahl der gehandelten Aktien',
+
       bilanzSummeInMillionenZumStichtag: 0,
       bilanzSummeDescription: 'Eigenkapital + Fremdkapital zum letzten Bilanzstichtag',
       eigenKapitalInMillionenZumStichtag: 0,
@@ -71,13 +74,64 @@ export class StockService {
       expectedLongGrowRateDescription: 'Erwartetes Langzeitwachstum. Sollte konservativ gewählt werden, da die Zukunft schwer abschätzbar ist. Eine Rate im Bereich der Inflation beispielsweise (3)',
 
       securityMarginRate: 0,
-      securityMarginDescription: 'Sicherheitsmarge zum Abwerten des errechneten Wertes. 5 bis 10 Prozent beispielsweise'
+      securityMarginDescription: 'Sicherheitsmarge zum Abwerten des errechneten Wertes. 5 bis 10 Prozent beispielsweise',
+
+      expectedRateOfGrothPercent: 0,
+      expectedRateOfGrothPercentDescription: 'Erwartetes Wachstum. Kann sich am durchschnittlich errechneten Orientieren'
     }
   }
 
   private resultDataEmpty(): IStockResults {
     return {
-      fairValue: 0, eigenkapitalquote: 0
+      eigenkapitalquote: 0,
+      eigenkapitalquoteDescription: 'Hier spielt Krisenfestigkeit eine große Rolle. Alles über 50 Prozent ist als äußerst gut zu bewerten',
+
+      gearing: 0,
+      gearingdescription: `
+      Zeigt die Deckung der Verbindlichkeiten abzüglich Zahlungsmitteln durch das Eigenkapital.
+      Besorgniserregend ab 70%, da die Verbindlichkeiten einen zu hohen Teil des Eigenkapitals decken. Sehr gut bis 20 Prozent. Gut bis 50 %`,
+
+      dynamischerVerschuldungsgrad: 0,
+      dynamischerVerschuldungsgradDescription: `Theoretische Tilgungsdauer der Schulden aus dem Free Cash-Flow in Jahren.
+      Ab 5 als kritisch zu betrachten. Zahlungsfluss genauer unter die Lupe nehmen. Infineo Beispiel Übernahmen Konkurrent.`,
+
+      sachinvestitionsQuote: 0,
+      sachinvestitionsQuoteDescription: `Gibt an welcher Anteil des operativen Cash Flows für Sachinvestitionen ausgegeben werden muss um im Geschäft zu bleiben.
+      Hohe Quoten sind in Kapitalintensiven Branchen keine Seltenheit. Je geringer desto besser.`,
+
+      eigenkapitalThreeYearAverageRendite: 0,
+      eigenkapitalThreeYearAverageRenditeDescription: 'Verzinsung des Eigenkapitals, was man als Anleger einbringt. Zwischen 10 und 15 Prozent deuten auf ein gesundes und effizientes Unternehmen hin. ',
+
+      ebitMarge: 0,
+      ebitMargeDescription: `Ähnlich zu Umsatzrendite. Welcher Anteil des Umsatzes ergibt einen Gewinn? Jedoch gibt der Ebit den Abschluss vor Steuern an. Macht also den internationalen Vergleich einfacher`,
+
+      intrinsischeKaufdauer: 0,
+      intrinsischeKaufdauerDescription: `Zeitspanne in Jahren, die das Unternehmen benötigt, um sich selbst aus dem Free Cash Flow zu kaufen (Ohne Wachstum)`,
+
+      kursGewinnVerhaeltnisZumStichtag: 0,
+      kursGewinnVerhaeltnisZumStichtagDescription: `Das Verhältnis von Marktkapitalisierung zu Jahresüberschuss. Je niedriger je besser.
+      In Relation zu setzen ist das Wachstum. Je schneller das Unternehmen wächst je schneller armotisiert sich die Investition. Durchschnitt liegt bei 15 bis 16`,
+
+      einstandsrenditeZumStichtag: 0,
+      einstandsrenditeZumStichtagDescription: 'Durschnitt liegt bei 6 bis 7 Prozent. Beschreibt die Verzinsung der Investition im ersten Jahr bei stabilem Geschäftsbetrieb. ',
+
+      kursBuchwertVerhaeltnisZumStichtag: 0,
+      kursBuchwertVerhaeltnisZumStichtagDescription: `Gibt an, welchen Aufschlag der Markt auf das Reinvermögen des Unternehmens zahlt. Der Markt macht dies von der Zukunft des Unternehmens abhängig.
+      Steht in engem Verhältnis zur Eigenkapitalrendite. Je höher je besser`,
+
+      enterpriseValueZumStichtag: 0,
+      enterpriseValueZumStichtagDescription: 'Entspricht dem echten Marktwert des Unternehmens. In Mio €. Im Idealfall höher als die Marktkapitalisierung',
+
+      expectedRateOfGrothPercent: 0,
+      expectedRateOfGrothPercentDescription: 'Durchschnittliches Wachstum. Errechneter Wert',
+
+      sumOfDiscountedCashFlows: 0,
+      endValue: 0,
+      nettoCash: 0,
+
+      fairValue: 0,
+      fairValueWithSecurityMargin: 0,
+      fairValueDescription: 'Fairer (innerer) Wert je Aktie nach der einfachsten Discounted Cashflow Analyse',
     };
   }
 }

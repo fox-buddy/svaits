@@ -1,9 +1,54 @@
 export interface IStockResults {
-  fairValue: number;
+
   eigenkapitalquote: number;
+  eigenkapitalquoteDescription: string;
+
+  gearing: number;
+  gearingdescription: string;
+
+  dynamischerVerschuldungsgrad: number;
+  dynamischerVerschuldungsgradDescription: string;
+
+  sachinvestitionsQuote: number;
+  sachinvestitionsQuoteDescription: string;
+
+  eigenkapitalThreeYearAverageRendite: number;
+  eigenkapitalThreeYearAverageRenditeDescription: string;
+
+  ebitMarge: number;
+  ebitMargeDescription: string;
+
+  intrinsischeKaufdauer: number;
+  intrinsischeKaufdauerDescription: string;
+
+  kursGewinnVerhaeltnisZumStichtag: number
+  kursGewinnVerhaeltnisZumStichtagDescription: string;
+
+  einstandsrenditeZumStichtag: number
+  einstandsrenditeZumStichtagDescription: string;
+
+  kursBuchwertVerhaeltnisZumStichtag: number;
+  kursBuchwertVerhaeltnisZumStichtagDescription: string;
+
+  enterpriseValueZumStichtag: number;
+  enterpriseValueZumStichtagDescription: string;
+
+  expectedRateOfGrothPercent: number;
+  expectedRateOfGrothPercentDescription: string;
+
+  sumOfDiscountedCashFlows: number;
+  endValue: number;
+  nettoCash: number;
+
+  fairValue: number;
+  fairValueWithSecurityMargin: number;
+  fairValueDescription: string;
 }
 
 export interface IStockInputs {
+  anzahlAktien: number;
+  anzahlAktienDescription: string;
+
   bilanzSummeInMillionenZumStichtag: number;
   bilanzSummeDescription: string;
 
@@ -50,6 +95,9 @@ export interface IStockInputs {
   umsatzChangeFifthPeriod: number;
   umsatzChangeSixthPeriod: number;
   umsatzChangeDescription: string;
+
+  expectedRateOfGrothPercent: number;
+  expectedRateOfGrothPercentDescription: string;
 
   expectedRateOfReturnPercent: number;
   expectedRateOfReturnDescription: string;
