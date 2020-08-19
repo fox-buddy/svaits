@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StockService } from '../core/stock.service';
+import { IStock } from '../core/IStockData';
 
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -14,8 +15,8 @@ export class StockDataCalculationComponent implements OnInit {
   public stockForm: FormGroup;
 
   private stockName: string;
-  private stockIndex: Number;
-
+  private stockIndex: number;
+  public stockInWork: IStock
 
   constructor(private route: ActivatedRoute, private stockSrv: StockService, private fb: FormBuilder) {
 
@@ -26,6 +27,44 @@ export class StockDataCalculationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initForm();
+    this.getStockDataFromService(this.stockIndex);
+  }
+
+  public stockFormSubmit() {
+    console.log(this.stockForm.value);
+  }
+
+  public clearStockForm() {
+    this.stockForm.patchValue({
+      anzahlAktien: 0
+      , bilanzSummeInMillionenZumStichtag: 0
+      , eigenKapitalInMillionenZumStichtag: 0
+      , eigenKapitalThreeYearAverageInMillionen: 0
+      , gesamtVerbindlichKeitenInMillionenZumStichtag: 0
+      , zahlungsMittelInMillionenZumStichtag: 0
+      , operativerCashflowInMillionenZumStichtag: 0
+      , operativerCashflowThreeYearAverageInMillionen: 0
+      , investmentCashflowInMillionenZumStichtag: 0
+      , investmentCashflowThreeYearAverageInMillionen: 0
+      , umsatzInMillionenZumStichtag: 0
+      , ebitInMillionenZumStichtag: 0
+      , eatInMillionenZumStichtag: 0
+      , marktKapitalisierungInMillionenZumStichtag: 0
+
+
+      , umsatzChangeFirstPeriod: 0
+      , umsatzChangeSecondPeriod: 0
+      , umsatzChangeThirdPeriod: 0
+      , umsatzChangeFourthPeriod: 0
+      , umsatzChangeFifthPeriod: 0
+      , umsatzChangeSixthPeriod: 0
+
+      , expectedRateOfGrothPercent: 0
+      , expectedRateOfReturnPercent: 0
+      , expectedLongGrowRatePercent: 0
+      , securityMarginRate: 0
+    });
   }
 
   private initForm() {
@@ -33,7 +72,7 @@ export class StockDataCalculationComponent implements OnInit {
       return;
     }
 
-    this.fb.group({
+    this.stockForm = this.fb.group({
       anzahlAktien: [0, Validators.required]
       , bilanzSummeInMillionenZumStichtag: [0, Validators.required]
       , eigenKapitalInMillionenZumStichtag: [0, Validators.required]
@@ -62,5 +101,11 @@ export class StockDataCalculationComponent implements OnInit {
       , expectedLongGrowRatePercent: [0, Validators.required]
       , securityMarginRate: [0, Validators.required]
     })
+  }
+
+  private getStockDataFromService(stockIndex: number) {
+    this.stockInWork = {
+      ...this.stockSrv.stockCollection[stockIndex]
+    }
   }
 }
