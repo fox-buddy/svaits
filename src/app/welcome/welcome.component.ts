@@ -14,7 +14,7 @@ interface IPageHints {
 })
 export class WelcomeComponent implements OnInit {
 
-  private pageHints: IPageHints[] = [
+  public pageHints: IPageHints[] = [
     {
       heading: "Anzeige der finanziellen Stabilität", description: "Kennzahlen zur Wirtschaftlichkeit des Unternehmens", cols: 4, rows: 2
     },
@@ -48,13 +48,14 @@ export class WelcomeComponent implements OnInit {
       this.pageHintsForTemplate.push(this.pageHints[this.currentItem]);
       this.currentItem += 1
 
-      if(this.currentItem >= this.lenOfPageHints-1) {
-        this.clearPageFillInterval
+      if(this.currentItem >= this.lenOfPageHints) {
+        this.clearPageFillInterval();
       }
     }, 1000);
   }
 
   private clearPageFillInterval() {
+    debugger;
     this.showFooterText = true;
     clearInterval(this.pageHintsTemplateFillInterval);
 

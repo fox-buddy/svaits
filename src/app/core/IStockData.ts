@@ -114,3 +114,9 @@ export interface IStock {
   inputData: IStockInputs;
   resultData: IStockResults;
 }
+
+export interface IDCFGrothRates {
+  expectedRateOfGrowthPercent:number;
+  expectedRateOfReturnPercent: number;
+  longGrothPercent: number;
+}

@@ -25,7 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { InfoComponent } from './info/info.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
@@ -67,6 +67,7 @@ import { StockDataCalculationComponent } from './stock-data-calculation/stock-da
     MatDialogModule,
     MatListModule,
 
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],
