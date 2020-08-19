@@ -10,23 +10,245 @@
   <h2 class="mat-title">Bilanzkennzahlen</h2>
 
   <mat-grid-list cols="4" rowHeight="50px">
+    <!-- Beschriftung -->
     <mat-grid-tile [colspan]=2 [rowspan]=1>
-      <span>Bilanzsumme </span>
+      <span>Bilanzsumme</span>
     </mat-grid-tile>
 
+    <!-- Input Field -->
     <mat-grid-tile [colspan]=1 [rowspan]=1>
-        <!-- <mat-form-field> -->
           <input class="inputField" matInput type="number" min="0" formControlName="bilanzSummeInMillionenZumStichtag">
-        <!-- </mat-form-field> -->
     </mat-grid-tile>
 
+    <!-- Einheit -->
     <mat-grid-tile [colspan]=1 [rowspan]=1>
       <span>Mio €</span>
-  </mat-grid-tile>
+    </mat-grid-tile>
 
+    <!-- Erklärung -->
     <mat-grid-tile [colspan]=4 [rowspan]=1>
       {{stockInWork.inputData.bilanzSummeDescription}}
     </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <span>EigenKapital</span>
+    </mat-grid-tile>
+
+    <!-- Input Field -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+          <input class="inputField" matInput type="number" min="0" formControlName="eigenKapitalInMillionenZumStichtag">
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <span>Mio €</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      {{stockInWork.inputData.eigenKapitalDescription}}
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- !!!Neue Kennzahl!!! -->
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <span>EigenKapital DS 3 Jahre</span>
+    </mat-grid-tile>
+
+    <!-- Input Field -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+          <input class="inputField" matInput type="number" min="0" formControlName="eigenKapitalThreeYearAverageInMillionen">
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <span>Mio €</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      {{stockInWork.inputData.eigenKapitalThreeYearAverageDescription}}
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- !!!Neue Kennzahl!!! -->
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <span>Gesamte Verbindlichkeiten</span>
+    </mat-grid-tile>
+
+    <!-- Input Field -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+          <input class="inputField" matInput type="number" min="0" formControlName="gesamtVerbindlichKeitenInMillionenZumStichtag">
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <span>Mio €</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      {{stockInWork.inputData.gesamtVerbindlichKeitenDescription}}
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- !!!Neue Kennzahl!!! -->
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <span>Zahlungemittel (liquide Mittel)</span>
+    </mat-grid-tile>
+
+    <!-- Input Field -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+          <input class="inputField" matInput type="number" min="0" formControlName="gesamtVerbindlichKeitenInMillionenZumStichtag">
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <span>Mio €</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      {{stockInWork.inputData.zahlungsMittelDescription}}
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- !!!Neue Kennzahl!!! -->
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <span>operativer Cashflow</span>
+    </mat-grid-tile>
+
+    <!-- Input Field -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+          <input class="inputField" matInput type="number" min="0" formControlName="operativerCashflowInMillionenZumStichtag">
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <span>Mio €</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      {{stockInWork.inputData.operativerCashflowDescription}}
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- !!!Neue Kennzahl!!! -->
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <span>operativer Cashflow (DS 3 Jahre)</span>
+    </mat-grid-tile>
+
+    <!-- Input Field -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+          <input class="inputField" matInput type="number" min="0" formControlName="operativerCashflowThreeYearAverageInMillionen">
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <span>Mio €</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      {{stockInWork.inputData.operativerCashflowThreeYearAverageDescription}}
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- !!!Neue Kennzahl!!! -->
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <span>investment Cashflow</span>
+    </mat-grid-tile>
+
+    <!-- Input Field -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+          <input class="inputField" matInput type="number" min="0" formControlName="investmentCashflowInMillionenZumStichtag">
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <span>Mio €</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      {{stockInWork.inputData.investmentCashflowDescription}}
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- !!!Neue Kennzahl!!! -->
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]=2 [rowspan]=1>
+      <span>investment Cashflow (DS 3 Jahre)</span>
+    </mat-grid-tile>
+
+    <!-- Input Field -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+          <input class="inputField" matInput type="number" min="0" formControlName="investmentCashflowThreeYearAverageInMillionen">
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]=1 [rowspan]=1>
+      <span>Mio €</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      {{stockInWork.inputData.investmentCashflowThreeYearAverageDescription}}
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]=4 [rowspan]=1>
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
   </mat-grid-list>
 
   <mat-divider></mat-divider>
