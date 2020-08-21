@@ -52,6 +52,49 @@ export class StockDataCalculationComponent implements OnInit {
     console.log(this.stockInWork.inputData);
     console.log(this.stockSrv.stockCollection);
   }
+
+  private calculateBilanzResults() {
+    const inputData = this.stockInWork.inputData;
+
+    this.stockInWork.resultData.eigenkapitalquote = StockCalculator.calculateEigenKapitalQuoteWith(
+      inputData.eigenKapitalInMillionenZumStichtag, inputData.bilanzSummeInMillionenZumStichtag
+    );
+    this.stockInWork.resultData.gearing = StockCalculator.calculateGearintQuoteWith(
+      inputData.gesamtVerbindlichKeitenInMillionenZumStichtag, inputData.zahlungsMittelInMillionenZumStichtag, inputData.eigenKapitalInMillionenZumStichtag
+    );
+    this.stockInWork.resultData.dynamischerVerschuldungsgrad = StockCalculator.calculateDynamischerVerschuldungsgrad(
+      inputData.gesamtVerbindlichKeitenInMillionenZumStichtag, inputData.zahlungsMittelInMillionenZumStichtag
+      , (inputData.operativerCashflowInMillionenZumStichtag - inputData.investmentCashflowInMillionenZumStichtag)
+    );
+    this.stockInWork.resultData.sachinvestitionsQuote = StockCalculator.calculateSachInvestitionsquote(
+      inputData.investmentCashflowInMillionenZumStichtag, inputData.operativerCashflowInMillionenZumStichtag
+    );
+    this.stockInWork.resultData.eigenkapitalThreeYearAverageRendite = StockCalculator.calculateEigenkapitalRenditeWith(
+      inputData.eatInMillionenZumStichtag, inputData.eigenKapitalThreeYearAverageInMillionen
+    );
+    this.stockInWork.resultData.ebitMarge = StockCalculator.calculateEbitMargeWith(
+      inputData.ebitInMillionenZumStichtag, inputData.umsatzInMillionenZumStichtag
+    );
+    this.stockInWork.resultData.intrinsischeKaufdauer = StockCalculator.calculateIntrinsischeKaufdauerWith(
+      inputData.marktKapitalisierungInMillionenZumStichtag
+      , (inputData.operativerCashflowThreeYearAverageInMillionen - inputData.investmentCashflowThreeYearAverageInMillionen)
+    );
+    this.stockInWork.resultData.kursGewinnVerhaeltnisZumStichtag = StockCalculator.calculateKursGewinnVerhaeltnisWith(
+      inputData.marktKapitalisierungInMillionenZumStichtag, inputData.eatInMillionenZumStichtag
+    );
+    this.stockInWork.resultData.einstandsrenditeZumStichtag = StockCalculator.calculateEinstandsRenditeWith(
+      inputData.marktKapitalisierungInMillionenZumStichtag, inputData.eatInMillionenZumStichtag
+    );
+
+    const kursBuchWertRelation = StockCalculator.calculateKursBuchwertVerhaeltnisWith(
+      inputData.marktKapitalisierungInMillionenZumStichtag, inputData.eigenKapitalInMillionenZumStichtag
+    );
+    this.stockInWork.resultData.kursBuchwertVerhaeltnisZumStichtag = kursBuchWertRelation
+    this.stockInWork.resultData.enterpriseValueZumStichtag = StockCalculator.calculateEnterpriseValueStichtagWith(
+      kursBuchWertRelation, inputData.eigenKapitalInMillionenZumStichtag, inputData.gesamtVerbindlichKeitenInMillionenZumStichtag, inputData.zahlungsMittelInMillionenZumStichtag
+    );
+  }
+
   // Tempalte Helpers
   public get numberOfLastYear() {
     let currentTime = new Date(Date.now());

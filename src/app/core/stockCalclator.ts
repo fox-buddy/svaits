@@ -112,7 +112,7 @@ export class StockCalculator {
     , gesamtVerbindlichkeiten: number
     , zahlungsmittel: number
   ) {
-    return (eigenkapital + gesamtVerbindlichkeiten + zahlungsmittel) * buchwertRelation;
+    return (eigenkapital + gesamtVerbindlichkeiten - zahlungsmittel) * buchwertRelation;
   }
 
   static calculateExpectedRateOfGroth(

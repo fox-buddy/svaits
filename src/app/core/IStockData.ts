@@ -1,33 +1,33 @@
 export interface IStockResults {
 
-  eigenkapitalquote: number;
+  eigenkapitalquote: number;  //Done BilanzResults
   eigenkapitalquoteDescription: string;
 
-  gearing: number;
+  gearing: number; //Done BilanzResults
   gearingdescription: string;
 
-  dynamischerVerschuldungsgrad: number;
+  dynamischerVerschuldungsgrad: number;  //Done
   dynamischerVerschuldungsgradDescription: string;
 
-  sachinvestitionsQuote: number;
+  sachinvestitionsQuote: number;  //Done
   sachinvestitionsQuoteDescription: string;
 
-  eigenkapitalThreeYearAverageRendite: number;
+  eigenkapitalThreeYearAverageRendite: number;  //Done
   eigenkapitalThreeYearAverageRenditeDescription: string;
 
-  ebitMarge: number;
+  ebitMarge: number; //Done
   ebitMargeDescription: string;
 
-  intrinsischeKaufdauer: number;
+  intrinsischeKaufdauer: number; //Done
   intrinsischeKaufdauerDescription: string;
 
-  kursGewinnVerhaeltnisZumStichtag: number
+  kursGewinnVerhaeltnisZumStichtag: number //Done
   kursGewinnVerhaeltnisZumStichtagDescription: string;
 
-  einstandsrenditeZumStichtag: number
+  einstandsrenditeZumStichtag: number //Done
   einstandsrenditeZumStichtagDescription: string;
 
-  kursBuchwertVerhaeltnisZumStichtag: number;
+  kursBuchwertVerhaeltnisZumStichtag: number; //Done
   kursBuchwertVerhaeltnisZumStichtagDescription: string;
 
   enterpriseValueZumStichtag: number;
