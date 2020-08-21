@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { StockService } from '../core/stock.service';
 import { IStock } from '../core/IStockData';
 
+import { StockCalculator } from '../core/stockCalclator';
+
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -33,6 +35,27 @@ export class StockDataCalculationComponent implements OnInit {
 
   public stockFormSubmit() {
     console.log(this.stockForm.value);
+    this.formValuesToLocalObject();
+
+  }
+
+  private formValuesToLocalObject() {
+
+    this.stockInWork.inputData = {
+      ...this.stockForm.value
+    };
+
+    this.stockSrv.stockCollection[this.stockIndex].inputData = {
+      ...this.stockInWork.inputData
+    };
+
+    console.log(this.stockInWork.inputData);
+    console.log(this.stockSrv.stockCollection);
+  }
+  // Tempalte Helpers
+  public get numberOfLastYear() {
+    let currentTime = new Date(Date.now());
+    return currentTime.getFullYear() -1;
   }
 
   public clearStockForm() {

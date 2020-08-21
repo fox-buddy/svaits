@@ -47,63 +47,63 @@ export interface IStockResults {
 
 export interface IStockInputs {
   anzahlAktien: number;
-  anzahlAktienDescription: string;
+  anzahlAktienDescription: string;  //Done Bilanz
 
   bilanzSummeInMillionenZumStichtag: number;
-  bilanzSummeDescription: string;
+  bilanzSummeDescription: string; //Done Bilanz
 
   eigenKapitalInMillionenZumStichtag: number;
-  eigenKapitalDescription: string;
+  eigenKapitalDescription: string; //Done Bilanz
 
   eigenKapitalThreeYearAverageInMillionen: number;
-  eigenKapitalThreeYearAverageDescription: string;
+  eigenKapitalThreeYearAverageDescription: string; //Done Bilanz
 
   gesamtVerbindlichKeitenInMillionenZumStichtag: number;
-  gesamtVerbindlichKeitenDescription: string;
+  gesamtVerbindlichKeitenDescription: string; //Done Bilanz
 
   zahlungsMittelInMillionenZumStichtag: number;
-  zahlungsMittelDescription: string;
+  zahlungsMittelDescription: string; //Done Bilanz
 
   operativerCashflowInMillionenZumStichtag: number;
-  operativerCashflowDescription: string;
+  operativerCashflowDescription: string; //Done CF
 
   operativerCashflowThreeYearAverageInMillionen: number;
-  operativerCashflowThreeYearAverageDescription: string;
+  operativerCashflowThreeYearAverageDescription: string; //Done CF
 
   investmentCashflowInMillionenZumStichtag: number;
-  investmentCashflowDescription: string;
+  investmentCashflowDescription: string; //Done CF
 
   investmentCashflowThreeYearAverageInMillionen: number;
-  investmentCashflowThreeYearAverageDescription: string;
+  investmentCashflowThreeYearAverageDescription: string; //Done CF
 
   umsatzInMillionenZumStichtag: number;
-  umsatzInMillionenDescription: string;
+  umsatzInMillionenDescription: string; //Done Bilanz
 
   ebitInMillionenZumStichtag: number;
-  ebitDescription: string;
+  ebitDescription: string;  //Done Bilanz
 
   eatInMillionenZumStichtag: number;
-  eatDescription: string;
+  eatDescription: string;   //Done Bilanz
 
   marktKapitalisierungInMillionenZumStichtag: number;
-  marktKapitalisierungDescription: string;
+  marktKapitalisierungDescription: string;  //Done Bilanz
 
-  umsatzChangeFirstPeriod: number;
-  umsatzChangeSecondPeriod: number;
-  umsatzChangeThirdPeriod: number;
-  umsatzChangeFourthPeriod: number;
-  umsatzChangeFifthPeriod: number;
-  umsatzChangeSixthPeriod: number;
-  umsatzChangeDescription: string;
+  umsatzChangeFirstPeriod: number; //Done
+  umsatzChangeSecondPeriod: number; //Done
+  umsatzChangeThirdPeriod: number; //Done
+  umsatzChangeFourthPeriod: number; //Done
+  umsatzChangeFifthPeriod: number; //Done
+  umsatzChangeSixthPeriod: number; //Done
+  umsatzChangeDescription: string; //Done
 
-  expectedRateOfGrothPercent: number;
+  expectedRateOfGrothPercent: number; //Wird errechnet, kann überschrieben werden
   expectedRateOfGrothPercentDescription: string;
 
   expectedRateOfReturnPercent: number;
-  expectedRateOfReturnDescription: string;
+  expectedRateOfReturnDescription: string; //Done CF
 
   expectedLongGrowRatePercent: number;
-  expectedLongGrowRateDescription: string;
+  expectedLongGrowRateDescription: string; //Done CF
 
   securityMarginRate: number;
   securityMarginDescription: string;
