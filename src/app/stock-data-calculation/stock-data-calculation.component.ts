@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StockService } from '../core/stock.service';
-import { IStock } from '../core/IStockData';
+import { IStock, IDCFGrothRates } from '../core/IStockData';
 
 import { StockCalculator } from '../core/stockCalclator';
 
@@ -36,7 +36,8 @@ export class StockDataCalculationComponent implements OnInit {
   public stockFormSubmit() {
     console.log(this.stockForm.value);
     this.formValuesToLocalObject();
-
+    this.calculateBilanzResults();
+    console.log(this.stockInWork);
   }
 
   private formValuesToLocalObject() {
@@ -89,10 +90,36 @@ export class StockDataCalculationComponent implements OnInit {
     const kursBuchWertRelation = StockCalculator.calculateKursBuchwertVerhaeltnisWith(
       inputData.marktKapitalisierungInMillionenZumStichtag, inputData.eigenKapitalInMillionenZumStichtag
     );
-    this.stockInWork.resultData.kursBuchwertVerhaeltnisZumStichtag = kursBuchWertRelation
+
     this.stockInWork.resultData.enterpriseValueZumStichtag = StockCalculator.calculateEnterpriseValueStichtagWith(
       kursBuchWertRelation, inputData.eigenKapitalInMillionenZumStichtag, inputData.gesamtVerbindlichKeitenInMillionenZumStichtag, inputData.zahlungsMittelInMillionenZumStichtag
     );
+
+  }
+
+  private calculateCashFlowResuls() {
+    const inputData = this.stockInWork.inputData;
+
+
+    const ratesOfGroth = [
+      this.stockInWork.inputData.umsatzChangeFirstPeriod
+      ,this.stockInWork.inputData.umsatzChangeSecondPeriod
+      ,this.stockInWork.inputData.umsatzChangeThirdPeriod
+      ,this.stockInWork.inputData.umsatzChangeFourthPeriod
+      ,this.stockInWork.inputData.umsatzChangeFifthPeriod
+      ,this.stockInWork.inputData.umsatzChangeSixthPeriod
+    ]
+
+    this.stockInWork.resultData.expectedRateOfGrothPercent = StockCalculator.calculateExpectedRateOfGroth(
+      ratesOfGroth
+    );
+
+    const futureCompanyValue = StockCalculator.calculateFutureCompanyValueWithFutureCashFlow(
+      (inputData.operativerCashflowThreeYearAverageInMillionen - inputData.investmentCashflowThreeYearAverageInMillionen)
+      , {}
+    )
+
+    // calculateFutureCompanyValueWithFutureCashFlow --> Hält weitere Funktionen
   }
 
   // Tempalte Helpers
