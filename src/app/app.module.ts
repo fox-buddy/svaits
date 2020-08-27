@@ -33,6 +33,7 @@ import { ContactpageComponent } from './contactpage/contactpage.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
 import { StockNamingDialogComponent } from './stock-naming-dialog/stock-naming-dialog.component';
 import { StockDataCalculationComponent } from './stock-data-calculation/stock-data-calculation.component';
+import { StockDataCalcDetailComponent } from './stock-data-calc-detail/stock-data-calc-detail.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { StockDataCalculationComponent } from './stock-data-calculation/stock-da
     ContactpageComponent,
     StockOverviewComponent,
     StockNamingDialogComponent,
-    StockDataCalculationComponent
+    StockDataCalculationComponent,
+    StockDataCalcDetailComponent
   ],
   imports: [
     BrowserModule,

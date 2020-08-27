@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class StockDataCalculationComponent implements OnInit {
 
   public stockForm: FormGroup;
+  public measuresHaveBeenCalculated: boolean = false;
 
   private stockName: string;
   private stockIndex: number;
@@ -33,13 +34,18 @@ export class StockDataCalculationComponent implements OnInit {
     this.getStockDataFromService(this.stockIndex);
   }
 
+  public openDetailview() {
+
+  }
+
   public stockFormSubmit() {
     console.log(this.stockForm.value);
     this.formValuesToLocalObject();
     this.calculateBilanzResults();
     this.calculateCashFlowResuls();
+    this.measuresHaveBeenCalculated = true;
     console.log(this.stockInWork);
-    debugger;
+
   }
 
   private formValuesToLocalObject() {
@@ -62,7 +68,7 @@ export class StockDataCalculationComponent implements OnInit {
     this.stockInWork.resultData.eigenkapitalquote = StockCalculator.calculateEigenKapitalQuoteWith(
       inputData.eigenKapitalInMillionenZumStichtag, inputData.bilanzSummeInMillionenZumStichtag
     );
-    debugger;
+
     this.stockInWork.resultData.gearing = StockCalculator.calculateGearintQuoteWith(
       inputData.gesamtVerbindlichKeitenInMillionenZumStichtag, inputData.zahlungsMittelInMillionenZumStichtag, inputData.eigenKapitalInMillionenZumStichtag
     );
@@ -83,7 +89,7 @@ export class StockDataCalculationComponent implements OnInit {
       inputData.marktKapitalisierungInMillionenZumStichtag
       , (inputData.operativerCashflowThreeYearAverageInMillionen - inputData.investmentCashflowThreeYearAverageInMillionen)
     );
-    debugger;
+
     this.stockInWork.resultData.kursGewinnVerhaeltnisZumStichtag = StockCalculator.calculateKursGewinnVerhaeltnisWith(
       inputData.marktKapitalisierungInMillionenZumStichtag, inputData.eatInMillionenZumStichtag
     );
@@ -91,7 +97,7 @@ export class StockDataCalculationComponent implements OnInit {
       inputData.marktKapitalisierungInMillionenZumStichtag, inputData.eatInMillionenZumStichtag
     );
 
-    debugger;
+
     const kursBuchWertRelation = StockCalculator.calculateKursBuchwertVerhaeltnisWith(
       inputData.marktKapitalisierungInMillionenZumStichtag, inputData.eigenKapitalInMillionenZumStichtag
     );
@@ -119,7 +125,7 @@ export class StockDataCalculationComponent implements OnInit {
     this.stockInWork.resultData.expectedRateOfGrothPercent = StockCalculator.calculateExpectedRateOfGroth(
       ratesOfGroth
     );
-    debugger;
+
     const futureCompanyValue = StockCalculator.calculateFutureCompanyValueWithFutureCashFlow
       (
         inputData.operativerCashflowThreeYearAverageInMillionen - inputData.investmentCashflowThreeYearAverageInMillionen
@@ -130,7 +136,7 @@ export class StockDataCalculationComponent implements OnInit {
         }
       );
 
-    debugger;
+
 
     const fairStockValue = StockCalculator.calculateFairStockValue(
       futureCompanyValue

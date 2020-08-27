@@ -8,6 +8,7 @@ export class StockService {
 
   public stockCollection: IStock[] = [];
   private stockToCalculate: string;
+  public stockToViewDetailled: number;
 
   constructor() { }
 
