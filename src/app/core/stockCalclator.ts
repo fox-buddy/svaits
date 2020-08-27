@@ -1,4 +1,4 @@
-import { IDCFGrothRates } from '../core/IStockData';
+import { IDCFGrothRates, ILiquidsAndInterests } from '../core/IStockData';
 
 export class StockCalculator {
   static calculateEigenKapitalQuoteWith(eigenkapital: number, bilanzSumme: number) {
@@ -81,7 +81,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return (marktKapitalisierungStichtag / earningsAfterTaxStichtag) * 100;
+    return (marktKapitalisierungStichtag / earningsAfterTaxStichtag);
   }
 
   static calculateEinstandsRenditeWith(
@@ -131,8 +131,8 @@ export class StockCalculator {
     return sumOfGroth/ratesOfGroth.length;
   }
 
-  static calculateFairStockValue(discountedCFCompanyValue: number, liquideMittel: number, anzahlAktien: number) {
-    let companyValue = (discountedCFCompanyValue + liquideMittel) * 1000000;
+  static calculateFairStockValue(discountedCFCompanyValue: number, liquidsAndInterests: ILiquidsAndInterests, anzahlAktien: number) {
+    let companyValue = (discountedCFCompanyValue + (liquidsAndInterests.liquideMittel - liquidsAndInterests.schulden)) * 1000000;
     const valuePerStock = companyValue / anzahlAktien;
 
     return valuePerStock;
@@ -142,6 +142,7 @@ export class StockCalculator {
       , growthRates: IDCFGrothRates
     ) {
     const rateOfGrothFactor = 1+(growthRates.expectedRateOfGrowthPercent/100);
+    const rateOfReturnFactor = 1+(growthRates.expectedRateOfReturnPercent/100);
     let valueThatGrows = freeCashFlowThreeYearAverageInMillionen;
 
     let cashFlowArray: number[] = [];
@@ -149,7 +150,7 @@ export class StockCalculator {
 
     for(let i=1; i<=10;i++) {
       const calculatedCashFlow = valueThatGrows*rateOfGrothFactor;
-      const discountFactor = Math.pow(growthRates.expectedRateOfReturnPercent, i);
+      const discountFactor = Math.pow(rateOfReturnFactor, i);
 
       discountFactorArray.push(discountFactor);
       cashFlowArray.push(calculatedCashFlow);
@@ -158,7 +159,7 @@ export class StockCalculator {
 
     const cashFlowSumAndLastValue = this.calculateDiscountedCashFlows(cashFlowArray, discountFactorArray);
     const restwert = this.calculateDiscountedCashFlowRestwert(cashFlowSumAndLastValue.lastValue, growthRates.longGrothPercent, growthRates.expectedRateOfReturnPercent )
-
+    debugger;
     return cashFlowSumAndLastValue.companySum + restwert;
   }
 
@@ -166,15 +167,15 @@ export class StockCalculator {
     if(futureCashFlowArray.length != discountFactorArray.length) {
       return {companySum: 0, lastValue: 0};
     }
-
+    debugger;
     let discountedCashFlows: number[] = [];
 
     for(let i=0; i<futureCashFlowArray.length; i++) {
-      discountedCashFlows.push(futureCashFlowArray[i]/discountedCashFlows[i]);
+      discountedCashFlows.push(futureCashFlowArray[i]/discountFactorArray[i]);
     }
 
     let discountedCashFlowSum: number = 0;
-
+    debugger;
     discountedCashFlows.forEach((element) => {
       discountedCashFlowSum += element;
     })

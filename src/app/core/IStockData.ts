@@ -30,10 +30,10 @@ export interface IStockResults {
   kursBuchwertVerhaeltnisZumStichtag: number; //Done
   kursBuchwertVerhaeltnisZumStichtagDescription: string;
 
-  enterpriseValueZumStichtag: number;
+  enterpriseValueZumStichtag: number; //Done
   enterpriseValueZumStichtagDescription: string;
 
-  expectedRateOfGrothPercent: number;
+  expectedRateOfGrothPercent: number; //Done
   expectedRateOfGrothPercentDescription: string;
 
   sumOfDiscountedCashFlows: number;
@@ -119,4 +119,9 @@ export interface IDCFGrothRates {
   expectedRateOfGrowthPercent:number;
   expectedRateOfReturnPercent: number;
   longGrothPercent: number;
+}
+
+export interface ILiquidsAndInterests {
+  liquideMittel: number;
+  schulden: number;
 }
