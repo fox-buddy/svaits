@@ -27,3 +27,7 @@ Zahlungsmittel in Millionen zum Stichtag ist Null?
 8
 3
 10
+
+
+Discount Factor mit Rendite
+Future Cash Flows mit Wachstum
