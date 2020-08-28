@@ -589,17 +589,387 @@
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
+
+
+
+
+
+
+
+
+
   </mat-grid-list>
-
-
-
 
   <mat-divider></mat-divider>
 
+  <mat-grid-list cols="2" rowHeight="30px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <button mat-flat-button color="primary" type="submit" [disabled]="stockForm.invalid">Berechnung starten</button>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <button mat-flat-button color="secondary" type="button" (click)="clearStockForm()">Clear</button>
+    </mat-grid-tile>
+  </mat-grid-list>
 
-  <button mat-flat-button color="primary" type="submit" [disabled]="stockForm.invalid">Berechnung starten</button>
+  <br>
+  <br>
 
-  <button mat-flat-button color="secondary" type="button" (click)="clearStockForm()">Clear</button>
+  <mat-grid-list cols="4" rowHeight="30px" *ngIf="measuresHaveBeenCalculated">
+
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <h2 class="mat-title">Ergebnisse</h2>
+    </mat-grid-tile>
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Eigenkapitalquote</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.eigenkapitalquote}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Prozent</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.eigenkapitalquoteDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Gearing</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.gearing}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Prozent</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.gearingdescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Dynamischer Verschuldungsgrad</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.dynamischerVerschuldungsgrad}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Prozent</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.dynamischerVerschuldungsgradDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Sachinvestitionsquote</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.sachinvestitionsQuote}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Prozent</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.sachinvestitionsQuoteDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Eigenkapitalrendite (DS 3 Jahre)</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.eigenkapitalThreeYearAverageRendite}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Prozent</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.eigenkapitalThreeYearAverageRenditeDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">EBIT Marge</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.ebitMarge}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Prozent</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.ebitMargeDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Intrinsische Kaufdauer</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.intrinsischeKaufdauer}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Jahre</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.intrinsischeKaufdauerDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">KGV zum Stichtag</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.kursGewinnVerhaeltnisZumStichtag}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Faktor</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="3" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.kursGewinnVerhaeltnisZumStichtagDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Einstandsrendite zum Stichtag</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.einstandsrenditeZumStichtag}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Prozent</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.einstandsrenditeZumStichtagDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">KBV zum Stichtag</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.kursBuchwertVerhaeltnisZumStichtag}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Faktor</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.kursBuchwertVerhaeltnisZumStichtagDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Enterprise Value zum Stichtag</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.enterpriseValueZumStichtag}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Eingabewährung</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.enterpriseValueZumStichtagDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Erechnete Wachstumsrate</span>
+    </mat-grid-tile>
+
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.expectedRateOfGrothPercent}}</span>
+    </mat-grid-tile>
+
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Prozent</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.expectedRateOfGrothPercentDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Fairer Wert je Aktie</span>
+    </mat-grid-tile>
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.fairValue}}</span>
+    </mat-grid-tile>
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Eingabewährung</span>
+    </mat-grid-tile>
+
+    <!-- Beschriftung -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <span class="mat-small">Fairer Wert je Aktie (Security Margin)</span>
+    </mat-grid-tile>
+    <!-- Value Field -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">{{stockInWork.resultData.fairValueWithSecurityMargin}}</span>
+    </mat-grid-tile>
+    <!-- Einheit -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="mat-small">Eingabewährung</span>
+    </mat-grid-tile>
+
+    <!-- Erklärung -->
+    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+      <span class="mat-small result-desc">{{stockInWork.resultData.fairValueDescription}}</span>
+    </mat-grid-tile>
+
+    <!-- Divider -->
+    <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <mat-divider></mat-divider>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
 
 
 </form>

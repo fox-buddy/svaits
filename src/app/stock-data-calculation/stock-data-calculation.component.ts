@@ -39,20 +39,39 @@ export class StockDataCalculationComponent implements OnInit {
   }
 
   public stockFormSubmit() {
-    console.log(this.stockForm.value);
     this.formValuesToLocalObject();
     this.calculateBilanzResults();
     this.calculateCashFlowResuls();
-    this.measuresHaveBeenCalculated = true;
-    console.log(this.stockInWork);
 
+    this.measuresHaveBeenCalculated = true;
   }
 
   private formValuesToLocalObject() {
 
-    this.stockInWork.inputData = {
-      ...this.stockForm.value
-    };
+    this.stockInWork.inputData.anzahlAktien = this.stockForm.get('anzahlAktien').value;
+    this.stockInWork.inputData.bilanzSummeInMillionenZumStichtag = this.stockForm.get('bilanzSummeInMillionenZumStichtag').value;
+    this.stockInWork.inputData.eigenKapitalInMillionenZumStichtag = this.stockForm.get('eigenKapitalInMillionenZumStichtag').value;
+    this.stockInWork.inputData.eigenKapitalThreeYearAverageInMillionen = this.stockForm.get('eigenKapitalThreeYearAverageInMillionen').value;
+    this.stockInWork.inputData.gesamtVerbindlichKeitenInMillionenZumStichtag = this.stockForm.get('gesamtVerbindlichKeitenInMillionenZumStichtag').value;
+    this.stockInWork.inputData.zahlungsMittelInMillionenZumStichtag = this.stockForm.get('zahlungsMittelInMillionenZumStichtag').value;
+    this.stockInWork.inputData.operativerCashflowInMillionenZumStichtag = this.stockForm.get('operativerCashflowInMillionenZumStichtag').value;
+    this.stockInWork.inputData.operativerCashflowThreeYearAverageInMillionen = this.stockForm.get('operativerCashflowThreeYearAverageInMillionen').value;
+    this.stockInWork.inputData.investmentCashflowInMillionenZumStichtag = this.stockForm.get('investmentCashflowInMillionenZumStichtag').value;
+    this.stockInWork.inputData.investmentCashflowThreeYearAverageInMillionen = this.stockForm.get('investmentCashflowThreeYearAverageInMillionen').value;
+    this.stockInWork.inputData.umsatzInMillionenZumStichtag = this.stockForm.get('umsatzInMillionenZumStichtag').value;
+    this.stockInWork.inputData.ebitInMillionenZumStichtag = this.stockForm.get('ebitInMillionenZumStichtag').value;
+    this.stockInWork.inputData.eatInMillionenZumStichtag = this.stockForm.get('eatInMillionenZumStichtag').value;
+    this.stockInWork.inputData.marktKapitalisierungInMillionenZumStichtag = this.stockForm.get('marktKapitalisierungInMillionenZumStichtag').value;
+    this.stockInWork.inputData.umsatzChangeFirstPeriod = this.stockForm.get('umsatzChangeFirstPeriod').value;
+    this.stockInWork.inputData.umsatzChangeSecondPeriod = this.stockForm.get('umsatzChangeSecondPeriod').value;
+    this.stockInWork.inputData.umsatzChangeThirdPeriod = this.stockForm.get('umsatzChangeThirdPeriod').value;
+    this.stockInWork.inputData.umsatzChangeFourthPeriod = this.stockForm.get('umsatzChangeFourthPeriod').value;
+    this.stockInWork.inputData.umsatzChangeFifthPeriod = this.stockForm.get('umsatzChangeFifthPeriod').value;
+    this.stockInWork.inputData.umsatzChangeSixthPeriod = this.stockForm.get('umsatzChangeSixthPeriod').value;
+    this.stockInWork.inputData.expectedRateOfGrothPercent = this.stockForm.get('expectedRateOfGrothPercent').value;
+    this.stockInWork.inputData.expectedRateOfReturnPercent = this.stockForm.get('expectedRateOfReturnPercent').value;
+    this.stockInWork.inputData.expectedLongGrowRatePercent = this.stockForm.get('expectedLongGrowRatePercent').value;
+    this.stockInWork.inputData.securityMarginRate = this.stockForm.get('securityMarginRate').value;
 
     this.stockSrv.stockCollection[this.stockIndex].inputData = {
       ...this.stockInWork.inputData
