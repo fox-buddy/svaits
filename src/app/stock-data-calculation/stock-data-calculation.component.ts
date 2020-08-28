@@ -31,7 +31,10 @@ export class StockDataCalculationComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+
     this.getStockDataFromService(this.stockIndex);
+    this.assignStockValueToForm();
+
   }
 
   public openDetailview() {
@@ -164,7 +167,7 @@ export class StockDataCalculationComponent implements OnInit {
     )
 
     this.stockInWork.resultData.fairValue = fairStockValue;
-    this.stockInWork.resultData.fairValueWithSecurityMargin = fairStockValue * (1-(inputData.securityMarginRate/100));
+    this.stockInWork.resultData.fairValueWithSecurityMargin = Number((fairStockValue * (1-(inputData.securityMarginRate/100))).toFixed(2));
 
     // calculateFutureCompanyValueWithFutureCashFlow --> Hält weitere Funktionen
   }
@@ -204,6 +207,38 @@ export class StockDataCalculationComponent implements OnInit {
       , expectedRateOfReturnPercent: 0
       , expectedLongGrowRatePercent: 0
       , securityMarginRate: 0
+    });
+  }
+
+  private assignStockValueToForm() {
+    this.stockForm.patchValue({
+      anzahlAktien: this.stockInWork.inputData.anzahlAktien
+      , bilanzSummeInMillionenZumStichtag: this.stockInWork.inputData.bilanzSummeInMillionenZumStichtag
+      , eigenKapitalInMillionenZumStichtag: this.stockInWork.inputData.eigenKapitalInMillionenZumStichtag
+      , eigenKapitalThreeYearAverageInMillionen: this.stockInWork.inputData.eigenKapitalThreeYearAverageInMillionen
+      , gesamtVerbindlichKeitenInMillionenZumStichtag: this.stockInWork.inputData.gesamtVerbindlichKeitenInMillionenZumStichtag
+      , zahlungsMittelInMillionenZumStichtag: this.stockInWork.inputData.zahlungsMittelInMillionenZumStichtag
+      , operativerCashflowInMillionenZumStichtag: this.stockInWork.inputData.operativerCashflowInMillionenZumStichtag
+      , operativerCashflowThreeYearAverageInMillionen: this.stockInWork.inputData.operativerCashflowThreeYearAverageInMillionen
+      , investmentCashflowInMillionenZumStichtag: this.stockInWork.inputData.investmentCashflowInMillionenZumStichtag
+      , investmentCashflowThreeYearAverageInMillionen: this.stockInWork.inputData.investmentCashflowThreeYearAverageInMillionen
+      , umsatzInMillionenZumStichtag: this.stockInWork.inputData.umsatzInMillionenZumStichtag
+      , ebitInMillionenZumStichtag: this.stockInWork.inputData.ebitInMillionenZumStichtag
+      , eatInMillionenZumStichtag: this.stockInWork.inputData.eatInMillionenZumStichtag
+      , marktKapitalisierungInMillionenZumStichtag: this.stockInWork.inputData.marktKapitalisierungInMillionenZumStichtag
+
+
+      , umsatzChangeFirstPeriod: this.stockInWork.inputData.umsatzChangeFirstPeriod
+      , umsatzChangeSecondPeriod: this.stockInWork.inputData.umsatzChangeSecondPeriod
+      , umsatzChangeThirdPeriod: this.stockInWork.inputData.umsatzChangeThirdPeriod
+      , umsatzChangeFourthPeriod: this.stockInWork.inputData.umsatzChangeFourthPeriod
+      , umsatzChangeFifthPeriod: this.stockInWork.inputData.umsatzChangeFifthPeriod
+      , umsatzChangeSixthPeriod: this.stockInWork.inputData.umsatzChangeSixthPeriod
+
+      , expectedRateOfGrothPercent: this.stockInWork.inputData.expectedRateOfGrothPercent
+      , expectedRateOfReturnPercent: this.stockInWork.inputData.expectedRateOfReturnPercent
+      , expectedLongGrowRatePercent: this.stockInWork.inputData.expectedLongGrowRatePercent
+      , securityMarginRate: this.stockInWork.inputData.securityMarginRate
     });
   }
 

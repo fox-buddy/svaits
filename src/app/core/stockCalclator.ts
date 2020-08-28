@@ -6,7 +6,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return (eigenkapital/bilanzSumme) * 100;
+    return Number(((eigenkapital/bilanzSumme) * 100).toFixed(2));
   }
 
   static calculateGearintQuoteWith(gesamtVerbindlichkeiten: number, liquideMittel: number, eigenkapital: number) {
@@ -14,7 +14,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return ((gesamtVerbindlichkeiten - liquideMittel)/eigenkapital) * 100;
+    return Number((((gesamtVerbindlichkeiten - liquideMittel)/eigenkapital) * 100).toFixed(2));
   }
 
   static calculateDynamischerVerschuldungsgrad(
@@ -26,7 +26,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return (gesamtVerbindlichkeiten - liquideMittel)/freeCashFlowStichtag;
+    return Number(((gesamtVerbindlichkeiten - liquideMittel)/freeCashFlowStichtag).toFixed(2));
   }
 
   static calculateSachInvestitionsquote(
@@ -37,7 +37,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return (cashFlowInvestMent/operativerCashFlow) * 100;
+    return Number(((cashFlowInvestMent/operativerCashFlow) * 100).toFixed(2));
   }
 
   static calculateEigenkapitalRenditeWith(
@@ -48,7 +48,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return (earningsAfterTaxStichtag/threeYearAverageEigenkapital) * 100;
+    return Number(((earningsAfterTaxStichtag/threeYearAverageEigenkapital) * 100).toFixed(2));
   }
 
   static calculateEbitMargeWith(
@@ -59,7 +59,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return (earningsBeforeInterestsAndTaxStichtag/umsatzerloeseStichtag) * 100;
+    return Number(((earningsBeforeInterestsAndTaxStichtag/umsatzerloeseStichtag) * 100).toFixed(2));
   }
 
   static calculateIntrinsischeKaufdauerWith(
@@ -70,7 +70,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return marktKapitalisierungStichtag / freeCashFlowThreeYearAverage;
+    return Number((marktKapitalisierungStichtag / freeCashFlowThreeYearAverage).toFixed(1));
   }
 
   static calculateKursGewinnVerhaeltnisWith(
@@ -81,7 +81,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return (marktKapitalisierungStichtag / earningsAfterTaxStichtag);
+    return Number((marktKapitalisierungStichtag / earningsAfterTaxStichtag).toFixed(2));
   }
 
   static calculateEinstandsRenditeWith(
@@ -92,7 +92,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return (earningsAfterTaxStichtag / marktKapitalisierungStichtag) * 100;
+    return Number(((earningsAfterTaxStichtag / marktKapitalisierungStichtag) * 100).toFixed(2));
   }
 
   static calculateKursBuchwertVerhaeltnisWith(
@@ -103,7 +103,7 @@ export class StockCalculator {
       return 0;
     }
 
-    return marktKapitalisierungStichtag/eigenkapital
+    return Number((marktKapitalisierungStichtag/eigenkapital).toFixed(2));
   }
 
   static calculateEnterpriseValueStichtagWith(
@@ -112,12 +112,13 @@ export class StockCalculator {
     , gesamtVerbindlichkeiten: number
     , zahlungsmittel: number
   ) {
-    return (eigenkapital + gesamtVerbindlichkeiten - zahlungsmittel) * buchwertRelation;
+    return Number(((eigenkapital + gesamtVerbindlichkeiten - zahlungsmittel) * buchwertRelation).toFixed(2));
   }
 
   static calculateExpectedRateOfGroth(
     ratesOfGroth: number[]
   ) {
+
     if(ratesOfGroth.length === 0) {
       return 0;
     }
@@ -128,14 +129,14 @@ export class StockCalculator {
       sumOfGroth += rate;
     });
 
-    return sumOfGroth/ratesOfGroth.length;
+    return Number((sumOfGroth/ratesOfGroth.length).toFixed(2));
   }
 
   static calculateFairStockValue(discountedCFCompanyValue: number, liquidsAndInterests: ILiquidsAndInterests, anzahlAktien: number) {
     let companyValue = (discountedCFCompanyValue + (liquidsAndInterests.liquideMittel - liquidsAndInterests.schulden)) * 1000000;
     const valuePerStock = companyValue / anzahlAktien;
 
-    return valuePerStock;
+    return Number(valuePerStock.toFixed(2));
   }
 
   static calculateFutureCompanyValueWithFutureCashFlow(freeCashFlowThreeYearAverageInMillionen: number
