@@ -1,23 +1,23 @@
 
 <mat-grid-list cols=4 rowHeight="50px">
 
-  <mat-grid-tile [colspan]="4" [rowspan]="1">
+  <mat-grid-tile [colspan]="4" [rowspan]="1" class="welcome-row">
     <img src="../../assets/Pint_Mail_logo_size.jpg" alt="App-Logo">
   </mat-grid-tile>
 
-  <mat-grid-tile [colspan]="4"  [rowspan]="1">
+  <mat-grid-tile [colspan]="4"  [rowspan]="1" class="welcome-row">
     <button mat-raised-button color="primary" routerLink="/overview">
       Stock Values berechnen
     </button>
   </mat-grid-tile>
 
-  <mat-grid-tile [colspan]="4" [rowspan]="1">
+  <mat-grid-tile [colspan]="4" [rowspan]="1" class="welcome-row">
     <h1 class="mat-headline">Features</h1>
   </mat-grid-tile>
 
 
 
-  <mat-grid-tile *ngFor="let feature of pageHintsForTemplate" [colspan]="feature.cols" [rowspan]="feature.rows">
+  <mat-grid-tile *ngFor="let feature of pageHintsForTemplate" [colspan]="feature.cols" [rowspan]="feature.rows" class="welcome-row">
     <div>
       <mat-card class="feature-card animate__animated animate__fadeIn animate__slow">
         <mat-card-header><mat-card-title>{{feature.heading}}</mat-card-title></mat-card-header>
