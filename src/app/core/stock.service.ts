@@ -66,7 +66,7 @@ export class StockService {
       umsatzChangeFourthPeriod: 0,
       umsatzChangeFifthPeriod: 0,
       umsatzChangeSixthPeriod: 0,
-      umsatzChangeDescription: 'Umsatzveränderungen der letzten 6 Jahre zum Stichtag im Vergleich zum Vorjahr',
+      umsatzChangeDescription: 'Umsatzveränderungen der letzten 6 Jahre zum Stichtag im Vergleich zum Vorjahr. Dient zur Berechnung des zukünftigen Wachstums',
 
       expectedRateOfReturnPercent: 0,
       expectedRateOfReturnDescription: 'Erwartete Rendite. Sollte mindestens 6 Prozent betragen (Immobiliendurchschnitt)',

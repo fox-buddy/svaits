@@ -20,6 +20,7 @@ export class StockDataCalculationComponent implements OnInit {
   private stockName: string;
   private stockIndex: number;
   public stockInWork: IStock
+  public expectedRateOfGrothToShow: number;
 
   constructor(private route: ActivatedRoute, private stockSrv: StockService, private fb: FormBuilder) {
 
@@ -39,6 +40,19 @@ export class StockDataCalculationComponent implements OnInit {
 
   public openDetailview() {
 
+  }
+
+  public calculateExpectedRatesOfGrothToShowValue() {
+    const ratesOfGroth = [
+      this.stockForm.get('umsatzChangeFirstPeriod').value,
+      this.stockForm.get('umsatzChangeSecondPeriod').value,
+      this.stockForm.get('umsatzChangeThirdPeriod').value,
+      this.stockForm.get('umsatzChangeFourthPeriod').value,
+      this.stockForm.get('umsatzChangeFifthPeriod').value,
+      this.stockForm.get('umsatzChangeSixthPeriod').value
+    ]
+
+    this.expectedRateOfGrothToShow = StockCalculator.calculateExpectedRateOfGroth(ratesOfGroth);
   }
 
   public stockFormSubmit() {

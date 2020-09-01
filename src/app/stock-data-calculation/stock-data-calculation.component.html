@@ -409,7 +409,7 @@
 
     <!-- Input Field -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <input matInput class="inputField" matInput type="number" min="0" formControlName="umsatzChangeSixthPeriod">
+      <input matInput class="inputField" matInput type="number" min="0" formControlName="umsatzChangeSixthPeriod" (change)="calculateExpectedRatesOfGrothToShowValue()">
     </mat-grid-tile>
 
     <!-- Einheit -->
@@ -425,7 +425,7 @@
 
     <!-- Input Field -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <input matInput class="inputField" matInput type="number" min="0" formControlName="umsatzChangeFifthPeriod">
+          <input matInput class="inputField" matInput type="number" min="0" formControlName="umsatzChangeFifthPeriod" (change)="calculateExpectedRatesOfGrothToShowValue()">
     </mat-grid-tile>
 
     <!-- Einheit -->
@@ -441,7 +441,7 @@
 
     <!-- Input Field -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <input class="inputField" matInput type="number" min="0" formControlName="umsatzChangeFourthPeriod">
+      <input class="inputField" matInput type="number" min="0" formControlName="umsatzChangeFourthPeriod" (change)="calculateExpectedRatesOfGrothToShowValue()">
     </mat-grid-tile>
 
     <!-- Einheit -->
@@ -457,7 +457,7 @@
 
     <!-- Input Field -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <input class="inputField" matInput type="number" min="0" formControlName="umsatzChangeThirdPeriod">
+          <input class="inputField" matInput type="number" min="0" formControlName="umsatzChangeThirdPeriod" (change)="calculateExpectedRatesOfGrothToShowValue()">
     </mat-grid-tile>
 
     <!-- Einheit -->
@@ -473,7 +473,7 @@
 
     <!-- Input Field -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <input class="inputField" matInput type="number" min="0" formControlName="umsatzChangeSecondPeriod">
+      <input class="inputField" matInput type="number" min="0" formControlName="umsatzChangeSecondPeriod" (change)="calculateExpectedRatesOfGrothToShowValue()">
     </mat-grid-tile>
 
     <!-- Einheit -->
@@ -490,7 +490,7 @@
 
     <!-- Input Field -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <input class="inputField" matInput type="number" min="0" formControlName="umsatzChangeFirstPeriod">
+      <input class="inputField" matInput type="number" min="0" formControlName="umsatzChangeFirstPeriod" (change)="calculateExpectedRatesOfGrothToShowValue()">
     </mat-grid-tile>
 
     <!-- Einheit -->
@@ -502,6 +502,15 @@
     <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc">
       <span class="mat-small input-desc-text">{{stockInWork.inputData.umsatzChangeDescription}}</span>
     </mat-grid-tile>
+
+
+   <!-- Erklärung -->
+   <mat-grid-tile [colspan]="4" [rowspan]="1" class="input-desc" *ngIf="expectedRateOfGrothToShow">
+    <span class="mat-small dcf-desc-text">
+      Die zur Berechnung des fairen Aktienwertes herangezogene Wachstumsrate beträgt {{expectedRateOfGrothToShow}} %
+    </span>
+  </mat-grid-tile>
+
 
     <!-- Divider -->
     <mat-grid-tile [colspan]="4" [rowspan]="1">

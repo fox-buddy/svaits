@@ -21,11 +21,19 @@
 }
 
 .input-desc-text {
-  margin-right: 20px;
-  color: grey
+  margin-right: 15px;
+  margin-left: 15px;
+  color: grey;
 }
 
 .result-divider {
   border-bottom: 1px solid black;
 
+}
+
+.dcf-desc-text {
+  margin-right: 15px;
+  margin-left: 15px;
+  color: grey;
+  font-weight: bold;
 }

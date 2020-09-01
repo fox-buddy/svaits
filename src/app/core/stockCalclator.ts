@@ -134,7 +134,11 @@ export class StockCalculator {
 
   static calculateFairStockValue(discountedCFCompanyValue: number, liquidsAndInterests: ILiquidsAndInterests, anzahlAktien: number) {
     let companyValue = (discountedCFCompanyValue + (liquidsAndInterests.liquideMittel - liquidsAndInterests.schulden)) * 1000000;
-    const valuePerStock = companyValue / anzahlAktien;
+
+
+    const valuePerStock = (anzahlAktien === 0) ? 0 : companyValue / anzahlAktien;
+
+
 
     return Number(valuePerStock.toFixed(2));
   }
@@ -180,6 +184,10 @@ export class StockCalculator {
     discountedCashFlows.forEach((element) => {
       discountedCashFlowSum += element;
     })
+
+    if(discountedCashFlowSum = NaN) {
+      discountedCashFlowSum = 0;
+    }
 
     return {companySum: discountedCashFlowSum, lastValue: discountedCashFlows[futureCashFlowArray.length-1]};
   }
