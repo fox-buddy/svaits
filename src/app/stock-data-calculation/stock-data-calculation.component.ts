@@ -22,6 +22,10 @@ export class StockDataCalculationComponent implements OnInit {
   public stockInWork: IStock
   public expectedRateOfGrothToShow: number;
 
+  public bilanzKennZahlenOpened: boolean = true;
+  public cashFlowRechnungOpened: boolean = true;
+  public umsatzWachstumOpened: boolean = true;
+
   constructor(private route: ActivatedRoute, private stockSrv: StockService, private fb: FormBuilder) {
 
     this.stockName = this.route.snapshot.paramMap.get('stockname');
@@ -35,6 +39,13 @@ export class StockDataCalculationComponent implements OnInit {
 
     this.getStockDataFromService(this.stockIndex);
     this.assignStockValueToForm();
+
+    if(this.stockInWork.resultData.fairValue > 0) {
+      this.measuresHaveBeenCalculated =  true;
+      this.umsatzWachstumOpened = false;
+      this.cashFlowRechnungOpened = false;
+      this.bilanzKennZahlenOpened = false;
+    }
 
   }
 
@@ -56,6 +67,11 @@ export class StockDataCalculationComponent implements OnInit {
   }
 
   public stockFormSubmit() {
+
+    this.cashFlowRechnungOpened = false;
+    this.umsatzWachstumOpened = false;
+    this.bilanzKennZahlenOpened = false;
+
     this.formValuesToLocalObject();
     this.calculateBilanzResults();
     this.calculateCashFlowResuls();
@@ -179,6 +195,7 @@ export class StockDataCalculationComponent implements OnInit {
       , {liquideMittel: inputData.zahlungsMittelInMillionenZumStichtag, schulden: inputData.gesamtVerbindlichKeitenInMillionenZumStichtag}
       , inputData.anzahlAktien
     )
+
 
     this.stockInWork.resultData.fairValue = fairStockValue;
     this.stockInWork.resultData.fairValueWithSecurityMargin = Number((fairStockValue * (1-(inputData.securityMarginRate/100))).toFixed(2));

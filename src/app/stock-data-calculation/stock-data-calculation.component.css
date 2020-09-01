@@ -37,3 +37,17 @@
   color: grey;
   font-weight: bold;
 }
+
+.panel-desc {
+  font-size: smaller;
+  font-style: italic;
+}
+
+.expansion-frame {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.button-grid {
+  margin-top: 30px;
+}

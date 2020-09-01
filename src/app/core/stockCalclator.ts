@@ -133,6 +133,7 @@ export class StockCalculator {
   }
 
   static calculateFairStockValue(discountedCFCompanyValue: number, liquidsAndInterests: ILiquidsAndInterests, anzahlAktien: number) {
+
     let companyValue = (discountedCFCompanyValue + (liquidsAndInterests.liquideMittel - liquidsAndInterests.schulden)) * 1000000;
 
 
@@ -146,6 +147,8 @@ export class StockCalculator {
   static calculateFutureCompanyValueWithFutureCashFlow(freeCashFlowThreeYearAverageInMillionen: number
       , growthRates: IDCFGrothRates
     ) {
+
+
     const rateOfGrothFactor = 1+(growthRates.expectedRateOfGrowthPercent/100);
     const rateOfReturnFactor = 1+(growthRates.expectedRateOfReturnPercent/100);
     let valueThatGrows = freeCashFlowThreeYearAverageInMillionen;
@@ -161,6 +164,7 @@ export class StockCalculator {
       cashFlowArray.push(calculatedCashFlow);
       valueThatGrows = calculatedCashFlow;
     }
+
 
     const cashFlowSumAndLastValue = this.calculateDiscountedCashFlows(cashFlowArray, discountFactorArray);
     const restwert = this.calculateDiscountedCashFlowRestwert(cashFlowSumAndLastValue.lastValue, growthRates.longGrothPercent, growthRates.expectedRateOfReturnPercent )
@@ -185,7 +189,7 @@ export class StockCalculator {
       discountedCashFlowSum += element;
     })
 
-    if(discountedCashFlowSum = NaN) {
+    if(discountedCashFlowSum == NaN) {
       discountedCashFlowSum = 0;
     }
 
