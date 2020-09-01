@@ -13,3 +13,11 @@
 }
 /* End of Link Config */
 
+.menu-logo {
+  height: 5vh;
+  width: auto;
+}
+
+.menu-button {
+  margin-left: 15px;
+}
