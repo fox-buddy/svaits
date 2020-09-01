@@ -614,10 +614,10 @@
 
   <mat-grid-list cols="2" rowHeight="30px" class="button-grid">
     <mat-grid-tile [colspan]="1" [rowspan]="2">
-      <button mat-icon-button color="secondary" type="button" (click)="clearStockForm()"><mat-icon>clear_all</mat-icon></button>
+      <button color="secondary" mat-icon-button type="button" (click)="clearStockForm()"><mat-icon>clear_all</mat-icon></button>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="2">
-      <button mat-icon-button color="primary" type="submit" [disabled]="stockForm.invalid"><mat-icon>calculate</mat-icon></button>
+      <button class="button-main" mat-icon-button type="submit" [disabled]="stockForm.invalid"><mat-icon>calculate</mat-icon></button>
     </mat-grid-tile>
   </mat-grid-list>
 

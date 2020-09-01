@@ -1,7 +1,7 @@
 
 <mat-grid-list cols=4 rowHeight="50px">
   <mat-grid-tile [colspan]="4" [rowspan]="1">
-    <button mat-raised-button (click)="stockNamingDialogToNameNewStock()" color="primary">
+    <button mat-raised-button (click)="stockNamingDialogToNameNewStock()" class="button-main">
       <mat-icon>add</mat-icon>
       <span>Neue Aktie hinzufügen</span>
     </button>
@@ -9,7 +9,7 @@
 
 
   <mat-grid-tile [colspan]="4" [rowspan]="2" *ngFor="let stock of _stockSrv.stockCollection; index as j">
-    <mat-card class="stock-card animate__animated animate__slideInLeft animate__fast" [routerLink]="['/calculation', stock.stockName, j]">
+    <mat-card class="stock-card animate__animated animate__slideInLeft animate__fast info-second" [routerLink]="['/calculation', stock.stockName, j]">
       <mat-card-header>{{stock.stockName}}</mat-card-header>
       <mat-card-content>
 

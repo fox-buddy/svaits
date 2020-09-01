@@ -3,3 +3,24 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.main-color {
+  background-color: #6d9773 !important;
+}
+
+.button-main {
+  background-color: #FFBA00 !important;
+}
+
+.button-second {
+  background-color: #B46617 !important;
+}
+
+.info-color {
+  background-color: #0c3b2e !important;
+}
+
+.info-second {
+  background-color: #B46617 !important;
+}
