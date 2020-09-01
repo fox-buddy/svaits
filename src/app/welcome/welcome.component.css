@@ -8,3 +8,8 @@
 
   max-width: 300px;
 }
+
+.feature-desc {
+  font-style: italic;
+  font-size: smaller;
+}

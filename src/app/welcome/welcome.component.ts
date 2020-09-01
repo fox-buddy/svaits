@@ -55,7 +55,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   private clearPageFillInterval() {
-    debugger;
+
     this.showFooterText = true;
     clearInterval(this.pageHintsTemplateFillInterval);
 
