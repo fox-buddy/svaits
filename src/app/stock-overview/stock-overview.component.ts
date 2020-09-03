@@ -18,7 +18,7 @@ export class StockOverviewComponent implements OnInit {
 
   public stockNamingDialogToNameNewStock() {
     const dialogRef = this.dialog.open(StockNamingDialogComponent, {
-      maxWidth: "250px", data: {stockName: ''}
+      maxWidth: "250px", data: {stockName: ''}, backdropClass: 'main-color'
     });
 
     dialogRef.afterClosed().subscribe(result => {

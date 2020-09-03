@@ -9,6 +9,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: #6d9773 !important;
 }
 
+.text-main-color {
+  color: #6d9773 !important;
+}
+
 .button-main {
   background-color: #FFBA00 !important;
 }
@@ -19,6 +23,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .info-color {
   background-color: #0c3b2e !important;
+}
+
+.text-info-color {
+  color: #0c3b2e !important;
 }
 
 .info-second {
