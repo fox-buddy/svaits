@@ -26,6 +26,10 @@ export class StockDataCalculationComponent implements OnInit {
   public cashFlowRechnungOpened: boolean = true;
   public umsatzWachstumOpened: boolean = true;
 
+  public showAnzahlAktienDesc: boolean = false;
+  public showBilanzSummeDesc: boolean = false;
+  public showEigenkapitalQuoteDesc: boolean = false;
+
   constructor(private route: ActivatedRoute, private stockSrv: StockService, private fb: FormBuilder) {
 
     this.stockName = this.route.snapshot.paramMap.get('stockname');

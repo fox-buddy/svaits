@@ -19,6 +19,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Bilanzsumme</span>
+          <span class="mat-small input-desc-text" *ngIf="!showBilanzSummeDesc">
+            <button mat-icon-button (click)="[showBilanzSummeDesc=!showBilanzSummeDesc, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -32,9 +35,14 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showBilanzSummeDesc">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.bilanzSummeDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showBilanzSummeDesc=!showBilanzSummeDesc, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
+
+
 
         <!-- Divider -->
         <mat-grid-tile [colspan]="4" [rowspan]="1">

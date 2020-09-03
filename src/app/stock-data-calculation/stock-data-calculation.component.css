@@ -12,6 +12,12 @@
 
 }
 
+.input-desc-icon {
+  width: 100%;
+  height: 30vh;
+  text-align: left;
+}
+
 .result-desc {
   width: 90%;
   height: 30vh;
@@ -28,6 +34,13 @@
   margin-left: 15px;
   color: grey;
   font-style: italic;
+}
+
+.input-desc-text-icon {
+  margin-right: 15px;
+  margin-left: 15px;
+  color: grey;
+  text-align: left;
 }
 
 .result-divider {
