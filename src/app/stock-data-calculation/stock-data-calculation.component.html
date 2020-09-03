@@ -7,11 +7,12 @@
 
 <form [formGroup]="stockForm" (ngSubmit)="stockFormSubmit()">
 
+
   <mat-accordion [multi]="true">
-    <mat-expansion-panel [expanded]="bilanzKennZahlenOpened" class="expansion-frame">
+    <mat-expansion-panel [expanded]="bilanzKennZahlenOpened" class="expansion-frame" [hideToggle]="false">
       <mat-expansion-panel-header>
-        <mat-panel-title>BilanzKennzahlen</mat-panel-title>
-        <mat-panel-description class="panel-desc">Eingaben zur Unternehmensbilanz</mat-panel-description>
+        <mat-panel-title class="input-panel-title">Eingabe Bilanzkennzahlen</mat-panel-title>
+        <!-- <mat-panel-description class="panel-desc">Eingaben zur Unternehmensbilanz</mat-panel-description> -->
 
       </mat-expansion-panel-header>
       <mat-grid-list cols="4" rowHeight="30px">
@@ -285,10 +286,10 @@
       </mat-grid-list>
     </mat-expansion-panel>
 
-    <mat-expansion-panel [expanded]="cashFlowRechnungOpened" class="expansion-frame">
+    <mat-expansion-panel [expanded]="cashFlowRechnungOpened" class="expansion-frame" [hideToggle]="false">
       <mat-expansion-panel-header>
-        <mat-panel-title>CashFlow Rechnung</mat-panel-title>
-        <mat-panel-description class="panel-desc">operativer CF und Investment CF</mat-panel-description>
+        <mat-panel-title class="input-panel-title">Eingabe CashFlow Rechnung</mat-panel-title>
+        <!-- <mat-panel-description class="panel-desc">operativer CF und Investment CF</mat-panel-description> -->
 
       </mat-expansion-panel-header>
       <mat-grid-list cols="4" rowHeight="30px">
@@ -401,10 +402,10 @@
       </mat-grid-list>
     </mat-expansion-panel>
 
-    <mat-expansion-panel [expanded]="umsatzWachstumOpened" class="expansion-frame">
+    <mat-expansion-panel [expanded]="umsatzWachstumOpened" class="expansion-frame" [hideToggle]="false">
       <mat-expansion-panel-header>
-        <mat-panel-title>Umsatzwachstum</mat-panel-title>
-        <mat-panel-description class="panel-desc">Umsatzwachstum der letzten Jahre</mat-panel-description>
+        <mat-panel-title class="input-panel-title">Eingabe Wachstumsraten</mat-panel-title>
+        <!-- <mat-panel-description class="panel-desc">Umsatzwachstum der letzten Jahre, erwartetes Wachstum der Zukunft</mat-panel-description> -->
 
       </mat-expansion-panel-header>
       <mat-grid-list cols="4" rowHeight="30px">
@@ -512,11 +513,37 @@
 
 
        <!-- Erklärung -->
-       <mat-grid-tile [colspan]="4" [rowspan]="1" class="input-desc" *ngIf="expectedRateOfGrothToShow">
+       <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc" *ngIf="expectedRateOfGrothToShow">
         <span class="mat-small dcf-desc-text">
           Die zur Berechnung des fairen Aktienwertes herangezogene Wachstumsrate beträgt {{expectedRateOfGrothToShow}} %
         </span>
       </mat-grid-tile>
+
+
+      <!-- !!!Wunsch Umsatzwachstum!!! -->
+        <!-- Beschriftung -->
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <span class="mat-small">Festgelegtes Wachstum</span>
+        </mat-grid-tile>
+
+        <!-- Input Field -->
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <input class="inputField" matInput type="number" min="0" formControlName="expectedRateOfGrothPercent">
+        </mat-grid-tile>
+
+        <!-- Einheit -->
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <span class="mat-small">Prozent</span>
+        </mat-grid-tile>
+
+        <!-- Erklärung -->
+        <mat-grid-tile [colspan]="4" [rowspan]="5" class="input-desc">
+          <span class="mat-small input-desc-text">
+            Mit den obigen Wachstumsraten wird ein Durchschnittswert über 6 Jahre errechnet. Alternativ dazu, kann hier ein selbst gewähltes
+            Wachstum eingetragen werden (Beispiel 5 Prozent). Dieses gilt konstant für die Berechnung auf 10 Jahre und
+            erhält dann Vorang, über den errechneten DS. In diesem Fall, können die jährlichen Wachstumsraten auch auf 0 gesetzt werden.
+          </span>
+        </mat-grid-tile>
 
 
         <!-- Divider -->
@@ -672,7 +699,7 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+    <mat-grid-tile [colspan]="4" [rowspan]="3" class="result-divider">
       <span class="mat-small result-desc">{{stockInWork.resultData.gearingdescription}}</span>
     </mat-grid-tile>
 
@@ -698,7 +725,7 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+    <mat-grid-tile [colspan]="4" [rowspan]="3" class="result-divider">
       <span class="mat-small result-desc">{{stockInWork.resultData.dynamischerVerschuldungsgradDescription}}</span>
     </mat-grid-tile>
 
@@ -776,7 +803,7 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+    <mat-grid-tile [colspan]="4" [rowspan]="3" class="result-divider">
       <span class="mat-small result-desc">{{stockInWork.resultData.ebitMargeDescription}}</span>
     </mat-grid-tile>
 
@@ -828,7 +855,7 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="3" class="result-divider">
+    <mat-grid-tile [colspan]="4" [rowspan]="4" class="result-divider">
       <span class="mat-small result-desc">{{stockInWork.resultData.kursGewinnVerhaeltnisZumStichtagDescription}}</span>
     </mat-grid-tile>
 
@@ -880,7 +907,7 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
+    <mat-grid-tile [colspan]="4" [rowspan]="3" class="result-divider">
       <span class="mat-small result-desc">{{stockInWork.resultData.kursBuchwertVerhaeltnisZumStichtagDescription}}</span>
     </mat-grid-tile>
 

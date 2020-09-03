@@ -74,7 +74,11 @@ export class StockDataCalculationComponent implements OnInit {
 
     this.formValuesToLocalObject();
     this.calculateBilanzResults();
-    this.calculateCashFlowResuls();
+    if(this.stockInWork.inputData.expectedRateOfGrothPercent) {
+      this.calculateCashFlowResuls(true);
+    } else {
+      this.calculateCashFlowResuls(false);
+    }
 
     this.measuresHaveBeenCalculated = true;
   }
@@ -161,7 +165,7 @@ export class StockDataCalculationComponent implements OnInit {
 
   }
 
-  private calculateCashFlowResuls() {
+  private calculateCashFlowResuls(calculateWithExpectedRate: boolean) {
     const inputData = this.stockInWork.inputData;
 
 
@@ -174,7 +178,8 @@ export class StockDataCalculationComponent implements OnInit {
       ,this.stockInWork.inputData.umsatzChangeSixthPeriod
     ]
 
-    this.stockInWork.resultData.expectedRateOfGrothPercent = StockCalculator.calculateExpectedRateOfGroth(
+
+    this.stockInWork.resultData.expectedRateOfGrothPercent = (calculateWithExpectedRate) ? inputData.expectedRateOfGrothPercent : StockCalculator.calculateExpectedRateOfGroth(
       ratesOfGroth
     );
 

@@ -18,12 +18,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  color: grey;
+  font-style: italic;
 }
 
 .input-desc-text {
   margin-right: 15px;
   margin-left: 15px;
   color: grey;
+  font-style: italic;
 }
 
 .result-divider {
@@ -39,7 +43,7 @@
 }
 
 .panel-desc {
-  font-size: smaller;
+  font-size: xx-small;
   font-style: italic;
 }
 
@@ -63,4 +67,9 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+
+.input-panel-title {
+  font-size: smaller;
 }
