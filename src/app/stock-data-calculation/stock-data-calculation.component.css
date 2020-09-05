@@ -52,8 +52,7 @@
 }
 
 .result-divider {
-  border-bottom: 1px solid black;
-
+  border-bottom: 2px solid #B46617
 }
 
 .dcf-desc-text {
@@ -95,4 +94,17 @@ input[type=number] {
 
 .input-header {
   text-align: left !important;
+}
+
+.fair-desc {
+  width: 90%;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: bold;
+}
+
+.result-topper {
+  border-top: 2px solid #B46617
 }

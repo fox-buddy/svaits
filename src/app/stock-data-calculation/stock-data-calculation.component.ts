@@ -45,6 +45,21 @@ export class StockDataCalculationComponent implements OnInit {
   public showExpectedLongGrowRateDescription:boolean = false;
   public showSecurityMarginDescription:boolean = false;
 
+  public showeigenkapitalquoteDescription:boolean = false;
+  public showgearingdescription:boolean = false;
+  public showdynamischerVerschuldungsgradDescription:boolean = false;
+  public showsachinvestitionsQuoteDescription:boolean = false;
+  public showeigenkapitalThreeYearAverageRenditeDescription:boolean = false;
+  public showebitMargeDescription:boolean = false;
+  public showintrinsischeKaufdauerDescription:boolean = false;
+  public showkursGewinnVerhaeltnisZumStichtagDescription:boolean = false;
+  public showeinstandsrenditeZumStichtagDescription:boolean = false;
+  public showkursBuchwertVerhaeltnisZumStichtagDescription:boolean = false;
+  public showenterpriseValueZumStichtagDescription:boolean = false;
+
+
+
+
 
   constructor(private route: ActivatedRoute, private stockSrv: StockService, private fb: FormBuilder) {
 
