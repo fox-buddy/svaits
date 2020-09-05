@@ -12,6 +12,14 @@
 
 }
 
+.input-hint {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .input-desc-icon {
   width: 100%;
   height: 30vh;
@@ -49,9 +57,7 @@
 }
 
 .dcf-desc-text {
-  margin-right: 15px;
-  margin-left: 15px;
-  color: grey;
+  color: red;
   font-weight: bold;
 }
 
@@ -85,4 +91,8 @@ input[type=number] {
 
 .input-panel-title {
   font-size: smaller;
+}
+
+.input-header {
+  text-align: left !important;
 }

@@ -28,7 +28,23 @@ export class StockDataCalculationComponent implements OnInit {
 
   public showAnzahlAktienDesc: boolean = false;
   public showBilanzSummeDesc: boolean = false;
-  public showEigenkapitalQuoteDesc: boolean = false;
+  public showEigenkapitalInMillionenDesc: boolean = false;
+  public showEigenKapitalThreeYearAverageDescription:boolean = false;
+  public showGesamtVerbindlichKeitenDescription:boolean = false;
+  public showZahlungsMittelDescription:boolean = false;
+  public showOperativerCashflowDescription:boolean = false;
+  public showOperativerCashflowThreeYearAverageDescription:boolean = false;
+  public showInvestmentCashflowDescription:boolean = false;
+  public showInvestmentCashflowThreeYearAverageDescription:boolean = false;
+  public showUmsatzInMillionenDescription:boolean = false;
+  public showEbitDescription:boolean = false;
+  public showEatDescription:boolean = false;
+  public showMarktKapitalisierungDescription:boolean = false;
+  public showExpectedRateOfGrothPercentDescription:boolean = false;
+  public showExpectedRateOfReturnDescription:boolean = false;
+  public showExpectedLongGrowRateDescription:boolean = false;
+  public showSecurityMarginDescription:boolean = false;
+
 
   constructor(private route: ActivatedRoute, private stockSrv: StockService, private fb: FormBuilder) {
 

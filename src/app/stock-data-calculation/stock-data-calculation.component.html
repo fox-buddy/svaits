@@ -42,8 +42,6 @@
           </span>
         </mat-grid-tile>
 
-
-
         <!-- Divider -->
         <mat-grid-tile [colspan]="4" [rowspan]="1">
           <mat-divider></mat-divider>
@@ -52,6 +50,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">EigenKapital</span>
+          <span class="mat-small input-desc-text" *ngIf="!showEigenkapitalInMillionenDesc">
+            <button mat-icon-button (click)="[showEigenkapitalInMillionenDesc=!showEigenkapitalInMillionenDesc, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -65,8 +66,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showEigenkapitalInMillionenDesc">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.eigenKapitalDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showEigenkapitalInMillionenDesc=!showEigenkapitalInMillionenDesc, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -79,6 +83,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">EigenKapital DS 3 Jahre</span>
+          <span class="mat-small input-desc-text" *ngIf="!showEigenKapitalThreeYearAverageDescription">
+            <button mat-icon-button (click)="[showEigenKapitalThreeYearAverageDescription=!showEigenKapitalThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -92,8 +99,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showEigenKapitalThreeYearAverageDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.eigenKapitalThreeYearAverageDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showEigenKapitalThreeYearAverageDescription=!showEigenKapitalThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -106,6 +116,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Gesamte Verbindlichkeiten</span>
+          <span class="mat-small input-desc-text" *ngIf="!showGesamtVerbindlichKeitenDescription">
+            <button mat-icon-button (click)="[showGesamtVerbindlichKeitenDescription=!showGesamtVerbindlichKeitenDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -119,8 +132,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showGesamtVerbindlichKeitenDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.gesamtVerbindlichKeitenDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showGesamtVerbindlichKeitenDescription=!showGesamtVerbindlichKeitenDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -133,6 +149,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Zahlungemittel (liquide Mittel)</span>
+          <span class="mat-small input-desc-text" *ngIf="!showZahlungsMittelDescription">
+            <button mat-icon-button (click)="[showZahlungsMittelDescription=!showZahlungsMittelDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -146,8 +165,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showZahlungsMittelDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.zahlungsMittelDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showZahlungsMittelDescription=!showZahlungsMittelDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -158,8 +180,12 @@
 
         <!-- !!!Neue Kennzahl!!! -->
         <!-- Beschriftung -->
+
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Umsatz</span>
+          <span class="mat-small input-desc-text" *ngIf="!showUmsatzInMillionenDescription">
+            <button mat-icon-button (click)="[showUmsatzInMillionenDescription=!showUmsatzInMillionenDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -173,8 +199,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showUmsatzInMillionenDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.umsatzInMillionenDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showUmsatzInMillionenDescription=!showUmsatzInMillionenDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -187,6 +216,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">EBIT</span>
+          <span class="mat-small input-desc-text" *ngIf="!showEbitDescription">
+            <button mat-icon-button (click)="[showEbitDescription=!showEbitDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -200,8 +232,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showEbitDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.ebitDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showEbitDescription=!showEbitDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -214,6 +249,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">EAT</span>
+          <span class="mat-small input-desc-text" *ngIf="!showEatDescription">
+            <button mat-icon-button (click)="[showEatDescription=!showEatDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -227,9 +265,13 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showEatDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.eatDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showEatDescription=!showEatDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
+
 
         <!-- Divider -->
         <mat-grid-tile [colspan]="4" [rowspan]="1">
@@ -241,7 +283,11 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Marktkapitalisierung</span>
+          <span class="mat-small input-desc-text" *ngIf="!showMarktKapitalisierungDescription">
+            <button mat-icon-button (click)="[showMarktKapitalisierungDescription=!showMarktKapitalisierungDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
+
 
         <!-- Input Field -->
         <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -254,8 +300,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showMarktKapitalisierungDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.marktKapitalisierungDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showMarktKapitalisierungDescription=!showMarktKapitalisierungDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -268,6 +317,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Anzahl Aktien</span>
+          <span class="mat-small input-desc-text" *ngIf="!showAnzahlAktienDesc">
+            <button mat-icon-button (click)="[showAnzahlAktienDesc=!showAnzahlAktienDesc, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -281,8 +333,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showAnzahlAktienDesc">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.anzahlAktienDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showAnzahlAktienDesc=!showAnzahlAktienDesc, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -304,7 +359,10 @@
         <!-- !!!Neue Kennzahl!!! -->
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <span class="mat-small">operativer Cashflow</span>
+          <span class="mat-small">operativer Cashflow<</span>
+          <span class="mat-small input-desc-text" *ngIf="!showOperativerCashflowDescription">
+            <button mat-icon-button (click)="[showOperativerCashflowDescription=!showOperativerCashflowDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -318,8 +376,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showOperativerCashflowDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.operativerCashflowDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showOperativerCashflowDescription=!showOperativerCashflowDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -332,6 +393,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">operativer CF (DS 3 Jahre)</span>
+          <span class="mat-small input-desc-text" *ngIf="!showOperativerCashflowThreeYearAverageDescription">
+            <button mat-icon-button (click)="[showOperativerCashflowThreeYearAverageDescription=!showOperativerCashflowThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -345,9 +409,13 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showOperativerCashflowThreeYearAverageDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.operativerCashflowThreeYearAverageDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showOperativerCashflowThreeYearAverageDescription=!showOperativerCashflowThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
+
 
         <!-- Divider -->
         <mat-grid-tile [colspan]="4" [rowspan]="1">
@@ -359,6 +427,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">investment CF</span>
+          <span class="mat-small input-desc-text" *ngIf="!showInvestmentCashflowDescription">
+            <button mat-icon-button (click)="[showInvestmentCashflowDescription=!showInvestmentCashflowDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -372,8 +443,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showInvestmentCashflowDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.investmentCashflowDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showInvestmentCashflowDescription=!showInvestmentCashflowDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -386,6 +460,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">investment CF (DS 3 Jahre)</span>
+          <span class="mat-small input-desc-text" *ngIf="!showInvestmentCashflowThreeYearAverageDescription">
+            <button mat-icon-button (click)="[showInvestmentCashflowThreeYearAverageDescription=!showInvestmentCashflowThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -399,8 +476,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showInvestmentCashflowThreeYearAverageDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.investmentCashflowThreeYearAverageDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showInvestmentCashflowThreeYearAverageDescription=!showInvestmentCashflowThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -514,42 +594,46 @@
           <span class="mat-small">Prozent</span>
         </mat-grid-tile>
 
-        <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc">
-          <span class="mat-small input-desc-text">{{stockInWork.inputData.umsatzChangeDescription}}</span>
-        </mat-grid-tile>
 
-
-       <!-- Erklärung -->
-       <mat-grid-tile [colspan]="4" [rowspan]="2" class="input-desc" *ngIf="expectedRateOfGrothToShow">
-        <span class="mat-small dcf-desc-text">
-          Die zur Berechnung des fairen Aktienwertes herangezogene Wachstumsrate beträgt {{expectedRateOfGrothToShow}} %
-        </span>
-      </mat-grid-tile>
-
-
-      <!-- !!!Wunsch Umsatzwachstum!!! -->
-        <!-- Beschriftung -->
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <span class="mat-small">Festgelegtes Wachstum</span>
-        </mat-grid-tile>
-
-        <!-- Input Field -->
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <input class="inputField" matInput type="number" min="0" formControlName="expectedRateOfGrothPercent">
-        </mat-grid-tile>
-
-        <!-- Einheit -->
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <span class="mat-small">Prozent</span>
-        </mat-grid-tile>
 
         <!-- Erklärung -->
         <mat-grid-tile [colspan]="4" [rowspan]="5" class="input-desc">
           <span class="mat-small input-desc-text">
+            {{stockInWork.inputData.umsatzChangeDescription}}
+            <br>
+            <span *ngIf="expectedRateOfGrothToShow" class="dcf-desc-text">Erechnet wurden: {{expectedRateOfGrothToShow}} % Wachstum</span>
+          </span>
+        </mat-grid-tile>
+
+
+      <!-- !!!Wunsch Umsatzwachstum!!! -->
+        <!-- Beschriftung -->
+        <mat-grid-tile [colspan]="2" [rowspan]="3">
+          <span class="mat-small">Festgelegtes Wachstum</span>
+          <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfGrothPercentDescription">
+            <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
+        </mat-grid-tile>
+
+        <!-- Input Field -->
+        <mat-grid-tile [colspan]="1" [rowspan]="3">
+          <input class="inputField" matInput type="number" min="0" formControlName="expectedRateOfGrothPercent">
+        </mat-grid-tile>
+
+        <!-- Einheit -->
+        <mat-grid-tile [colspan]="1" [rowspan]="3">
+          <span class="mat-small">Prozent</span>
+        </mat-grid-tile>
+
+        <!-- Erklärung -->
+        <mat-grid-tile [colspan]="4" [rowspan]="7" class="input-desc" *ngIf="showExpectedRateOfGrothPercentDescription">
+          <span class="mat-small input-desc-text">
             Mit den obigen Wachstumsraten wird ein Durchschnittswert über 6 Jahre errechnet. Alternativ dazu, kann hier ein selbst gewähltes
             Wachstum eingetragen werden (Beispiel 5 Prozent). Dieses gilt konstant für die Berechnung auf 10 Jahre und
-            erhält dann Vorang, über den errechneten DS. In diesem Fall, können die jährlichen Wachstumsraten auch auf 0 gesetzt werden.
+            erhält dann Vorang, über den errechneten DS. In diesem Fall, können die jährlichen Wachstumsraten beliebig festgelegt werden.
+          </span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -564,6 +648,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Erwartete Rendite</span>
+          <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfReturnDescription">
+            <button mat-icon-button (click)="[showExpectedRateOfReturnDescription=!showExpectedRateOfReturnDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -577,8 +664,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showExpectedRateOfReturnDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.expectedRateOfReturnDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showExpectedRateOfReturnDescription=!showExpectedRateOfReturnDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -591,6 +681,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Erwartetes Lanzeitwachstum</span>
+          <span class="mat-small input-desc-text" *ngIf="!showExpectedLongGrowRateDescription">
+            <button mat-icon-button (click)="[showExpectedLongGrowRateDescription=!showExpectedLongGrowRateDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -604,8 +697,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showExpectedLongGrowRateDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.expectedLongGrowRateDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showExpectedLongGrowRateDescription=!showExpectedLongGrowRateDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
@@ -618,6 +714,9 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Security Margin</span>
+          <span class="mat-small input-desc-text" *ngIf="!showSecurityMarginDescription">
+            <button mat-icon-button (click)="[showSecurityMarginDescription=!showSecurityMarginDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
@@ -631,8 +730,11 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc">
+        <mat-grid-tile [colspan]="4" [rowspan]="3" class="input-desc" *ngIf="showSecurityMarginDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.securityMarginDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showSecurityMarginDescription=!showSecurityMarginDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          </span>
         </mat-grid-tile>
 
         <!-- Divider -->
