@@ -15,43 +15,55 @@
         <!-- <mat-panel-description class="panel-desc">Eingaben zur Unternehmensbilanz</mat-panel-description> -->
 
       </mat-expansion-panel-header>
-      <mat-grid-list cols="4" rowHeight="30px">
+      <mat-grid-list cols="5" rowHeight="30px">
         <!-- Beschriftung -->
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
           <span class="mat-small">Bilanzsumme</span>
-          <span class="mat-small input-desc-text" *ngIf="!showBilanzSummeDesc">
-            <button mat-icon-button (click)="[showBilanzSummeDesc=!showBilanzSummeDesc, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          <!-- <span class="mat-small input-desc-text-icon" *ngIf="!showBilanzSummeDesc">
+            <button mat-icon-button (click)="[showBilanzSummeDesc=!showBilanzSummeDesc, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="2">
+          <span class="mat-small input-desc-text-icon" *ngIf="!showBilanzSummeDesc">
+            <button mat-icon-button (click)="[showBilanzSummeDesc=!showBilanzSummeDesc, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Input Field -->
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-grid-tile [colspan]="1" [rowspan]="2">
             <input matInput class="inputField" matInput type="number" min="0" formControlName="bilanzSummeInMillionenZumStichtag">
         </mat-grid-tile>
 
         <!-- Einheit -->
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-grid-tile [colspan]="1" [rowspan]="2">
           <span class="mat-small">Mio €</span>
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showBilanzSummeDesc">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showBilanzSummeDesc">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.bilanzSummeDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showBilanzSummeDesc=!showBilanzSummeDesc, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showBilanzSummeDesc=!showBilanzSummeDesc, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">EigenKapital</span>
-          <span class="mat-small input-desc-text" *ngIf="!showEigenkapitalInMillionenDesc">
-            <button mat-icon-button (click)="[showEigenkapitalInMillionenDesc=!showEigenkapitalInMillionenDesc, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          <!-- <span class="mat-small input-desc-text-icon" *ngIf="!showEigenkapitalInMillionenDesc">
+            <button mat-icon-button (click)="[showEigenkapitalInMillionenDesc=!showEigenkapitalInMillionenDesc, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <span class="mat-small input-desc-text-icon" *ngIf="!showEigenkapitalInMillionenDesc">
+            <button mat-icon-button (click)="[showEigenkapitalInMillionenDesc=!showEigenkapitalInMillionenDesc, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -66,15 +78,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showEigenkapitalInMillionenDesc">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showEigenkapitalInMillionenDesc">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.eigenKapitalDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showEigenkapitalInMillionenDesc=!showEigenkapitalInMillionenDesc, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showEigenkapitalInMillionenDesc=!showEigenkapitalInMillionenDesc, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -83,8 +95,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">EigenKapital DS 3 Jahre</span>
-          <span class="mat-small input-desc-text" *ngIf="!showEigenKapitalThreeYearAverageDescription">
-            <button mat-icon-button (click)="[showEigenKapitalThreeYearAverageDescription=!showEigenKapitalThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          <!-- <span class="mat-small input-desc-text-icon" *ngIf="!showEigenKapitalThreeYearAverageDescription">
+            <button mat-icon-button (click)="[showEigenKapitalThreeYearAverageDescription=!showEigenKapitalThreeYearAverageDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <span class="mat-small input-desc-text-icon" *ngIf="!showEigenKapitalThreeYearAverageDescription">
+            <button mat-icon-button (click)="[showEigenKapitalThreeYearAverageDescription=!showEigenKapitalThreeYearAverageDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -99,15 +117,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showEigenKapitalThreeYearAverageDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showEigenKapitalThreeYearAverageDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.eigenKapitalThreeYearAverageDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showEigenKapitalThreeYearAverageDescription=!showEigenKapitalThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showEigenKapitalThreeYearAverageDescription=!showEigenKapitalThreeYearAverageDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -116,8 +134,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Gesamte Verbindlichkeiten</span>
-          <span class="mat-small input-desc-text" *ngIf="!showGesamtVerbindlichKeitenDescription">
-            <button mat-icon-button (click)="[showGesamtVerbindlichKeitenDescription=!showGesamtVerbindlichKeitenDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          <!-- <span class="mat-small input-desc-text-icon" *ngIf="!showGesamtVerbindlichKeitenDescription">
+            <button mat-icon-button (click)="[showGesamtVerbindlichKeitenDescription=!showGesamtVerbindlichKeitenDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <span class="mat-small input-desc-text-icon" *ngIf="!showGesamtVerbindlichKeitenDescription">
+            <button mat-icon-button (click)="[showGesamtVerbindlichKeitenDescription=!showGesamtVerbindlichKeitenDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -132,15 +156,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showGesamtVerbindlichKeitenDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showGesamtVerbindlichKeitenDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.gesamtVerbindlichKeitenDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showGesamtVerbindlichKeitenDescription=!showGesamtVerbindlichKeitenDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showGesamtVerbindlichKeitenDescription=!showGesamtVerbindlichKeitenDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -149,8 +173,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Zahlungemittel (liquide Mittel)</span>
-          <span class="mat-small input-desc-text" *ngIf="!showZahlungsMittelDescription">
-            <button mat-icon-button (click)="[showZahlungsMittelDescription=!showZahlungsMittelDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          <!-- <span class="mat-small input-desc-text-icon" *ngIf="!showZahlungsMittelDescription">
+            <button mat-icon-button (click)="[showZahlungsMittelDescription=!showZahlungsMittelDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <span class="mat-small input-desc-text-icon" *ngIf="!showZahlungsMittelDescription">
+            <button mat-icon-button (click)="[showZahlungsMittelDescription=!showZahlungsMittelDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -165,15 +195,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showZahlungsMittelDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showZahlungsMittelDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.zahlungsMittelDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showZahlungsMittelDescription=!showZahlungsMittelDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showZahlungsMittelDescription=!showZahlungsMittelDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -183,8 +213,14 @@
 
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Umsatz</span>
-          <span class="mat-small input-desc-text" *ngIf="!showUmsatzInMillionenDescription">
-            <button mat-icon-button (click)="[showUmsatzInMillionenDescription=!showUmsatzInMillionenDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+          <!-- <span class="mat-small input-desc-text-icon" *ngIf="!showUmsatzInMillionenDescription">
+            <button mat-icon-button (click)="[showUmsatzInMillionenDescription=!showUmsatzInMillionenDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <span class="mat-small input-desc-text-icon" *ngIf="!showUmsatzInMillionenDescription">
+            <button mat-icon-button (click)="[showUmsatzInMillionenDescription=!showUmsatzInMillionenDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -199,15 +235,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showUmsatzInMillionenDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showUmsatzInMillionenDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.umsatzInMillionenDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showUmsatzInMillionenDescription=!showUmsatzInMillionenDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showUmsatzInMillionenDescription=!showUmsatzInMillionenDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -216,8 +252,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">EBIT</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showEbitDescription">
+            <button mat-icon-button (click)="[showEbitDescription=!showEbitDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <span class="mat-small input-desc-text" *ngIf="!showEbitDescription">
-            <button mat-icon-button (click)="[showEbitDescription=!showEbitDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showEbitDescription=!showEbitDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -232,15 +274,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showEbitDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showEbitDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.ebitDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showEbitDescription=!showEbitDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showEbitDescription=!showEbitDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -249,8 +291,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">EAT</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showEatDescription">
+            <button mat-icon-button (click)="[showEatDescription=!showEatDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <span class="mat-small input-desc-text" *ngIf="!showEatDescription">
-            <button mat-icon-button (click)="[showEatDescription=!showEatDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showEatDescription=!showEatDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -265,16 +313,16 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showEatDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showEatDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.eatDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showEatDescription=!showEatDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showEatDescription=!showEatDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -282,12 +330,17 @@
         <!-- !!!Neue Kennzahl!!! -->
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <span class="mat-small">Marktkapitalisierung</span>
-          <span class="mat-small input-desc-text" *ngIf="!showMarktKapitalisierungDescription">
-            <button mat-icon-button (click)="[showMarktKapitalisierungDescription=!showMarktKapitalisierungDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
-          </span>
+          <span class="mat-small">Market cap</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showMarktKapitalisierungDescription">
+            <button mat-icon-button (click)="[showMarktKapitalisierungDescription=!showMarktKapitalisierungDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
         </mat-grid-tile>
 
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <span class="mat-small input-desc-text" *ngIf="!showMarktKapitalisierungDescription">
+            <button mat-icon-button (click)="[showMarktKapitalisierungDescription=!showMarktKapitalisierungDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span>
+        </mat-grid-tile>
 
         <!-- Input Field -->
         <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -300,15 +353,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showMarktKapitalisierungDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showMarktKapitalisierungDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.marktKapitalisierungDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showMarktKapitalisierungDescription=!showMarktKapitalisierungDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showMarktKapitalisierungDescription=!showMarktKapitalisierungDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -317,8 +370,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Anzahl Aktien</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showAnzahlAktienDesc">
+            <button mat-icon-button (click)="[showAnzahlAktienDesc=!showAnzahlAktienDesc, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <span class="mat-small input-desc-text" *ngIf="!showAnzahlAktienDesc">
-            <button mat-icon-button (click)="[showAnzahlAktienDesc=!showAnzahlAktienDesc, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showAnzahlAktienDesc=!showAnzahlAktienDesc, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -333,15 +392,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showAnzahlAktienDesc">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showAnzahlAktienDesc">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.anzahlAktienDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showAnzahlAktienDesc=!showAnzahlAktienDesc, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showAnzahlAktienDesc=!showAnzahlAktienDesc, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -355,13 +414,19 @@
         <!-- <mat-panel-description class="panel-desc">operativer CF und Investment CF</mat-panel-description> -->
 
       </mat-expansion-panel-header>
-      <mat-grid-list cols="4" rowHeight="30px">
+      <mat-grid-list cols="5" rowHeight="30px">
         <!-- !!!Neue Kennzahl!!! -->
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <span class="mat-small">operativer Cashflow<</span>
+          <span class="mat-small">operativer CF</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showOperativerCashflowDescription">
+            <button mat-icon-button (click)="[showOperativerCashflowDescription=!showOperativerCashflowDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <span class="mat-small input-desc-text" *ngIf="!showOperativerCashflowDescription">
-            <button mat-icon-button (click)="[showOperativerCashflowDescription=!showOperativerCashflowDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showOperativerCashflowDescription=!showOperativerCashflowDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -376,15 +441,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showOperativerCashflowDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showOperativerCashflowDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.operativerCashflowDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showOperativerCashflowDescription=!showOperativerCashflowDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showOperativerCashflowDescription=!showOperativerCashflowDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -393,8 +458,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">operativer CF (DS 3 Jahre)</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showOperativerCashflowThreeYearAverageDescription">
+            <button mat-icon-button (click)="[showOperativerCashflowThreeYearAverageDescription=!showOperativerCashflowThreeYearAverageDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <span class="mat-small input-desc-text" *ngIf="!showOperativerCashflowThreeYearAverageDescription">
-            <button mat-icon-button (click)="[showOperativerCashflowThreeYearAverageDescription=!showOperativerCashflowThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showOperativerCashflowThreeYearAverageDescription=!showOperativerCashflowThreeYearAverageDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -409,16 +480,16 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showOperativerCashflowThreeYearAverageDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showOperativerCashflowThreeYearAverageDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.operativerCashflowThreeYearAverageDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showOperativerCashflowThreeYearAverageDescription=!showOperativerCashflowThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showOperativerCashflowThreeYearAverageDescription=!showOperativerCashflowThreeYearAverageDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -427,8 +498,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">investment CF</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showInvestmentCashflowDescription">
+            <button mat-icon-button (click)="[showInvestmentCashflowDescription=!showInvestmentCashflowDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <span class="mat-small input-desc-text" *ngIf="!showInvestmentCashflowDescription">
-            <button mat-icon-button (click)="[showInvestmentCashflowDescription=!showInvestmentCashflowDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showInvestmentCashflowDescription=!showInvestmentCashflowDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -443,15 +520,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showInvestmentCashflowDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showInvestmentCashflowDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.investmentCashflowDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showInvestmentCashflowDescription=!showInvestmentCashflowDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showInvestmentCashflowDescription=!showInvestmentCashflowDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -460,8 +537,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">investment CF (DS 3 Jahre)</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showInvestmentCashflowThreeYearAverageDescription">
+            <button mat-icon-button (click)="[showInvestmentCashflowThreeYearAverageDescription=!showInvestmentCashflowThreeYearAverageDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <span class="mat-small input-desc-text" *ngIf="!showInvestmentCashflowThreeYearAverageDescription">
-            <button mat-icon-button (click)="[showInvestmentCashflowThreeYearAverageDescription=!showInvestmentCashflowThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showInvestmentCashflowThreeYearAverageDescription=!showInvestmentCashflowThreeYearAverageDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -476,15 +559,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showInvestmentCashflowThreeYearAverageDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showInvestmentCashflowThreeYearAverageDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.investmentCashflowThreeYearAverageDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showInvestmentCashflowThreeYearAverageDescription=!showInvestmentCashflowThreeYearAverageDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showInvestmentCashflowThreeYearAverageDescription=!showInvestmentCashflowThreeYearAverageDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
       </mat-grid-list>
@@ -496,10 +579,10 @@
         <!-- <mat-panel-description class="panel-desc">Umsatzwachstum der letzten Jahre, erwartetes Wachstum der Zukunft</mat-panel-description> -->
 
       </mat-expansion-panel-header>
-      <mat-grid-list cols="4" rowHeight="30px">
+      <mat-grid-list cols="5" rowHeight="30px">
         <!-- !!!Neues Umsatzwachstum!!! -->
         <!-- Beschriftung -->
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
           <span class="mat-small">Umsatzwachstum {{numberOfLastYear}}</span>
         </mat-grid-tile>
 
@@ -515,7 +598,7 @@
 
         <!-- !!!Neues Umsatzwachstum!!! -->
         <!-- Beschriftung -->
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
           <span class="mat-small">Umsatzwachstum {{numberOfLastYear-1}}</span>
         </mat-grid-tile>
 
@@ -531,7 +614,7 @@
 
         <!-- !!!Neues Umsatzwachstum!!! -->
         <!-- Beschriftung -->
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
           <span class="mat-small">Umsatzwachstum {{numberOfLastYear-2}}</span>
         </mat-grid-tile>
 
@@ -547,7 +630,7 @@
 
         <!-- !!!Neues Umsatzwachstum!!! -->
         <!-- Beschriftung -->
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
           <span class="mat-small">Umsatzwachstum {{numberOfLastYear-3}}</span>
         </mat-grid-tile>
 
@@ -563,7 +646,7 @@
 
         <!-- !!!Neues Umsatzwachstum!!! -->
         <!-- Beschriftung -->
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
           <span class="mat-small">Umsatzwachstum {{numberOfLastYear-4}}</span>
         </mat-grid-tile>
 
@@ -580,7 +663,7 @@
 
         <!-- !!!Neues Umsatzwachstum!!! -->
         <!-- Beschriftung -->
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
           <span class="mat-small">Umsatzwachstum {{numberOfLastYear-5}}</span>
         </mat-grid-tile>
 
@@ -597,7 +680,7 @@
 
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc">
+        <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc">
           <span class="mat-small input-desc-text">
             {{stockInWork.inputData.umsatzChangeDescription}}
             <br>
@@ -610,8 +693,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="3">
           <span class="mat-small">Festgelegtes Wachstum</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfGrothPercentDescription">
+            <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="3">
           <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfGrothPercentDescription">
-            <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -626,20 +715,20 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="7" class="input-desc" *ngIf="showExpectedRateOfGrothPercentDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="7" class="input-desc" *ngIf="showExpectedRateOfGrothPercentDescription">
           <span class="mat-small input-desc-text">
-            Mit den obigen Wachstumsraten wird ein Durchschnittswert über 6 Jahre errechnet. Alternativ dazu, kann hier ein selbst gewähltes
-            Wachstum eingetragen werden (Beispiel 5 Prozent). Dieses gilt konstant für die Berechnung auf 10 Jahre und
-            erhält dann Vorang, über den errechneten DS. In diesem Fall, können die jährlichen Wachstumsraten beliebig festgelegt werden.
+            Mit den obigen Wachstumsraten wird ein DS über 6 Jahre errechnet. Alternativ dazu, kann hier ein selbst gewähltes
+            Wachstum eingetragen werden (Beispiel 5 Prozent). Dieses gilt konstant für 10 Jahre und
+            erhält Vorang, über den errechneten DS. In diesem Fall, können die jährlichen Wachstumsraten beliebig festgelegt werden.
           </span>
-          <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+          <span class="close-icon-small-space">
+            <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -648,8 +737,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Erwartete Rendite</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfReturnDescription">
+            <button mat-icon-button (click)="[showExpectedRateOfReturnDescription=!showExpectedRateOfReturnDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfReturnDescription">
-            <button mat-icon-button (click)="[showExpectedRateOfReturnDescription=!showExpectedRateOfReturnDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showExpectedRateOfReturnDescription=!showExpectedRateOfReturnDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -664,15 +759,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showExpectedRateOfReturnDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showExpectedRateOfReturnDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.expectedRateOfReturnDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showExpectedRateOfReturnDescription=!showExpectedRateOfReturnDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showExpectedRateOfReturnDescription=!showExpectedRateOfReturnDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -681,8 +776,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Erwartetes Lanzeitwachstum</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showExpectedLongGrowRateDescription">
+            <button mat-icon-button (click)="[showExpectedLongGrowRateDescription=!showExpectedLongGrowRateDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <span class="mat-small input-desc-text" *ngIf="!showExpectedLongGrowRateDescription">
-            <button mat-icon-button (click)="[showExpectedLongGrowRateDescription=!showExpectedLongGrowRateDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showExpectedLongGrowRateDescription=!showExpectedLongGrowRateDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -697,15 +798,15 @@
         </mat-grid-tile>
 
         <!-- Erklärung -->
-        <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showExpectedLongGrowRateDescription">
+        <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showExpectedLongGrowRateDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.expectedLongGrowRateDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showExpectedLongGrowRateDescription=!showExpectedLongGrowRateDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showExpectedLongGrowRateDescription=!showExpectedLongGrowRateDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -714,8 +815,14 @@
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <span class="mat-small">Security Margin</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showSecurityMarginDescription">
+            <button mat-icon-button (click)="[showSecurityMarginDescription=!showSecurityMarginDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <span class="mat-small input-desc-text" *ngIf="!showSecurityMarginDescription">
-            <button mat-icon-button (click)="[showSecurityMarginDescription=!showSecurityMarginDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+            <button mat-icon-button (click)="[showSecurityMarginDescription=!showSecurityMarginDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -733,12 +840,12 @@
         <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showSecurityMarginDescription">
           <span class="mat-small input-desc-text">{{stockInWork.inputData.securityMarginDescription}}</span>
           <span class="mat-small input-desc-text">
-            <button mat-icon-button (click)="[showSecurityMarginDescription=!showSecurityMarginDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+            <button mat-icon-button (click)="[showSecurityMarginDescription=!showSecurityMarginDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
         <!-- Divider -->
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <mat-divider></mat-divider>
         </mat-grid-tile>
 
@@ -761,17 +868,25 @@
   <br>
   <br>
 
-  <mat-grid-list cols="4" rowHeight="30px" *ngIf="measuresHaveBeenCalculated">
+  <mat-grid-list cols="5" rowHeight="30px" *ngIf="measuresHaveBeenCalculated">
 
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
-      <h2 class="mat-title">Ergebnisse</h2>
-    </mat-grid-tile>
+    <!-- <mat-grid-tile [colspan]="5" [rowspan]="2">
+      <div class="stock-results-container">
+        <h2 class="mat-title">Ergebnisse</h2>
+      </div>
+    </mat-grid-tile> -->
 
     <!-- Beschriftung -->
     <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">Eigenkapitalquote</span>
+      <span class="mat-small input-desc-title">Eigenkapitalquote</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showeigenkapitalquoteDescription">
+        <button mat-icon-button (click)="[showeigenkapitalquoteDescription=!showeigenkapitalquoteDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
       <span class="mat-small input-desc-text" *ngIf="!showeigenkapitalquoteDescription">
-        <button mat-icon-button (click)="[showeigenkapitalquoteDescription=!showeigenkapitalquoteDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showeigenkapitalquoteDescription=!showeigenkapitalquoteDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
@@ -786,24 +901,30 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showeigenkapitalquoteDescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showeigenkapitalquoteDescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.eigenkapitalquoteDescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showeigenkapitalquoteDescription=!showeigenkapitalquoteDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showeigenkapitalquoteDescription=!showeigenkapitalquoteDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
 
     <!-- Beschriftung -->
     <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">Gearing</span>
+      <span class="mat-small input-desc-title">Gearing</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showgearingdescription">
+        <button mat-icon-button (click)="[showgearingdescription=!showgearingdescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
       <span class="mat-small input-desc-text" *ngIf="!showgearingdescription">
-        <button mat-icon-button (click)="[showgearingdescription=!showgearingdescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showgearingdescription=!showgearingdescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
@@ -818,56 +939,68 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showgearingdescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showgearingdescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.gearingdescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showgearingdescription=!showgearingdescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showgearingdescription=!showgearingdescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
 
     <!-- Beschriftung -->
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">Dynamischer Verschuldungsgrad</span>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <span class="mat-small input-desc-title">Dynamischer Verschuldungsgrad</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showdynamischerVerschuldungsgradDescription">
+        <button mat-icon-button (click)="[showdynamischerVerschuldungsgradDescription=!showdynamischerVerschuldungsgradDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
       <span class="mat-small input-desc-text" *ngIf="!showdynamischerVerschuldungsgradDescription">
-        <button mat-icon-button (click)="[showdynamischerVerschuldungsgradDescription=!showdynamischerVerschuldungsgradDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showdynamischerVerschuldungsgradDescription=!showdynamischerVerschuldungsgradDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Value Field -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
       <span class="mat-small">{{stockInWork.resultData.dynamischerVerschuldungsgrad}}</span>
     </mat-grid-tile>
 
     <!-- Einheit -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
       <span class="mat-small">Prozent</span>
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showdynamischerVerschuldungsgradDescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showdynamischerVerschuldungsgradDescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.dynamischerVerschuldungsgradDescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showdynamischerVerschuldungsgradDescription=!showdynamischerVerschuldungsgradDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showdynamischerVerschuldungsgradDescription=!showdynamischerVerschuldungsgradDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
 
     <!-- Beschriftung -->
     <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">Sachinvestitionsquote</span>
+      <span class="mat-small input-desc-title">Sachinvestitionsquote</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showsachinvestitionsQuoteDescription">
+        <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
       <span class="mat-small input-desc-text" *ngIf="!showsachinvestitionsQuoteDescription">
-        <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
@@ -882,56 +1015,68 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showsachinvestitionsQuoteDescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showsachinvestitionsQuoteDescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.sachinvestitionsQuoteDescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
 
     <!-- Beschriftung -->
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">Eigenkapitalrendite (DS 3 Jahre)</span>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <span class="mat-small input-desc-title">Eigenkapitalrendite (DS 3 Jahre)</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showeigenkapitalThreeYearAverageRenditeDescription">
+        <button mat-icon-button (click)="[showeigenkapitalThreeYearAverageRenditeDescription=!showeigenkapitalThreeYearAverageRenditeDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
       <span class="mat-small input-desc-text" *ngIf="!showeigenkapitalThreeYearAverageRenditeDescription">
-        <button mat-icon-button (click)="[showeigenkapitalThreeYearAverageRenditeDescription=!showeigenkapitalThreeYearAverageRenditeDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showeigenkapitalThreeYearAverageRenditeDescription=!showeigenkapitalThreeYearAverageRenditeDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Value Field -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
       <span class="mat-small">{{stockInWork.resultData.eigenkapitalThreeYearAverageRendite}}</span>
     </mat-grid-tile>
 
     <!-- Einheit -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
       <span class="mat-small">Prozent</span>
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showeigenkapitalThreeYearAverageRenditeDescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showeigenkapitalThreeYearAverageRenditeDescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.eigenkapitalThreeYearAverageRenditeDescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showeigenkapitalThreeYearAverageRenditeDescription=!showeigenkapitalThreeYearAverageRenditeDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showeigenkapitalThreeYearAverageRenditeDescription=!showeigenkapitalThreeYearAverageRenditeDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
 
     <!-- Beschriftung -->
     <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">EBIT Marge</span>
+      <span class="mat-small input-desc-title">EBIT Marge</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showebitMargeDescription">
+        <button mat-icon-button (click)="[showebitMargeDescription=!showebitMargeDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
       <span class="mat-small input-desc-text" *ngIf="!showebitMargeDescription">
-        <button mat-icon-button (click)="[showebitMargeDescription=!showebitMargeDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showebitMargeDescription=!showebitMargeDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
@@ -946,24 +1091,30 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showebitMargeDescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showebitMargeDescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.ebitMargeDescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showebitMargeDescription=!showebitMargeDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showebitMargeDescription=!showebitMargeDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
 
     <!-- Beschriftung -->
     <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">Intrinsische Kaufdauer</span>
+      <span class="mat-small input-desc-title">Intrinsische Kaufdauer</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showintrinsischeKaufdauerDescription">
+        <button mat-icon-button (click)="[showintrinsischeKaufdauerDescription=!showintrinsischeKaufdauerDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
       <span class="mat-small input-desc-text" *ngIf="!showintrinsischeKaufdauerDescription">
-        <button mat-icon-button (click)="[showintrinsischeKaufdauerDescription=!showintrinsischeKaufdauerDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showintrinsischeKaufdauerDescription=!showintrinsischeKaufdauerDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
@@ -978,24 +1129,30 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showintrinsischeKaufdauerDescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showintrinsischeKaufdauerDescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.intrinsischeKaufdauerDescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showintrinsischeKaufdauerDescription=!showintrinsischeKaufdauerDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showintrinsischeKaufdauerDescription=!showintrinsischeKaufdauerDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
 
     <!-- Beschriftung -->
     <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">KGV zum Stichtag</span>
+      <span class="mat-small input-desc-title">KGV zum Stichtag</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showkursGewinnVerhaeltnisZumStichtagDescription">
+        <button mat-icon-button (click)="[showkursGewinnVerhaeltnisZumStichtagDescription=!showkursGewinnVerhaeltnisZumStichtagDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
       <span class="mat-small input-desc-text" *ngIf="!showkursGewinnVerhaeltnisZumStichtagDescription">
-        <button mat-icon-button (click)="[showkursGewinnVerhaeltnisZumStichtagDescription=!showkursGewinnVerhaeltnisZumStichtagDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showkursGewinnVerhaeltnisZumStichtagDescription=!showkursGewinnVerhaeltnisZumStichtagDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
@@ -1010,56 +1167,68 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showkursGewinnVerhaeltnisZumStichtagDescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showkursGewinnVerhaeltnisZumStichtagDescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.kursGewinnVerhaeltnisZumStichtagDescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showkursGewinnVerhaeltnisZumStichtagDescription=!showkursGewinnVerhaeltnisZumStichtagDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showkursGewinnVerhaeltnisZumStichtagDescription=!showkursGewinnVerhaeltnisZumStichtagDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
 
     <!-- Beschriftung -->
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">Einstandsrendite zum Stichtag</span>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <span class="mat-small input-desc-title">Einstandsrendite zum Stichtag</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showeinstandsrenditeZumStichtagDescription">
+        <button mat-icon-button (click)="[showeinstandsrenditeZumStichtagDescription=!showeinstandsrenditeZumStichtagDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
       <span class="mat-small input-desc-text" *ngIf="!showeinstandsrenditeZumStichtagDescription">
-        <button mat-icon-button (click)="[showeinstandsrenditeZumStichtagDescription=!showeinstandsrenditeZumStichtagDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showeinstandsrenditeZumStichtagDescription=!showeinstandsrenditeZumStichtagDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Value Field -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
       <span class="mat-small">{{stockInWork.resultData.einstandsrenditeZumStichtag}}</span>
     </mat-grid-tile>
 
     <!-- Einheit -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
       <span class="mat-small">Prozent</span>
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showeinstandsrenditeZumStichtagDescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showeinstandsrenditeZumStichtagDescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.einstandsrenditeZumStichtagDescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showeinstandsrenditeZumStichtagDescription=!showeinstandsrenditeZumStichtagDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showeinstandsrenditeZumStichtagDescription=!showeinstandsrenditeZumStichtagDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
 
     <!-- Beschriftung -->
     <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">EKBV zum Stichtag</span>
+      <span class="mat-small input-desc-title">EKBV zum Stichtag</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showkursBuchwertVerhaeltnisZumStichtagDescription">
+        <button mat-icon-button (click)="[showkursBuchwertVerhaeltnisZumStichtagDescription=!showkursBuchwertVerhaeltnisZumStichtagDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
       <span class="mat-small input-desc-text" *ngIf="!showkursBuchwertVerhaeltnisZumStichtagDescription">
-        <button mat-icon-button (click)="[showkursBuchwertVerhaeltnisZumStichtagDescription=!showkursBuchwertVerhaeltnisZumStichtagDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showkursBuchwertVerhaeltnisZumStichtagDescription=!showkursBuchwertVerhaeltnisZumStichtagDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
@@ -1074,15 +1243,15 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showkursBuchwertVerhaeltnisZumStichtagDescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showkursBuchwertVerhaeltnisZumStichtagDescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.kursBuchwertVerhaeltnisZumStichtagDescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showkursBuchwertVerhaeltnisZumStichtagDescription=!showkursBuchwertVerhaeltnisZumStichtagDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showkursBuchwertVerhaeltnisZumStichtagDescription=!showkursBuchwertVerhaeltnisZumStichtagDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
@@ -1114,45 +1283,50 @@
 
 
     <!-- Beschriftung -->
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small">Erechnete Wachstumsrate</span>
+    <mat-grid-tile [colspan]="2" [rowspan]="3">
+      <span class="mat-small input-desc-title">zur Berechnung genutzte Wachstumsrate</span>
+      <!-- <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfGrothPercentDescription">
+        <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+      </span> -->
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="3">
       <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfGrothPercentDescription">
-        <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagination()]"><mat-icon>info</mat-icon></button>
+        <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
       </span>
     </mat-grid-tile>
 
-
     <!-- Value Field -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="3">
       <span class="mat-small">{{stockInWork.resultData.expectedRateOfGrothPercent}}</span>
     </mat-grid-tile>
 
     <!-- Einheit -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="3">
       <span class="mat-small">Prozent</span>
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="6" class="input-desc" *ngIf="showExpectedRateOfGrothPercentDescription">
+    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showExpectedRateOfGrothPercentDescription">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.expectedRateOfGrothPercentDescription}}</span>
       <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagination()]"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
       </span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-topper">
+    <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-topper">
     </mat-grid-tile>
 
 
     <!-- Beschriftung -->
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
       <span class="mat-small end-val">Fairer Wert je Aktie</span>
     </mat-grid-tile>
     <!-- Value Field -->
@@ -1165,7 +1339,7 @@
     </mat-grid-tile>
 
     <!-- Beschriftung -->
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
       <span class="mat-small">Fairer Wert je Aktie (Security Margin)</span>
     </mat-grid-tile>
     <!-- Value Field -->
@@ -1178,12 +1352,12 @@
     </mat-grid-tile>
 
     <!-- Erklärung -->
-    <mat-grid-tile [colspan]="4" [rowspan]="2" class="result-divider">
-      <span class="mat-small fair-desc">{{stockInWork.resultData.fairValueDescription}}</span>
+    <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
+      <span class="mat-small input-desc-text">{{stockInWork.resultData.fairValueDescription}}</span>
     </mat-grid-tile>
 
     <!-- Divider -->
-    <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
 

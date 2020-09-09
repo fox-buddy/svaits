@@ -17,6 +17,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: #FFBA00 !important;
 }
 
+.text-second-color {
+  color: #FFBA00 !important;
+}
+
+.important-text {
+  font-weight: bold;
+}
+
 .button-second {
   background-color: #B46617 !important;
 }

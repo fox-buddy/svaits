@@ -94,7 +94,7 @@ export class StockService {
 
       dynamischerVerschuldungsgrad: 0,
       dynamischerVerschuldungsgradDescription: `Theoretische Tilgungsdauer der Schulden aus dem Free Cash-Flow in Jahren.
-      Ab 5 als kritisch zu betrachten. Zahlungsfluss genauer unter die Lupe nehmen. Infineo Beispiel Übernahmen Konkurrent.`,
+      Ab 5 als kritisch zu betrachten. Zahlungsfluss genauer unter die Lupe nehmen (möglicher Übernahmekandidat).`,
 
       sachinvestitionsQuote: 0,
       sachinvestitionsQuoteDescription: `Gibt an welcher Anteil des operativen Cash Flows für Sachinvestitionen ausgegeben werden muss um im Geschäft zu bleiben.
@@ -132,7 +132,7 @@ export class StockService {
 
       fairValue: 0,
       fairValueWithSecurityMargin: 0,
-      fairValueDescription: 'Fairer (innerer) Wert je Aktie nach der einfachsten Discounted Cashflow Analyse',
+      fairValueDescription: 'Fairer (innerer) Wert je Aktie nach der einfachsten Discounted Cashflow Analyse (kontinuierliches Wachstum über 10 Jahre).',
     };
   }
 }
