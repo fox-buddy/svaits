@@ -16,7 +16,7 @@ export class WelcomeComponent implements OnInit {
 
   public pageHints: IPageHints[] = [
     {
-      heading: "Anzeige der finanziellen Stabilität", description: "Kennzahlen zur Wirtschaftlichkeit des Unternehmens", cols: 4, rows: 2
+      heading: "Anzeige der finanziellen Stabilität", description: "Finanzielle Lage des Unternehmens", cols: 4, rows: 2
     },
     {
       heading: "Ertrag und Rentabilität", description: "Kennzahlen zur Rentabilität wie Eigenkapitalrendite, EBIT-Marge und intrinsische Kaufdauer", cols: 4, rows: 2
