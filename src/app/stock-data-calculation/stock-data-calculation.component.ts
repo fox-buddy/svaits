@@ -68,8 +68,6 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
     this.stockName = this.route.snapshot.paramMap.get('stockname');
     this.stockIndex = Number(this.route.snapshot.paramMap.get('stockindex'));
 
-
-    debugger;
   }
 
   ngOnInit(): void {

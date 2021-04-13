@@ -15,7 +15,6 @@ export class StockDataOverviewComponent implements OnInit {
     this.stockName = this.route.snapshot.paramMap.get('stockname');
     this.stockIndex = Number(this.route.snapshot.paramMap.get('stockindex'));
 
-    debugger;
   }
 
   ngOnInit(): void {
