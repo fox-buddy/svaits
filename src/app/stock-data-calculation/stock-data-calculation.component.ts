@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StockService } from '../core/stock.service';
 import { IStock, IDCFGrothRates } from '../core/IStockData';
@@ -12,10 +12,12 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   templateUrl: './stock-data-calculation.component.html',
   styleUrls: ['./stock-data-calculation.component.css']
 })
-export class StockDataCalculationComponent implements OnInit {
+export class StockDataCalculationComponent implements OnInit, OnDestroy {
 
   public stockForm: FormGroup;
   public measuresHaveBeenCalculated: boolean = false;
+
+  public manualGrowthInput: boolean = false;
 
   private stockName: string;
   private stockIndex: number;
@@ -26,6 +28,8 @@ export class StockDataCalculationComponent implements OnInit {
   public cashFlowRechnungOpened: boolean = true;
   public umsatzWachstumOpened: boolean = true;
 
+  public showCurrencyDesc: boolean = false;
+  public showTypeOfStockDesc: boolean = false;
   public showAnzahlAktienDesc: boolean = false;
   public showBilanzSummeDesc: boolean = false;
   public showEigenkapitalInMillionenDesc: boolean = false;
@@ -34,6 +38,7 @@ export class StockDataCalculationComponent implements OnInit {
   public showZahlungsMittelDescription:boolean = false;
   public showOperativerCashflowDescription:boolean = false;
   public showOperativerCashflowThreeYearAverageDescription:boolean = false;
+  public showFundsFromOperationsDescription: boolean = false;
   public showInvestmentCashflowDescription:boolean = false;
   public showInvestmentCashflowThreeYearAverageDescription:boolean = false;
   public showUmsatzInMillionenDescription:boolean = false;
@@ -61,7 +66,7 @@ export class StockDataCalculationComponent implements OnInit {
 
 
 
-  constructor(private route: ActivatedRoute, private stockSrv: StockService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, public stockSrv: StockService, private fb: FormBuilder) {
 
     this.stockName = this.route.snapshot.paramMap.get('stockname');
     this.stockIndex = Number(this.route.snapshot.paramMap.get('stockindex'));
@@ -84,8 +89,16 @@ export class StockDataCalculationComponent implements OnInit {
 
   }
 
-  public openDetailview() {
+  ngOnDestroy() {
+    this.formValuesToLocalObject();
+  }
 
+  public refreshCurrency(newVal) {
+    this.stockInWork.inputData.currencyCode = newVal;
+  }
+
+  public refreshTypeOfGrowthCalculation(manual: boolean) {
+    this.manualGrowthInput = manual;
   }
 
   public calculateExpectedRatesOfGrothToShowValue() {
@@ -121,15 +134,17 @@ export class StockDataCalculationComponent implements OnInit {
   private formValuesToLocalObject() {
 
     this.stockInWork.inputData.anzahlAktien = this.stockForm.get('anzahlAktien').value;
+    this.stockInWork.inputData.currencyCode = this.stockForm.get('currencyCode').value;
+    this.stockInWork.inputData.typeOfStock = this.stockForm.get('typeOfStock').value;
     this.stockInWork.inputData.bilanzSummeInMillionenZumStichtag = this.stockForm.get('bilanzSummeInMillionenZumStichtag').value;
     this.stockInWork.inputData.eigenKapitalInMillionenZumStichtag = this.stockForm.get('eigenKapitalInMillionenZumStichtag').value;
     this.stockInWork.inputData.eigenKapitalThreeYearAverageInMillionen = this.stockForm.get('eigenKapitalThreeYearAverageInMillionen').value;
     this.stockInWork.inputData.gesamtVerbindlichKeitenInMillionenZumStichtag = this.stockForm.get('gesamtVerbindlichKeitenInMillionenZumStichtag').value;
     this.stockInWork.inputData.zahlungsMittelInMillionenZumStichtag = this.stockForm.get('zahlungsMittelInMillionenZumStichtag').value;
     this.stockInWork.inputData.operativerCashflowInMillionenZumStichtag = this.stockForm.get('operativerCashflowInMillionenZumStichtag').value;
-    this.stockInWork.inputData.operativerCashflowThreeYearAverageInMillionen = this.stockForm.get('operativerCashflowThreeYearAverageInMillionen').value;
+    this.stockInWork.inputData.operativerCashflowForDcf = this.stockForm.get('operativerCashflowInMillionenZumStichtag').value;
     this.stockInWork.inputData.investmentCashflowInMillionenZumStichtag = this.stockForm.get('investmentCashflowInMillionenZumStichtag').value;
-    this.stockInWork.inputData.investmentCashflowThreeYearAverageInMillionen = this.stockForm.get('investmentCashflowThreeYearAverageInMillionen').value;
+    this.stockInWork.inputData.investmentCashflowForDcf = this.stockForm.get('investmentCashflowInMillionenZumStichtag').value;
     this.stockInWork.inputData.umsatzInMillionenZumStichtag = this.stockForm.get('umsatzInMillionenZumStichtag').value;
     this.stockInWork.inputData.ebitInMillionenZumStichtag = this.stockForm.get('ebitInMillionenZumStichtag').value;
     this.stockInWork.inputData.eatInMillionenZumStichtag = this.stockForm.get('eatInMillionenZumStichtag').value;
@@ -178,7 +193,7 @@ export class StockDataCalculationComponent implements OnInit {
     );
     this.stockInWork.resultData.intrinsischeKaufdauer = StockCalculator.calculateIntrinsischeKaufdauerWith(
       inputData.marktKapitalisierungInMillionenZumStichtag
-      , (inputData.operativerCashflowThreeYearAverageInMillionen - inputData.investmentCashflowThreeYearAverageInMillionen)
+      , (inputData.operativerCashflowInMillionenZumStichtag - inputData.investmentCashflowInMillionenZumStichtag)
     );
 
     this.stockInWork.resultData.kursGewinnVerhaeltnisZumStichtag = StockCalculator.calculateKursGewinnVerhaeltnisWith(
@@ -220,7 +235,7 @@ export class StockDataCalculationComponent implements OnInit {
 
     const futureCompanyValue = StockCalculator.calculateFutureCompanyValueWithFutureCashFlow
       (
-        inputData.operativerCashflowThreeYearAverageInMillionen - inputData.investmentCashflowThreeYearAverageInMillionen
+        inputData.operativerCashflowForDcf - inputData.investmentCashflowForDcf
         , {
           longGrothPercent: inputData.expectedLongGrowRatePercent
           , expectedRateOfGrowthPercent: this.stockInWork.resultData.expectedRateOfGrothPercent
@@ -252,6 +267,8 @@ export class StockDataCalculationComponent implements OnInit {
   public clearStockForm() {
     this.stockForm.patchValue({
       anzahlAktien: 0
+      , currencyCode: '€'
+      , typeOfStock: 1
       , bilanzSummeInMillionenZumStichtag: 0
       , eigenKapitalInMillionenZumStichtag: 0
       , eigenKapitalThreeYearAverageInMillionen: 0
@@ -284,15 +301,15 @@ export class StockDataCalculationComponent implements OnInit {
   private assignStockValueToForm() {
     this.stockForm.patchValue({
       anzahlAktien: this.stockInWork.inputData.anzahlAktien
+      , currencyCode: this.stockInWork.inputData.currencyCode
+      , typeOfStock: this.stockInWork.inputData.typeOfStock
       , bilanzSummeInMillionenZumStichtag: this.stockInWork.inputData.bilanzSummeInMillionenZumStichtag
       , eigenKapitalInMillionenZumStichtag: this.stockInWork.inputData.eigenKapitalInMillionenZumStichtag
       , eigenKapitalThreeYearAverageInMillionen: this.stockInWork.inputData.eigenKapitalThreeYearAverageInMillionen
       , gesamtVerbindlichKeitenInMillionenZumStichtag: this.stockInWork.inputData.gesamtVerbindlichKeitenInMillionenZumStichtag
       , zahlungsMittelInMillionenZumStichtag: this.stockInWork.inputData.zahlungsMittelInMillionenZumStichtag
       , operativerCashflowInMillionenZumStichtag: this.stockInWork.inputData.operativerCashflowInMillionenZumStichtag
-      , operativerCashflowThreeYearAverageInMillionen: this.stockInWork.inputData.operativerCashflowThreeYearAverageInMillionen
       , investmentCashflowInMillionenZumStichtag: this.stockInWork.inputData.investmentCashflowInMillionenZumStichtag
-      , investmentCashflowThreeYearAverageInMillionen: this.stockInWork.inputData.investmentCashflowThreeYearAverageInMillionen
       , umsatzInMillionenZumStichtag: this.stockInWork.inputData.umsatzInMillionenZumStichtag
       , ebitInMillionenZumStichtag: this.stockInWork.inputData.ebitInMillionenZumStichtag
       , eatInMillionenZumStichtag: this.stockInWork.inputData.eatInMillionenZumStichtag
@@ -320,15 +337,15 @@ export class StockDataCalculationComponent implements OnInit {
 
     this.stockForm = this.fb.group({
       anzahlAktien: [0, Validators.required]
+      , currencyCode: ['', Validators.required]
+      , typeOfStock: [1, Validators.required]
       , bilanzSummeInMillionenZumStichtag: [0, Validators.required]
       , eigenKapitalInMillionenZumStichtag: [0, Validators.required]
       , eigenKapitalThreeYearAverageInMillionen: [0, Validators.required]
       , gesamtVerbindlichKeitenInMillionenZumStichtag: [0, Validators.required]
       , zahlungsMittelInMillionenZumStichtag: [0, Validators.required]
       , operativerCashflowInMillionenZumStichtag: [0, Validators.required]
-      , operativerCashflowThreeYearAverageInMillionen: [0, Validators.required]
       , investmentCashflowInMillionenZumStichtag: [0, Validators.required]
-      , investmentCashflowThreeYearAverageInMillionen: [0, Validators.required]
       , umsatzInMillionenZumStichtag: [0, Validators.required]
       , ebitInMillionenZumStichtag: [0, Validators.required]
       , eatInMillionenZumStichtag: [0, Validators.required]
@@ -350,8 +367,7 @@ export class StockDataCalculationComponent implements OnInit {
   }
 
   private getStockDataFromService(stockIndex: number) {
-    this.stockInWork = {
-      ...this.stockSrv.stockCollection[stockIndex]
-    }
+    this.stockInWork = this.stockSrv.stockCollection[stockIndex]
+
   }
 }

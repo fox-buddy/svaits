@@ -10,6 +10,11 @@ export class StockService {
   private stockToCalculate: string;
   public stockToViewDetailled: number;
 
+  public typesOfStock = [
+    {id: 1, typeName: 'Aktie'}
+    , {id: 2, typeName: 'REIT'}
+  ]
+
   constructor() { }
 
   public addNewStockEntry(keyName: string) {
@@ -30,6 +35,13 @@ export class StockService {
 
   private inputDataEmpty(): IStockInputs {
     return {
+
+      typeOfStock: 1,
+      typeOfStockDescription: 'Die Art der Aktie. Die Kennzahlen zur Berechnung des fairen Wertes weichen voneinander ab',
+
+      currencyCode: '€',
+      currencyCodeDescription: 'Die für die Berechnung verwendete Währungseinheit. Beispiel EUR oder USD',
+
       anzahlAktien: 0,
       anzahlAktienDescription: 'Die gesamte Anzahl der gehandelten Aktien',
 
@@ -44,13 +56,14 @@ export class StockService {
       zahlungsMittelInMillionenZumStichtag: 0,
       zahlungsMittelDescription: 'Summe der Zahlungsmittel zum letzten Bilanzstichtag',
       operativerCashflowInMillionenZumStichtag: 0,
-      operativerCashflowDescription: 'operativer Cashflow zum letzten Bilanzstichtag',
-      operativerCashflowThreeYearAverageInMillionen: 0,
-      operativerCashflowThreeYearAverageDescription: 'gemittelter operativer Cashflow der letzten 3 Bilanzstichtage',
+      operativerCashflowDescription: 'operativer Cashflow zum letzten Bilanzstichtag, oder theoretischer aus einer Schätzung in der Zukunft',
+      operativerCashflowForDcf: 0,
+      operativerCashflowForDcfDescription: 'der zur Berechnung des fairen Wertes verwendete operative Cashflow',
       investmentCashflowInMillionenZumStichtag: 0,
-      investmentCashflowDescription: 'cashflow aus Investitionstätigkeit zum letzten Bilanzstichtag',
-      investmentCashflowThreeYearAverageInMillionen: 0,
-      investmentCashflowThreeYearAverageDescription: 'gemittelter cashflow aus Investitionstätigkeit der letzten 3 Bilanzstichtage',
+      investmentCashflowDescription: 'cashflow aus Investitionstätigkeit zum letzten Bilanzstichtag, oder theoretischer aus einer Schätzung in der Zukunft',
+      investmentCashflowForDcf: 0,
+      investmentCashflowForDcfDescription: 'der zur Berechnung des fairen Wertes verwendete investment Cashflow',
+      fundsFromOperationsDescription: 'Cashflow aus der operativen Tätigkeit eines Immobilienunternehmens (Nettogewinn + Abschreibungen + Amortisation - Veräußerungen)',
       umsatzInMillionenZumStichtag: 0,
       umsatzInMillionenDescription: 'Umsatzergebnis zum letzten Bilanzstichtag',
       ebitInMillionenZumStichtag: 0,
@@ -89,7 +102,7 @@ export class StockService {
 
       gearing: 0,
       gearingdescription: `
-      Zeigt die Deckung der Verbindlichkeiten abzüglich Zahlungsmitteln durch das Eigenkapital.
+      Zeigt die welchen Anteil Schulden abzüglich liquiden Mitteln am Eigenkapital decken.
       Besorgniserregend ab 70%, da die Verbindlichkeiten einen zu hohen Teil des Eigenkapitals decken. Sehr gut bis 20 Prozent. Gut bis 50 %`,
 
       dynamischerVerschuldungsgrad: 0,

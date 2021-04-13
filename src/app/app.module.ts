@@ -21,7 +21,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatRadioModule } from '@angular/material/radio';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -70,7 +70,9 @@ import { StockDataCalcDetailComponent } from './stock-data-calc-detail/stock-dat
     MatListModule,
 
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
