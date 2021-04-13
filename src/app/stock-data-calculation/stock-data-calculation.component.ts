@@ -101,6 +101,11 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
     this.manualGrowthInput = manual;
   }
 
+  public resetInvestmentCashflowForReit() {
+    this.stockInWork.inputData.investmentCashflowInMillionenZumStichtag = 0;
+    this.stockInWork.inputData.investmentCashflowForDcf = 0;
+  }
+
   public calculateExpectedRatesOfGrothToShowValue() {
     const ratesOfGroth = [
       this.stockForm.get('umsatzChangeFirstPeriod').value,

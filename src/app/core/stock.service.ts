@@ -37,7 +37,7 @@ export class StockService {
     return {
 
       typeOfStock: 1,
-      typeOfStockDescription: 'Die Art der Aktie. Die Kennzahlen zur Berechnung des fairen Wertes weichen voneinander ab',
+      typeOfStockDescription: 'Die Art der Aktie. Die Kennzahlen zur Berechnung des fairen Wertes weichen voneinander ab. Bsp Reit: Realty Income, Bsp Aktie: Microsoft',
 
       currencyCode: '€',
       currencyCodeDescription: 'Die für die Berechnung verwendete Währungseinheit. Beispiel EUR oder USD',

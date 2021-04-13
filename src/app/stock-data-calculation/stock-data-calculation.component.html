@@ -594,7 +594,7 @@
 
           <!-- Input Field -->
           <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <input matInput class="inputField" matInput type="number" min="0" formControlName="operativerCashflowInMillionenZumStichtag">
+            <input matInput class="inputField" matInput type="number" min="0" formControlName="operativerCashflowInMillionenZumStichtag" (change)="resetInvestmentCashflowForReit()">
           </mat-grid-tile>
 
           <!-- Einheit -->
