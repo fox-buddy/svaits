@@ -1,0 +1,19 @@
+<mat-grid-list cols=4 rowHeight="50px">
+
+  <mat-grid-tile [colspan]="4">
+    <mat-card class="feature-card animate__animated animate__fadeIn animate__slow info-color" [routerLink]="['/calculation', stockName, stockIndex]">
+      <mat-card-header><mat-card-title>
+        Berechnung
+      </mat-card-title></mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="4">
+    <mat-card class="feature-card animate__animated animate__fadeIn animate__slow info-color">
+      <mat-card-header><mat-card-title>
+        Notizen
+      </mat-card-title></mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>

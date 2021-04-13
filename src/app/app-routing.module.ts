@@ -8,6 +8,7 @@ import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { InfoComponent } from './info/info.component';
 import { StockOverviewComponent } from './stock-overview/stock-overview.component';
 import { StockDataCalculationComponent } from './stock-data-calculation/stock-data-calculation.component';
+import { StockDataOverviewComponent } from './stock-data-overview/stock-data-overview.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'calculation/:stockname/:stockindex',
     component: StockDataCalculationComponent
+  },
+  {
+    path: 'stockoverview/:stockname/:stockindex',
+    component: StockDataOverviewComponent
   },
   {
     path: '**',

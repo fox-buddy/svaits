@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StockService } from '../core/stock.service';
 import { IStock, IDCFGrothRates } from '../core/IStockData';
@@ -63,15 +63,13 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
   public showenterpriseValueZumStichtagDescription:boolean = false;
 
 
-
-
-
   constructor(private route: ActivatedRoute, public stockSrv: StockService, private fb: FormBuilder) {
 
     this.stockName = this.route.snapshot.paramMap.get('stockname');
     this.stockIndex = Number(this.route.snapshot.paramMap.get('stockindex'));
-    console.log(this.stockName);
-    console.log(this.stockIndex);
+
+
+    debugger;
   }
 
   ngOnInit(): void {
