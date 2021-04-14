@@ -1,2 +1,24 @@
-<p>Name: {{stockName}}</p>
-<p>Index: {{stockIndex}}</p>
+<button mat-stroked-button (click)="navigateBack()">
+  <mat-icon>
+    navigate_before
+  </mat-icon>
+  Funktionsauswahl
+</button>
+
+
+<mat-grid-list cols="2" rowHeight="50px">
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <button mat-flat-button color="primary" (click)="saveText()">Speichern</button>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <button mat-flat-button color="secondary" (click)="pasteDefaultQuestions()">Standardfragen einfügen</button>
+  </mat-grid-tile>
+</mat-grid-list>
+<div class="NgxEditor__Wrapper">
+  <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+  <ngx-editor
+    [editor]="editor"
+    [(ngModel)]="html"
+    [placeholder]="'Hier tippen...'"
+  ></ngx-editor>
+</div>

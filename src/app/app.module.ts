@@ -38,6 +38,7 @@ import { StockDataCalcDetailComponent } from './stock-data-calc-detail/stock-dat
 import { StockDataOverviewComponent } from './stock-data-overview/stock-data-overview.component';
 import { StockCommentComponent } from './stock-comment/stock-comment.component';
 
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,6 @@ import { StockCommentComponent } from './stock-comment/stock-comment.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -73,13 +73,11 @@ import { StockCommentComponent } from './stock-comment/stock-comment.component';
     MatMenuModule,
     MatDialogModule,
     MatListModule,
-
     MatTooltipModule,
-
     ReactiveFormsModule,
     FormsModule,
-
-    MatRadioModule
+    MatRadioModule,
+    NgxEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
