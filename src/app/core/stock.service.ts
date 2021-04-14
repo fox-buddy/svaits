@@ -93,7 +93,9 @@ export class StockService {
       securityMarginDescription: 'Sicherheitsmarge zum Abwerten des errechneten Wertes. 5 bis 10 Prozent beispielsweise',
 
       expectedRateOfGrothPercent: 0,
-      expectedRateOfGrothPercentDescription: 'Erwartetes Wachstum. Kann sich am durchschnittlich errechneten Orientieren'
+      expectedRateOfGrothPercentDescription: 'Erwartetes Wachstum. Kann sich am durchschnittlich errechneten Orientieren',
+
+      stockComment: ''
     }
   }
 

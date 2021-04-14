@@ -36,6 +36,7 @@ import { StockNamingDialogComponent } from './stock-naming-dialog/stock-naming-d
 import { StockDataCalculationComponent } from './stock-data-calculation/stock-data-calculation.component';
 import { StockDataCalcDetailComponent } from './stock-data-calc-detail/stock-data-calc-detail.component';
 import { StockDataOverviewComponent } from './stock-data-overview/stock-data-overview.component';
+import { StockCommentComponent } from './stock-comment/stock-comment.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { StockDataOverviewComponent } from './stock-data-overview/stock-data-ove
     StockNamingDialogComponent,
     StockDataCalculationComponent,
     StockDataCalcDetailComponent,
-    StockDataOverviewComponent
+    StockDataOverviewComponent,
+    StockCommentComponent
   ],
   imports: [
     BrowserModule,

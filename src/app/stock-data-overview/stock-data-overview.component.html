@@ -23,7 +23,7 @@
 
   <mat-grid-tile [colspan]="4" [rowspan]="2">
     <div>
-      <mat-card class="feature-card animate__animated animate__fadeIn animate__slow info-color clickCard">
+      <mat-card class="feature-card animate__animated animate__fadeIn animate__slow info-color clickCard" [routerLink]="['/comment', stockName, stockIndex]">
         <mat-card-header>
           <mat-icon>note</mat-icon>
           <mat-card-title>Notizen</mat-card-title>
@@ -34,7 +34,7 @@
 
   </mat-grid-tile>
 
-  <mat-grid-tile [colspan]="4" [rowspan]="2">
+  <!-- <mat-grid-tile [colspan]="4" [rowspan]="2">
     <div>
       <mat-card class="feature-card animate__animated animate__fadeIn animate__slow info-color clickCard">
         <mat-card-header>
@@ -45,7 +45,7 @@
       </mat-card>
     </div>
 
-  </mat-grid-tile>
+  </mat-grid-tile> -->
 
 
 </mat-grid-list>

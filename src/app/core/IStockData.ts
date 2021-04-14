@@ -120,6 +120,8 @@ export interface IStockInputs {
 
   securityMarginRate: number;
   securityMarginDescription: string;
+
+  stockComment: string;
 }
 
 export interface IStock {
