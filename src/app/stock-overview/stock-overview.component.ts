@@ -26,4 +26,8 @@ export class StockOverviewComponent implements OnInit {
     })
   }
 
+  public deleteStock(index: number) {
+    this._stockSrv.stockCollection.splice(index, 1);
+  }
+
 }

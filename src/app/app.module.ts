@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -70,6 +71,8 @@ import { StockDataOverviewComponent } from './stock-data-overview/stock-data-ove
     MatMenuModule,
     MatDialogModule,
     MatListModule,
+
+    MatTooltipModule,
 
     ReactiveFormsModule,
     FormsModule,
