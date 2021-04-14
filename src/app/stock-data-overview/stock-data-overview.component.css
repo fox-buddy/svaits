@@ -1,0 +1,9 @@
+.feature-card {
+  background-color: #0c3b2e !important;
+  max-width: 300px;
+}
+
+.feature-desc {
+  font-style: italic;
+  font-size: smaller;
+}

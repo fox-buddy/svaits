@@ -10,7 +10,11 @@
   <mat-grid-tile [colspan]="4" [rowspan]="2">
     <div>
       <mat-card class="feature-card animate__animated animate__fadeIn animate__slow info-color clickCard" [routerLink]="['/calculation', stockName, stockIndex]">
-        <mat-card-header><mat-card-title>Berechnung</mat-card-title></mat-card-header>
+        <mat-card-header>
+          <mat-icon>calculate</mat-icon>
+          <mat-card-title>
+          Berechnung
+        </mat-card-title></mat-card-header>
         <mat-card-content><p class="feature-desc">Berechnung der fundamentalen Daten und des fairen Wertes je Aktie</p></mat-card-content>
       </mat-card>
     </div>
@@ -20,7 +24,10 @@
   <mat-grid-tile [colspan]="4" [rowspan]="2">
     <div>
       <mat-card class="feature-card animate__animated animate__fadeIn animate__slow info-color clickCard">
-        <mat-card-header><mat-card-title>Notizen</mat-card-title></mat-card-header>
+        <mat-card-header>
+          <mat-icon>note</mat-icon>
+          <mat-card-title>Notizen</mat-card-title>
+        </mat-card-header>
         <mat-card-content><p class="feature-desc">Schriftliche Überlegungen zum Investment und des Unternehmens</p></mat-card-content>
       </mat-card>
     </div>
@@ -30,7 +37,10 @@
   <mat-grid-tile [colspan]="4" [rowspan]="2">
     <div>
       <mat-card class="feature-card animate__animated animate__fadeIn animate__slow info-color clickCard">
-        <mat-card-header><mat-card-title>Zusammenfassung</mat-card-title></mat-card-header>
+        <mat-card-header>
+          <mat-icon>summarize</mat-icon>
+          <mat-card-title>Zusammenfassung</mat-card-title>
+        </mat-card-header>
         <mat-card-content><p class="feature-desc">Report zur Archivierung der eingegebenen Parameter. Dient dem Aufbau eines Investemnt Journals.</p></mat-card-content>
       </mat-card>
     </div>
