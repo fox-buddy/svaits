@@ -31,10 +31,10 @@ export class StockCommentComponent implements OnInit, OnDestroy {
   }
 
   public saveText() {
-    console.log(this.html);
+
     let htmlText = toHTML(this.html);
     this._stockSrv.stockCollection[this.stockIndex].inputData.stockComment = htmlText;
-    debugger;
+
   }
 
   public pasteDefaultQuestions() {

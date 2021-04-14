@@ -24,7 +24,6 @@ export class AppComponent {
 
   public loadData() {
     let loadedData = this._storageSrv.loadFromLocalStorage();
-    debugger;
     if(loadedData) {
       this._stockSrv.stockCollection = [...loadedData];
       this.router.navigateByUrl('/overview')
