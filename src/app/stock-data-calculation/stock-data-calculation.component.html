@@ -71,7 +71,7 @@
 
         <!-- Input Field -->
         <mat-grid-tile [colspan]="1" [rowspan]="2">
-            <mat-radio-group formControlName="typeOfStock">
+            <mat-radio-group formControlName="typeOfStock" (change)="refreshTypeOfStock($event.value)">
               <!-- <mat-radio-button [value]="1">hi</mat-radio-button>
               <mat-radio-button [value]="2">ho</mat-radio-button> -->
               <mat-radio-button class="stockPickerRadioButton" *ngFor="let stockOption of stockSrv.typesOfStock" [value]="stockOption.id">{{stockOption.typeName}}</mat-radio-button>
@@ -594,7 +594,7 @@
 
           <!-- Input Field -->
           <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <input matInput class="inputField" matInput type="number" min="0" formControlName="operativerCashflowInMillionenZumStichtag" (change)="resetInvestmentCashflowForReit()">
+            <input matInput class="inputField" matInput type="number" min="0" formControlName="operativerCashflowInMillionenZumStichtag">
           </mat-grid-tile>
 
           <!-- Einheit -->
@@ -618,7 +618,7 @@
       </ng-template>
     </mat-expansion-panel>
 
-    <mat-expansion-panel [expanded]="umsatzWachstumOpened" class="expansion-frame info-color" [hideToggle]="false">
+    <mat-expansion-panel *ngIf="stockForm.value.typeOfStock == 1; else reitGrowth" [expanded]="umsatzWachstumOpened" class="expansion-frame info-color" [hideToggle]="false">
       <mat-expansion-panel-header>
         <mat-panel-title class="input-panel-title">Wachstumsraten zur Berechnung des fairen Wertes (Lineares Wachstum über 10 Jahre)</mat-panel-title>
         <!-- <mat-panel-description class="panel-desc">Umsatzwachstum der letzten Jahre, erwartetes Wachstum der Zukunft</mat-panel-description> -->
@@ -639,9 +639,9 @@
         <!-- Input Field -->
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <!-- <mat-checkbox (change)="refreshTypeOfGrowthCalculation($event.checked)">manuell?</mat-checkbox> -->
-          <mat-radio-group (change)="refreshTypeOfGrowthCalculation($event.value)">
+          <mat-radio-group formControlName="manualGrowth">
             <mat-radio-button class="stockPickerRadioButton" [value]="true">Manuell</mat-radio-button>
-            <mat-radio-button class="stockPickerRadioButton" [value]="false" checked>Durchschnitt</mat-radio-button>
+            <mat-radio-button class="stockPickerRadioButton" [value]="false">Durchschnitt</mat-radio-button>
           </mat-radio-group>
         </mat-grid-tile>
 
@@ -656,7 +656,7 @@
         </mat-grid-tile>
 
 
-        <ng-container *ngIf="!manualGrowthInput">
+        <ng-container *ngIf="!stockForm.value.manualGrowth">
 
           <!-- !!!Neues Umsatzwachstum!!! -->
           <!-- Beschriftung -->
@@ -768,7 +768,7 @@
         </ng-container>
 
 
-        <ng-container *ngIf="manualGrowthInput">
+        <ng-container *ngIf="stockForm.value.manualGrowth">
 
           <!-- !!!Wunsch Wachstum!!! -->
           <!-- Beschriftung -->
@@ -933,6 +933,180 @@
 
       </mat-grid-list>
     </mat-expansion-panel>
+
+    <ng-template #reitGrowth>
+      <mat-expansion-panel [expanded]="umsatzWachstumOpened" class="expansion-frame info-color" [hideToggle]="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="input-panel-title">Wachstumsraten zur Berechnung des fairen Wertes (Lineares Wachstum über 10 Jahre)</mat-panel-title>
+          <!-- <mat-panel-description class="panel-desc">Umsatzwachstum der letzten Jahre, erwartetes Wachstum der Zukunft</mat-panel-description> -->
+
+        </mat-expansion-panel-header>
+        <mat-grid-list cols="5" rowHeight="30px">
+
+          <ng-container *ngIf="manualGrowthInput">
+
+            <!-- !!!Wunsch Wachstum!!! -->
+            <!-- Beschriftung -->
+            <mat-grid-tile [colspan]="2" [rowspan]="3">
+              <span class="mat-small">Jährliche Wertsteigerung der REIT Immobilien</span>
+              <!-- <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfGrothPercentDescription">
+                <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+              </span> -->
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="1" [rowspan]="3">
+              <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfGrothPercentDescription">
+                <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+              </span>
+            </mat-grid-tile>
+
+            <!-- Input Field -->
+            <mat-grid-tile [colspan]="1" [rowspan]="3">
+              <input class="inputField" matInput type="number" min="0" formControlName="expectedRateOfGrothPercent">
+            </mat-grid-tile>
+
+            <!-- Einheit -->
+            <mat-grid-tile [colspan]="1" [rowspan]="3">
+              <span class="mat-small">Prozent</span>
+            </mat-grid-tile>
+
+            <!-- Erklärung -->
+            <mat-grid-tile [colspan]="5" [rowspan]="7" class="input-desc" *ngIf="showExpectedRateOfGrothPercentDescription">
+              <span class="mat-small input-desc-text">
+                Schätzung über die jährliche Wertsteigerung der REIT Immobilien. Vorbelegung mit 1 Prozent
+              </span>
+              <span class="close-icon-small-space">
+                <button mat-icon-button (click)="[showExpectedRateOfGrothPercentDescription=!showExpectedRateOfGrothPercentDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
+              </span>
+            </mat-grid-tile>
+
+
+            <!-- Divider -->
+            <mat-grid-tile [colspan]="5" [rowspan]="1">
+              <mat-divider></mat-divider>
+            </mat-grid-tile>
+          </ng-container>
+
+          <!-- Erwartete Rendite -->
+          <!-- Beschriftung -->
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <span class="mat-small">Erwartete Rendite</span>
+            <!-- <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfReturnDescription">
+              <button mat-icon-button (click)="[showExpectedRateOfReturnDescription=!showExpectedRateOfReturnDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+            </span> -->
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <span class="mat-small input-desc-text" *ngIf="!showExpectedRateOfReturnDescription">
+              <button mat-icon-button (click)="[showExpectedRateOfReturnDescription=!showExpectedRateOfReturnDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+            </span>
+          </mat-grid-tile>
+
+          <!-- Input Field -->
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <input class="inputField" matInput type="number" min="0" formControlName="expectedRateOfReturnPercent">
+          </mat-grid-tile>
+
+          <!-- Einheit -->
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <span class="mat-small">Prozent</span>
+          </mat-grid-tile>
+
+          <!-- Erklärung -->
+          <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showExpectedRateOfReturnDescription">
+            <span class="mat-small input-desc-text">{{stockInWork.inputData.expectedRateOfReturnDescription}}</span>
+            <span class="mat-small input-desc-text">
+              <button mat-icon-button (click)="[showExpectedRateOfReturnDescription=!showExpectedRateOfReturnDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
+            </span>
+          </mat-grid-tile>
+
+          <!-- Divider -->
+          <mat-grid-tile [colspan]="5" [rowspan]="1">
+            <mat-divider></mat-divider>
+          </mat-grid-tile>
+
+
+          <!-- Erwartete LongRendite -->
+          <!-- Beschriftung -->
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <span class="mat-small">Erwartetes Lanzeitwachstum</span>
+            <!-- <span class="mat-small input-desc-text" *ngIf="!showExpectedLongGrowRateDescription">
+              <button mat-icon-button (click)="[showExpectedLongGrowRateDescription=!showExpectedLongGrowRateDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+            </span> -->
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <span class="mat-small input-desc-text" *ngIf="!showExpectedLongGrowRateDescription">
+              <button mat-icon-button (click)="[showExpectedLongGrowRateDescription=!showExpectedLongGrowRateDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+            </span>
+          </mat-grid-tile>
+
+          <!-- Input Field -->
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <input class="inputField" matInput type="number" min="0"formControlName="expectedLongGrowRatePercent">
+          </mat-grid-tile>
+
+          <!-- Einheit -->
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <span class="mat-small">Prozent</span>
+          </mat-grid-tile>
+
+          <!-- Erklärung -->
+          <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showExpectedLongGrowRateDescription">
+            <span class="mat-small input-desc-text">{{stockInWork.inputData.expectedLongGrowRateDescription}}</span>
+            <span class="mat-small input-desc-text">
+              <button mat-icon-button (click)="[showExpectedLongGrowRateDescription=!showExpectedLongGrowRateDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
+            </span>
+          </mat-grid-tile>
+
+          <!-- Divider -->
+          <mat-grid-tile [colspan]="5" [rowspan]="1">
+            <mat-divider></mat-divider>
+          </mat-grid-tile>
+
+
+          <!-- Security Margin -->
+          <!-- Beschriftung -->
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <span class="mat-small">Security Margin</span>
+            <!-- <span class="mat-small input-desc-text" *ngIf="!showSecurityMarginDescription">
+              <button mat-icon-button (click)="[showSecurityMarginDescription=!showSecurityMarginDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+            </span> -->
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <span class="mat-small input-desc-text" *ngIf="!showSecurityMarginDescription">
+              <button mat-icon-button (click)="[showSecurityMarginDescription=!showSecurityMarginDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+            </span>
+          </mat-grid-tile>
+
+          <!-- Input Field -->
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <input class="inputField" matInput type="number" min="0"formControlName="securityMarginRate">
+          </mat-grid-tile>
+
+          <!-- Einheit -->
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <span class="mat-small">Prozent</span>
+          </mat-grid-tile>
+
+          <!-- Erklärung -->
+          <mat-grid-tile [colspan]="4" [rowspan]="4" class="input-desc" *ngIf="showSecurityMarginDescription">
+            <span class="mat-small input-desc-text">{{stockInWork.inputData.securityMarginDescription}}</span>
+            <span class="mat-small input-desc-text">
+              <button mat-icon-button (click)="[showSecurityMarginDescription=!showSecurityMarginDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
+            </span>
+          </mat-grid-tile>
+
+          <!-- Divider -->
+          <mat-grid-tile [colspan]="5" [rowspan]="1">
+            <mat-divider></mat-divider>
+          </mat-grid-tile>
+
+
+        </mat-grid-list>
+      </mat-expansion-panel>
+    </ng-template>
 
   </mat-accordion>
 

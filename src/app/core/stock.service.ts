@@ -73,6 +73,8 @@ export class StockService {
       marktKapitalisierungInMillionenZumStichtag: 0,
       marktKapitalisierungDescription: 'Maktkapitalisierung. Gesamter Börsenwert',
 
+      manualGrowth: false,
+
       umsatzChangeFirstPeriod: 0,
       umsatzChangeSecondPeriod: 0,
       umsatzChangeThirdPeriod: 0,

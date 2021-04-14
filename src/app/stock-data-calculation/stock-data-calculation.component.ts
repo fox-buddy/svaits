@@ -21,6 +21,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
 
   private stockName: string;
   private stockIndex: number;
+  private manualRateOfGrowthBuffer;
   public stockInWork: IStock
   public expectedRateOfGrothToShow: number;
 
@@ -95,6 +96,41 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
 
   public refreshTypeOfGrowthCalculation(manual: boolean) {
     this.manualGrowthInput = manual;
+    this.stockForm.patchValue({manualGrowth: manual});
+    this.stockInWork.inputData.manualGrowth = manual;
+  }
+
+  public refreshTypeOfStock(typeId: number) {
+    if(typeId == 1) {
+      this.refreshTypeOfGrowthCalculation(false);
+      this.stockInWork.inputData.expectedLongGrowRatePercent = 3;
+      this.stockInWork.inputData.expectedRateOfGrothPercent =  0;
+      this.stockInWork.inputData.expectedRateOfReturnPercent = 8;
+      this.stockInWork.inputData.securityMarginRate = 10;
+
+      this.stockForm.patchValue({
+        expectedRateOfGrothPercent: this.stockInWork.inputData.expectedRateOfGrothPercent
+      , expectedRateOfReturnPercent: this.stockInWork.inputData.expectedRateOfReturnPercent
+      , expectedLongGrowRatePercent: this.stockInWork.inputData.expectedLongGrowRatePercent
+      , securityMarginRate: this.stockInWork.inputData.securityMarginRate
+      });
+    } else {
+      this.resetInvestmentCashflowForReit();
+      this.manualRateOfGrowthBuffer = this.stockForm.get('expectedRateOfGrothPercent').value;
+
+      this.stockInWork.inputData.expectedLongGrowRatePercent = 3;
+      this.stockInWork.inputData.expectedRateOfGrothPercent = 1;
+      this.stockInWork.inputData.expectedRateOfReturnPercent = 6;
+      this.stockInWork.inputData.securityMarginRate = 5;
+
+      this.stockForm.patchValue({
+        expectedRateOfGrothPercent: this.stockInWork.inputData.expectedRateOfGrothPercent
+      , expectedRateOfReturnPercent: this.stockInWork.inputData.expectedRateOfReturnPercent
+      , expectedLongGrowRatePercent: this.stockInWork.inputData.expectedLongGrowRatePercent
+      , securityMarginRate: this.stockInWork.inputData.securityMarginRate
+      });
+      this.refreshTypeOfGrowthCalculation(true);
+    }
   }
 
   public resetInvestmentCashflowForReit() {
@@ -160,6 +196,8 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
     this.stockInWork.inputData.expectedRateOfReturnPercent = this.stockForm.get('expectedRateOfReturnPercent').value;
     this.stockInWork.inputData.expectedLongGrowRatePercent = this.stockForm.get('expectedLongGrowRatePercent').value;
     this.stockInWork.inputData.securityMarginRate = this.stockForm.get('securityMarginRate').value;
+
+    this.stockInWork.inputData.manualGrowth = this.stockForm.get('manualGrowth').value;
 
     this.stockSrv.stockCollection[this.stockIndex].inputData = {
       ...this.stockInWork.inputData
@@ -284,6 +322,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
       , eatInMillionenZumStichtag: 0
       , marktKapitalisierungInMillionenZumStichtag: 0
 
+      , manualGrowth: false
 
       , umsatzChangeFirstPeriod: 0
       , umsatzChangeSecondPeriod: 0
@@ -316,6 +355,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
       , eatInMillionenZumStichtag: this.stockInWork.inputData.eatInMillionenZumStichtag
       , marktKapitalisierungInMillionenZumStichtag: this.stockInWork.inputData.marktKapitalisierungInMillionenZumStichtag
 
+      , manualGrowth: this.stockInWork.inputData.manualGrowth
 
       , umsatzChangeFirstPeriod: this.stockInWork.inputData.umsatzChangeFirstPeriod
       , umsatzChangeSecondPeriod: this.stockInWork.inputData.umsatzChangeSecondPeriod
@@ -352,6 +392,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
       , eatInMillionenZumStichtag: [0, Validators.required]
       , marktKapitalisierungInMillionenZumStichtag: [0, Validators.required]
 
+      , manualGrowth: [false, Validators.required]
 
       , umsatzChangeFirstPeriod: [0, Validators.required]
       , umsatzChangeSecondPeriod: [0, Validators.required]

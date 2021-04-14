@@ -70,6 +70,8 @@ export interface IStockInputs {
   zahlungsMittelInMillionenZumStichtag: number;
   zahlungsMittelDescription: string; //Done Bilanz
 
+  manualGrowth: boolean;
+
   operativerCashflowInMillionenZumStichtag: number;
   operativerCashflowDescription: string; //Done CF
 
