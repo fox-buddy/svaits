@@ -43,6 +43,9 @@ export interface IStockResults {
   fairValue: number;
   fairValueWithSecurityMargin: number;
   fairValueDescription: string;
+
+  navPerStock: number;
+  navPerStockDescription: string;
 }
 
 export interface IStockInputs {

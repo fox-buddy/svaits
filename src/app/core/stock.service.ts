@@ -148,6 +148,9 @@ export class StockService {
       fairValue: 0,
       fairValueWithSecurityMargin: 0,
       fairValueDescription: 'Fairer (innerer) Wert je Aktie nach der einfachsten Discounted Cashflow Analyse (kontinuierliches Wachstum über 10 Jahre).',
+
+      navPerStock: 0,
+      navPerStockDescription: 'Net asset Value oder Nettoinventarwert zeigt den Wert der Immobilien pro Aktie. Hier kann man den Kursaufschlag (Kurs höher) oder Abschlag erkennen (Kurs niedriger).'
     };
   }
 }
