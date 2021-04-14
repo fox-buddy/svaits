@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { StockService } from '../core/stock.service';
 import { IStock, IDCFGrothRates } from '../core/IStockData';
@@ -18,6 +19,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
   public measuresHaveBeenCalculated: boolean = false;
 
   public manualGrowthInput: boolean = false;
+  public showNetAssetValue: boolean = false;
 
   private stockName: string;
   private stockIndex: number;
@@ -64,7 +66,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
   public showenterpriseValueZumStichtagDescription:boolean = false;
 
 
-  constructor(private route: ActivatedRoute, public stockSrv: StockService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, public stockSrv: StockService, private fb: FormBuilder, private location: Location) {
 
     this.stockName = this.route.snapshot.paramMap.get('stockname');
     this.stockIndex = Number(this.route.snapshot.paramMap.get('stockindex'));
@@ -90,6 +92,10 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
     this.formValuesToLocalObject();
   }
 
+  public navigateBack() {
+    this.location.back();
+  }
+
   public refreshCurrency(newVal) {
     this.stockInWork.inputData.currencyCode = newVal;
   }
@@ -102,35 +108,37 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
 
   public refreshTypeOfStock(typeId: number) {
     if(typeId == 1) {
-      this.refreshTypeOfGrowthCalculation(false);
       this.stockInWork.inputData.expectedLongGrowRatePercent = 3;
       this.stockInWork.inputData.expectedRateOfGrothPercent =  0;
       this.stockInWork.inputData.expectedRateOfReturnPercent = 8;
       this.stockInWork.inputData.securityMarginRate = 10;
 
-      this.stockForm.patchValue({
-        expectedRateOfGrothPercent: this.stockInWork.inputData.expectedRateOfGrothPercent
-      , expectedRateOfReturnPercent: this.stockInWork.inputData.expectedRateOfReturnPercent
-      , expectedLongGrowRatePercent: this.stockInWork.inputData.expectedLongGrowRatePercent
-      , securityMarginRate: this.stockInWork.inputData.securityMarginRate
-      });
+      this.setFormValuesDueToTypeOfStockChange();
+
+      this.showNetAssetValue = false;
+      this.refreshTypeOfGrowthCalculation(false);
     } else {
       this.resetInvestmentCashflowForReit();
-      this.manualRateOfGrowthBuffer = this.stockForm.get('expectedRateOfGrothPercent').value;
 
       this.stockInWork.inputData.expectedLongGrowRatePercent = 3;
       this.stockInWork.inputData.expectedRateOfGrothPercent = 1;
       this.stockInWork.inputData.expectedRateOfReturnPercent = 6;
       this.stockInWork.inputData.securityMarginRate = 5;
 
-      this.stockForm.patchValue({
-        expectedRateOfGrothPercent: this.stockInWork.inputData.expectedRateOfGrothPercent
-      , expectedRateOfReturnPercent: this.stockInWork.inputData.expectedRateOfReturnPercent
-      , expectedLongGrowRatePercent: this.stockInWork.inputData.expectedLongGrowRatePercent
-      , securityMarginRate: this.stockInWork.inputData.securityMarginRate
-      });
+      this.setFormValuesDueToTypeOfStockChange();
+
+      this.showNetAssetValue = true;
       this.refreshTypeOfGrowthCalculation(true);
     }
+  }
+
+  private setFormValuesDueToTypeOfStockChange() {
+    this.stockForm.patchValue({
+      expectedRateOfGrothPercent: this.stockInWork.inputData.expectedRateOfGrothPercent
+    , expectedRateOfReturnPercent: this.stockInWork.inputData.expectedRateOfReturnPercent
+    , expectedLongGrowRatePercent: this.stockInWork.inputData.expectedLongGrowRatePercent
+    , securityMarginRate: this.stockInWork.inputData.securityMarginRate
+    });
   }
 
   public resetInvestmentCashflowForReit() {
@@ -246,6 +254,11 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
     const kursBuchWertRelation = StockCalculator.calculateKursBuchwertVerhaeltnisWith(
       inputData.marktKapitalisierungInMillionenZumStichtag, inputData.eigenKapitalInMillionenZumStichtag
     );
+
+    this.stockInWork.resultData.navPerStock = StockCalculator.calculateNetAssetValueWith(
+      inputData.eigenKapitalInMillionenZumStichtag, inputData.marktKapitalisierungInMillionenZumStichtag
+    );
+
     this.stockInWork.resultData.kursBuchwertVerhaeltnisZumStichtag = kursBuchWertRelation;
 
     this.stockInWork.resultData.enterpriseValueZumStichtag = StockCalculator.calculateEnterpriseValueStichtagWith(

@@ -1,8 +1,8 @@
-<button mat-stroked-button routerLink="/overview">
+<button mat-stroked-button (click)="navigateBack()">
   <mat-icon>
     navigate_before
   </mat-icon>
-  Overview
+  Funktionsauswahl
 </button>
 
 <form [formGroup]="stockForm" (ngSubmit)="stockFormSubmit()">
@@ -1610,6 +1610,27 @@
     <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.fairValueDescription}}</span>
     </mat-grid-tile>
+
+    <ng-container *ngIf="showNetAssetValue">
+
+      <!-- Beschriftung -->
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <span class="mat-small">NAV je Aktie</span>
+      </mat-grid-tile>
+      <!-- Value Field -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{stockInWork.resultData.navPerStock}}</span>
+      </mat-grid-tile>
+      <!-- Einheit -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">€</span>
+      </mat-grid-tile>
+
+      <!-- Erklärung -->
+      <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
+        <span class="mat-small input-desc-text">{{stockInWork.resultData.navPerStockDescription}}</span>
+      </mat-grid-tile>
+    </ng-container>
 
     <!-- Divider -->
     <mat-grid-tile [colspan]="5" [rowspan]="1">
