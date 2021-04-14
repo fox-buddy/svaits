@@ -18,11 +18,14 @@
 
   </mat-menu> -->
 
-  <span class="toolbar-spacer"></span>
+  <span class="tool-spacer"></span>
 
-  <!-- <button mat-icon-button aria-label="dummy icon for sharing">
-    <mat-icon>share</mat-icon>
-  </button> -->
+  <button (click)="saveData()" mat-icon-button aria-label="speichern im lokalen Speicher" [matTooltip]="'Speichern der Daten im Browserspeicher'" [matTooltipShowDelay]="500">
+    <mat-icon>save</mat-icon>
+  </button>
+  <button (click)="loadData()" mat-icon-button aria-label="laden aus lokalem Speicher" [matTooltip]="'Laden der Daten aus Browserspeicher. Aktuelle Bearbeitung wird überschrieben'" [matTooltipShowDelay]="500">
+    <mat-icon>refresh</mat-icon>
+  </button>
 
 
 </mat-toolbar>

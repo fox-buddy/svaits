@@ -43,9 +43,18 @@ export interface IStockResults {
   fairValue: number;
   fairValueWithSecurityMargin: number;
   fairValueDescription: string;
+
+  navPerStock: number;
+  navPerStockDescription: string;
 }
 
 export interface IStockInputs {
+  typeOfStock: number;
+  typeOfStockDescription: string;
+
+  currencyCode: string;
+  currencyCodeDescription: string;
+
   anzahlAktien: number;
   anzahlAktienDescription: string;  //Done Bilanz
 
@@ -64,17 +73,21 @@ export interface IStockInputs {
   zahlungsMittelInMillionenZumStichtag: number;
   zahlungsMittelDescription: string; //Done Bilanz
 
+  manualGrowth: boolean;
+
   operativerCashflowInMillionenZumStichtag: number;
   operativerCashflowDescription: string; //Done CF
 
-  operativerCashflowThreeYearAverageInMillionen: number;
-  operativerCashflowThreeYearAverageDescription: string; //Done CF
+  operativerCashflowForDcf: number;
+  operativerCashflowForDcfDescription: string; //Done CF
 
   investmentCashflowInMillionenZumStichtag: number;
   investmentCashflowDescription: string; //Done CF
 
-  investmentCashflowThreeYearAverageInMillionen: number;
-  investmentCashflowThreeYearAverageDescription: string; //Done CF
+  investmentCashflowForDcf: number;
+  investmentCashflowForDcfDescription: string; //Done CF
+
+  fundsFromOperationsDescription: string;
 
   umsatzInMillionenZumStichtag: number;
   umsatzInMillionenDescription: string; //Done Bilanz
@@ -107,6 +120,8 @@ export interface IStockInputs {
 
   securityMarginRate: number;
   securityMarginDescription: string;
+
+  stockComment: string;
 }
 
 export interface IStock {

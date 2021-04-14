@@ -6,6 +6,9 @@ mat-expansion-panel-header:hover {
   border-bottom: 1px solid green;
 }
 
+.stockPickerRadioButton {
+  margin-left: 10px !important;
+}
 
 .input-desc {
   width: 100%;

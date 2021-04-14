@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -21,7 +22,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatRadioModule } from '@angular/material/radio';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -34,7 +35,10 @@ import { StockOverviewComponent } from './stock-overview/stock-overview.componen
 import { StockNamingDialogComponent } from './stock-naming-dialog/stock-naming-dialog.component';
 import { StockDataCalculationComponent } from './stock-data-calculation/stock-data-calculation.component';
 import { StockDataCalcDetailComponent } from './stock-data-calc-detail/stock-data-calc-detail.component';
+import { StockDataOverviewComponent } from './stock-data-overview/stock-data-overview.component';
+import { StockCommentComponent } from './stock-comment/stock-comment.component';
 
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -46,13 +50,14 @@ import { StockDataCalcDetailComponent } from './stock-data-calc-detail/stock-dat
     StockOverviewComponent,
     StockNamingDialogComponent,
     StockDataCalculationComponent,
-    StockDataCalcDetailComponent
+    StockDataCalcDetailComponent,
+    StockDataOverviewComponent,
+    StockCommentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -68,9 +73,11 @@ import { StockDataCalcDetailComponent } from './stock-data-calc-detail/stock-dat
     MatMenuModule,
     MatDialogModule,
     MatListModule,
-
+    MatTooltipModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatRadioModule,
+    NgxEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

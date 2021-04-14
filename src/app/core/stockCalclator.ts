@@ -9,6 +9,15 @@ export class StockCalculator {
     return Number(((eigenkapital/bilanzSumme) * 100).toFixed(2));
   }
 
+  static calculateNetAssetValueWith(eigenkapital: number, anzahlAktien: number) {
+    if(anzahlAktien === 0) {
+      return 0;
+    }
+
+    return Number((eigenkapital/anzahlAktien).toFixed(2));
+  }
+
+
   static calculateGearintQuoteWith(gesamtVerbindlichkeiten: number, liquideMittel: number, eigenkapital: number) {
     if(eigenkapital === 0) {
       return 0;
