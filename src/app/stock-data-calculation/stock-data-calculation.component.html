@@ -1626,11 +1626,11 @@
     </mat-grid-tile>
     <!-- Value Field -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <span class="mat-small">{{stockInWork.resultData.fairValue}}</span>
+      <span class="mat-small">{{(stockInWork.resultData.fairValue).toFixed(2)}}</span>
     </mat-grid-tile>
     <!-- Einheit -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <span class="mat-small">€</span>
+      <span class="mat-small">{{stockInWork.inputData.currencyCode}}</span>
     </mat-grid-tile>
 
     <!-- Beschriftung -->
@@ -1639,17 +1639,34 @@
     </mat-grid-tile>
     <!-- Value Field -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <span class="mat-small">{{stockInWork.resultData.fairValueWithSecurityMargin}}</span>
+      <span class="mat-small">{{(stockInWork.resultData.fairValueWithSecurityMargin).toFixed(2)}}</span>
     </mat-grid-tile>
     <!-- Einheit -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <span class="mat-small">€</span>
+      <span class="mat-small">{{stockInWork.inputData.currencyCode}}</span>
     </mat-grid-tile>
+
+    <ng-container *ngIf="showFutureDividendValue">
+
+      <!-- Beschriftung -->
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <span class="mat-small">Fair Value Dividende</span>
+      </mat-grid-tile>
+      <!-- Value Field -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{(stockInWork.resultData.healthyDividend).toFixed(2)}}</span>
+      </mat-grid-tile>
+      <!-- Einheit -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{stockInWork.inputData.currencyCode}}</span>
+      </mat-grid-tile>
+    </ng-container>
 
     <!-- Erklärung -->
     <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
       <span class="mat-small input-desc-text">{{stockInWork.resultData.fairValueDescription}}</span>
     </mat-grid-tile>
+
 
     <ng-container *ngIf="showNetAssetValue">
 
@@ -1663,7 +1680,7 @@
       </mat-grid-tile>
       <!-- Einheit -->
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-small">€</span>
+        <span class="mat-small">{{stockInWork.inputData.currencyCode}}</span>
       </mat-grid-tile>
 
       <!-- Erklärung -->
@@ -1672,26 +1689,6 @@
       </mat-grid-tile>
     </ng-container>
 
-    <ng-container *ngIf="showFutureDividendValue">
-
-      <!-- Beschriftung -->
-      <mat-grid-tile [colspan]="3" [rowspan]="1">
-        <span class="mat-small">Fair Value Dividende</span>
-      </mat-grid-tile>
-      <!-- Value Field -->
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-small">{{stockInWork.resultData.healthyDividend}}</span>
-      </mat-grid-tile>
-      <!-- Einheit -->
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-small">€</span>
-      </mat-grid-tile>
-
-      <!-- Erklärung -->
-      <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
-        <span class="mat-small input-desc-text">{{stockInWork.resultData.healthyDividendDescription}}</span>
-      </mat-grid-tile>
-    </ng-container>
 
     <!-- Divider -->
     <mat-grid-tile [colspan]="5" [rowspan]="1">
