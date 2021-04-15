@@ -46,6 +46,10 @@ export interface IStockResults {
 
   navPerStock: number;
   navPerStockDescription: string;
+
+  healthyDividend: number;
+  healthyDividendDescription: string;
+
 }
 
 export interface IStockInputs {
@@ -72,6 +76,9 @@ export interface IStockInputs {
 
   zahlungsMittelInMillionenZumStichtag: number;
   zahlungsMittelDescription: string; //Done Bilanz
+
+  dividendPerYearPercent: number;
+  dividendPerYearPercentDescription: string;
 
   manualGrowth: boolean;
 

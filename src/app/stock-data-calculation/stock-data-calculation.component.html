@@ -371,7 +371,7 @@
         <!-- !!!Neue Kennzahl!!! -->
         <!-- Beschriftung -->
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <span class="mat-small"> (Nettogewinn)</span>
+          <span class="mat-small">EAT (Nettogewinn)</span>
           <!-- <span class="mat-small input-desc-text" *ngIf="!showEatDescription">
             <button mat-icon-button (click)="[showEatDescription=!showEatDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
           </span> -->
@@ -398,6 +398,46 @@
           <span class="mat-small input-desc-text">{{stockInWork.inputData.eatDescription}}</span>
           <span class="mat-small input-desc-text">
             <button mat-icon-button (click)="[showEatDescription=!showEatDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
+          </span>
+        </mat-grid-tile>
+
+
+        <!-- Divider -->
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
+          <mat-divider></mat-divider>
+        </mat-grid-tile>
+
+
+        <!-- !!!Neue Kennzahl!!! -->
+        <!-- Beschriftung -->
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <span class="mat-small">Dividendenrendite</span>
+          <!-- <span class="mat-small input-desc-text" *ngIf="!showEatDescription">
+            <button mat-icon-button (click)="[showEatDescription=!showEatDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span> -->
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <span class="mat-small input-desc-text" *ngIf="!showDividendDescription">
+            <button mat-icon-button (click)="[showDividendDescription=!showDividendDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+          </span>
+        </mat-grid-tile>
+
+        <!-- Input Field -->
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <input matInput class="inputField" matInput type="number" min="0" formControlName="dividendPerYearPercent">
+        </mat-grid-tile>
+
+        <!-- Einheit -->
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <span class="mat-small">Prozent</span>
+        </mat-grid-tile>
+
+        <!-- Erklärung -->
+        <mat-grid-tile [colspan]="5" [rowspan]="4" class="input-desc" *ngIf="showEatDescription">
+          <span class="mat-small input-desc-text">{{stockInWork.inputData.dividendPerYearPercentDescription}}</span>
+          <span class="mat-small input-desc-text">
+            <button mat-icon-button (click)="[showDividendDescription=!showDividendDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
           </span>
         </mat-grid-tile>
 
@@ -1244,44 +1284,44 @@
       <mat-divider></mat-divider>
     </mat-grid-tile>
 
+    <ng-container *ngIf="stockForm.value.typeOfStock == 1">
+      <!-- Beschriftung -->
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <span class="mat-small input-desc-title">Sachinvestitionsquote</span>
+        <!-- <span class="mat-small input-desc-text" *ngIf="!showsachinvestitionsQuoteDescription">
+          <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+        </span> -->
+      </mat-grid-tile>
 
-    <!-- Beschriftung -->
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <span class="mat-small input-desc-title">Sachinvestitionsquote</span>
-      <!-- <span class="mat-small input-desc-text" *ngIf="!showsachinvestitionsQuoteDescription">
-        <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
-      </span> -->
-    </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small input-desc-text" *ngIf="!showsachinvestitionsQuoteDescription">
+          <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
+        </span>
+      </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <span class="mat-small input-desc-text" *ngIf="!showsachinvestitionsQuoteDescription">
-        <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagation()]"><mat-icon>info</mat-icon></button>
-      </span>
-    </mat-grid-tile>
+      <!-- Value Field -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{stockInWork.resultData.sachinvestitionsQuote}}</span>
+      </mat-grid-tile>
 
-    <!-- Value Field -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <span class="mat-small">{{stockInWork.resultData.sachinvestitionsQuote}}</span>
-    </mat-grid-tile>
+      <!-- Einheit -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">Prozent</span>
+      </mat-grid-tile>
 
-    <!-- Einheit -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <span class="mat-small">Prozent</span>
-    </mat-grid-tile>
+      <!-- Erklärung -->
+      <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showsachinvestitionsQuoteDescription">
+        <span class="mat-small input-desc-text">{{stockInWork.resultData.sachinvestitionsQuoteDescription}}</span>
+        <span class="mat-small input-desc-text">
+          <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
+        </span>
+      </mat-grid-tile>
 
-    <!-- Erklärung -->
-    <mat-grid-tile [colspan]="5" [rowspan]="6" class="input-desc" *ngIf="showsachinvestitionsQuoteDescription">
-      <span class="mat-small input-desc-text">{{stockInWork.resultData.sachinvestitionsQuoteDescription}}</span>
-      <span class="mat-small input-desc-text">
-        <button mat-icon-button (click)="[showsachinvestitionsQuoteDescription=!showsachinvestitionsQuoteDescription, $event.stopPropagation()]"><mat-icon>close</mat-icon></button>
-      </span>
-    </mat-grid-tile>
-
-    <!-- Divider -->
-    <mat-grid-tile [colspan]="5" [rowspan]="1">
-      <mat-divider></mat-divider>
-    </mat-grid-tile>
-
+      <!-- Divider -->
+      <mat-grid-tile [colspan]="5" [rowspan]="1">
+        <mat-divider></mat-divider>
+      </mat-grid-tile>
+    </ng-container>
 
     <!-- Beschriftung -->
     <mat-grid-tile [colspan]="2" [rowspan]="2">
@@ -1629,6 +1669,27 @@
       <!-- Erklärung -->
       <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
         <span class="mat-small input-desc-text">{{stockInWork.resultData.navPerStockDescription}}</span>
+      </mat-grid-tile>
+    </ng-container>
+
+    <ng-container *ngIf="showFutureDividendValue">
+
+      <!-- Beschriftung -->
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <span class="mat-small">Fair Value Dividende</span>
+      </mat-grid-tile>
+      <!-- Value Field -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{stockInWork.resultData.healthyDividend}}</span>
+      </mat-grid-tile>
+      <!-- Einheit -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">€</span>
+      </mat-grid-tile>
+
+      <!-- Erklärung -->
+      <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
+        <span class="mat-small input-desc-text">{{stockInWork.resultData.healthyDividendDescription}}</span>
       </mat-grid-tile>
     </ng-container>
 

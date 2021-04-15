@@ -17,6 +17,11 @@ export class StockCalculator {
     return Number((eigenkapital/anzahlAktien).toFixed(2));
   }
 
+  static calculateDividend(stockPrice: number, dividendRateInPercent: number) {
+    let dividendRatio = dividendRateInPercent/100;
+
+    return Number((stockPrice*dividendRatio).toFixed(2));
+  }
 
   static calculateGearintQuoteWith(gesamtVerbindlichkeiten: number, liquideMittel: number, eigenkapital: number) {
     if(eigenkapital === 0) {
