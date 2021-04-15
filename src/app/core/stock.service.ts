@@ -73,6 +73,9 @@ export class StockService {
       marktKapitalisierungInMillionenZumStichtag: 0,
       marktKapitalisierungDescription: 'Maktkapitalisierung. Gesamter Börsenwert',
 
+      dividendPerYearPercent: 0,
+      dividendPerYearPercentDescription: 'Die aktuelle Dividentenrendite in Prozent',
+
       manualGrowth: false,
 
       umsatzChangeFirstPeriod: 0,
@@ -83,13 +86,13 @@ export class StockService {
       umsatzChangeSixthPeriod: 0,
       umsatzChangeDescription: 'Umsatzveränderungen der letzten 6 Jahre zum Stichtag im Vergleich zum Vorjahr. Dient zur Berechnung des zukünftigen Wachstums',
 
-      expectedRateOfReturnPercent: 0,
+      expectedRateOfReturnPercent: 8,
       expectedRateOfReturnDescription: 'Erwartete Rendite. Sollte mindestens 6 Prozent betragen (Immobiliendurchschnitt)',
 
-      expectedLongGrowRatePercent: 0,
+      expectedLongGrowRatePercent: 3,
       expectedLongGrowRateDescription: 'Erwartetes Langzeitwachstum. Sollte konservativ gewählt werden, da die Zukunft schwer abschätzbar ist. Eine Rate im Bereich der Inflation beispielsweise (3)',
 
-      securityMarginRate: 0,
+      securityMarginRate: 10,
       securityMarginDescription: 'Sicherheitsmarge zum Abwerten des errechneten Wertes. 5 bis 10 Prozent beispielsweise',
 
       expectedRateOfGrothPercent: 0,
@@ -152,7 +155,13 @@ export class StockService {
       fairValueDescription: 'Fairer (innerer) Wert je Aktie nach der einfachsten Discounted Cashflow Analyse (kontinuierliches Wachstum über 10 Jahre).',
 
       navPerStock: 0,
-      navPerStockDescription: 'Net asset Value oder Nettoinventarwert zeigt den Wert der Immobilien pro Aktie. Hier kann man den Kursaufschlag (Kurs höher) oder Abschlag erkennen (Kurs niedriger).'
+      navPerStockDescription: 'Net asset Value oder Nettoinventarwert zeigt den Wert der Immobilien pro Aktie. Hier kann man den Kursaufschlag (Kurs höher) oder Abschlag erkennen (Kurs niedriger).',
+
+      healthyDividend: 0,
+      healthyDividendDescription: 'Eine mögliche Dividende unter Berücksichtigung des fairen Aktienwertes.'
+
+
+
     };
   }
 }

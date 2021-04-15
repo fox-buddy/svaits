@@ -10,6 +10,7 @@ import { StockOverviewComponent } from './stock-overview/stock-overview.componen
 import { StockDataCalculationComponent } from './stock-data-calculation/stock-data-calculation.component';
 import { StockDataOverviewComponent } from './stock-data-overview/stock-data-overview.component';
 import { StockCommentComponent } from './stock-comment/stock-comment.component';
+import { StockSummaryComponent } from './stock-summary/stock-summary.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'overview',
     component: StockOverviewComponent
+  },
+  {
+    path: 'summary/:stockname/:stockindex',
+    component: StockSummaryComponent
   },
   {
     path: 'comment/:stockname/:stockindex',

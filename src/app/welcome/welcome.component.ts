@@ -16,16 +16,16 @@ export class WelcomeComponent implements OnInit {
 
   public pageHints: IPageHints[] = [
     {
-      heading: "Anzeige der finanziellen Stabilität", description: "Finanzielle Lage des Unternehmens", cols: 4, rows: 2
+      heading: "Basis Bewertung", description: "Grundlegende simple Bewertungskennzahlen, sowie finanzielle Stabilität des Unternehmens", cols: 4, rows: 2
     },
     {
-      heading: "Ertrag und Rentabilität", description: "Kennzahlen zur Rentabilität wie Eigenkapitalrendite, EBIT-Marge und intrinsische Kaufdauer", cols: 4, rows: 2
+      heading: "Discounted Cash Flow", description: "Zeigt den inneren Wert des Unternehmens auf Basis der Free Cash Flows oder den Funds from Operations (REIT)", cols: 4, rows: 2
     },
     {
-      heading: "Basis Bewertung", description: "Grundlegende simple Bewertungskennzahlen wie KGV, Einstandsrendite und KBV", cols: 4, rows: 2
+      heading: "Notizen und Basisfragen", description: "Fragen, denen man sich vor einem Investment stellen sollte", cols: 4, rows: 2
     },
     {
-      heading: "Discounted Cash Flow", description: "Zeigt den inneren Wert des Unternehmens auf Basis der Free Cash Flows", cols: 4, rows: 2
+      heading: "Speichern und Exportieren der Bewertungen", description: "Ohne Anmeldung lokal im Browser Speichern, oder als PDF Exportieren", cols: 4, rows: 2
     }
   ];
   private pageHintsTemplateFillInterval: any;

@@ -20,6 +20,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
 
   public manualGrowthInput: boolean = false;
   public showNetAssetValue: boolean = false;
+  public showFutureDividendValue: boolean = true;
 
   private stockName: string;
   private stockIndex: number;
@@ -52,7 +53,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
   public showExpectedRateOfReturnDescription:boolean = false;
   public showExpectedLongGrowRateDescription:boolean = false;
   public showSecurityMarginDescription:boolean = false;
-
+  public showDividendDescription: boolean = false;
   public showeigenkapitalquoteDescription:boolean = false;
   public showgearingdescription:boolean = false;
   public showdynamischerVerschuldungsgradDescription:boolean = false;
@@ -115,7 +116,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
 
       this.setFormValuesDueToTypeOfStockChange();
 
-      this.showNetAssetValue = false;
+      // this.showNetAssetValue = false;
       this.refreshTypeOfGrowthCalculation(false);
     } else {
       this.resetInvestmentCashflowForReit();
@@ -127,7 +128,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
 
       this.setFormValuesDueToTypeOfStockChange();
 
-      this.showNetAssetValue = true;
+      // this.showNetAssetValue = true;
       this.refreshTypeOfGrowthCalculation(true);
     }
   }
@@ -173,6 +174,8 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
       this.calculateCashFlowResuls(false);
     }
 
+    this.calculateFairDividentResults();
+
     this.measuresHaveBeenCalculated = true;
   }
 
@@ -204,7 +207,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
     this.stockInWork.inputData.expectedRateOfReturnPercent = this.stockForm.get('expectedRateOfReturnPercent').value;
     this.stockInWork.inputData.expectedLongGrowRatePercent = this.stockForm.get('expectedLongGrowRatePercent').value;
     this.stockInWork.inputData.securityMarginRate = this.stockForm.get('securityMarginRate').value;
-
+    this.stockInWork.inputData.dividendPerYearPercent = this.stockForm.get('dividendPerYearPercent').value;
     this.stockInWork.inputData.manualGrowth = this.stockForm.get('manualGrowth').value;
 
     this.stockSrv.stockCollection[this.stockIndex].inputData = {
@@ -310,6 +313,12 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
     // calculateFutureCompanyValueWithFutureCashFlow --> Hält weitere Funktionen
   }
 
+  private calculateFairDividentResults() {
+    this.stockInWork.resultData.healthyDividend = StockCalculator.calculateDividend(
+      this.stockInWork.resultData.fairValue, this.stockInWork.inputData.dividendPerYearPercent
+    );
+  }
+
   // Tempalte Helpers
   public get numberOfLastYear() {
     let currentTime = new Date(Date.now());
@@ -334,7 +343,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
       , ebitInMillionenZumStichtag: 0
       , eatInMillionenZumStichtag: 0
       , marktKapitalisierungInMillionenZumStichtag: 0
-
+      , dividendPerYearPercent: 0
       , manualGrowth: false
 
       , umsatzChangeFirstPeriod: 0
@@ -367,7 +376,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
       , ebitInMillionenZumStichtag: this.stockInWork.inputData.ebitInMillionenZumStichtag
       , eatInMillionenZumStichtag: this.stockInWork.inputData.eatInMillionenZumStichtag
       , marktKapitalisierungInMillionenZumStichtag: this.stockInWork.inputData.marktKapitalisierungInMillionenZumStichtag
-
+      , dividendPerYearPercent: this.stockInWork.inputData.dividendPerYearPercent
       , manualGrowth: this.stockInWork.inputData.manualGrowth
 
       , umsatzChangeFirstPeriod: this.stockInWork.inputData.umsatzChangeFirstPeriod
@@ -404,7 +413,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
       , ebitInMillionenZumStichtag: [0, Validators.required]
       , eatInMillionenZumStichtag: [0, Validators.required]
       , marktKapitalisierungInMillionenZumStichtag: [0, Validators.required]
-
+      , dividendPerYearPercent: [0, Validators.required]
       , manualGrowth: [false, Validators.required]
 
       , umsatzChangeFirstPeriod: [0, Validators.required]

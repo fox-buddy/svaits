@@ -39,6 +39,7 @@ import { StockDataOverviewComponent } from './stock-data-overview/stock-data-ove
 import { StockCommentComponent } from './stock-comment/stock-comment.component';
 
 import { NgxEditorModule } from 'ngx-editor';
+import { StockSummaryComponent } from './stock-summary/stock-summary.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { NgxEditorModule } from 'ngx-editor';
     StockDataCalculationComponent,
     StockDataCalcDetailComponent,
     StockDataOverviewComponent,
-    StockCommentComponent
+    StockCommentComponent,
+    StockSummaryComponent
   ],
   imports: [
     BrowserModule,
