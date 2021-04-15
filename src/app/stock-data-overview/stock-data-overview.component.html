@@ -34,9 +34,9 @@
 
   </mat-grid-tile>
 
-  <!-- <mat-grid-tile [colspan]="4" [rowspan]="2">
+  <mat-grid-tile [colspan]="4" [rowspan]="2">
     <div>
-      <mat-card class="feature-card animate__animated animate__fadeIn animate__slow info-color clickCard">
+      <mat-card class="feature-card animate__animated animate__fadeIn animate__slow info-color clickCard" [routerLink]="['/summary', stockName, stockIndex]">
         <mat-card-header>
           <mat-icon>summarize</mat-icon>
           <mat-card-title>Zusammenfassung</mat-card-title>
@@ -45,7 +45,7 @@
       </mat-card>
     </div>
 
-  </mat-grid-tile> -->
+  </mat-grid-tile>
 
 
 </mat-grid-list>
