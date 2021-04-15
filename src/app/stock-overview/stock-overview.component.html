@@ -10,11 +10,13 @@
 
   <mat-grid-tile [colspan]="4" [rowspan]="2" *ngFor="let stock of _stockSrv.stockCollection; index as j">
     <mat-card class="stock-card animate__animated animate__slideInLeft animate__fast info-second">
-      <mat-card-header>{{stock.stockName}}<span *ngIf="stock.resultData.fairValue"> - Fairer Wert je Aktie: {{stock.resultData.fairValue}}</span></mat-card-header>
+      <mat-card-header><b>{{stock.stockName}}</b>
+      </mat-card-header>
 
 
       <mat-card-content>
-
+        <span *ngIf="stock.resultData.fairValue">Fairer Wert je Aktie: {{(stock.resultData.fairValue).toFixed(2)}} {{stock.inputData.currencyCode}}</span>
+        <br>
         <button [routerLink]="['/stockoverview', stock.stockName, j]" (click)="$event.stopPropagation()" [matTooltip]="'Navigation zur Funktionsübersicht dieser Aktie'" mat-icon-button><mat-icon>east</mat-icon></button>
         <button (click)="deleteStock(j); $event.stopPropagation()" [matTooltip]="'Löschen der Aktie, und aller eingegebenen Daten, aus der Collection'" mat-icon-button><mat-icon>delete</mat-icon></button>
 

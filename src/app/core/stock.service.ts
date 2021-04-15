@@ -86,13 +86,13 @@ export class StockService {
       umsatzChangeSixthPeriod: 0,
       umsatzChangeDescription: 'Umsatzveränderungen der letzten 6 Jahre zum Stichtag im Vergleich zum Vorjahr. Dient zur Berechnung des zukünftigen Wachstums',
 
-      expectedRateOfReturnPercent: 0,
+      expectedRateOfReturnPercent: 8,
       expectedRateOfReturnDescription: 'Erwartete Rendite. Sollte mindestens 6 Prozent betragen (Immobiliendurchschnitt)',
 
-      expectedLongGrowRatePercent: 0,
+      expectedLongGrowRatePercent: 3,
       expectedLongGrowRateDescription: 'Erwartetes Langzeitwachstum. Sollte konservativ gewählt werden, da die Zukunft schwer abschätzbar ist. Eine Rate im Bereich der Inflation beispielsweise (3)',
 
-      securityMarginRate: 0,
+      securityMarginRate: 10,
       securityMarginDescription: 'Sicherheitsmarge zum Abwerten des errechneten Wertes. 5 bis 10 Prozent beispielsweise',
 
       expectedRateOfGrothPercent: 0,
