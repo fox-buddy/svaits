@@ -2,30 +2,36 @@
 <mat-grid-list cols=4 rowHeight="50px">
 
   <mat-grid-tile [colspan]="4" [rowspan]="1">
-    <img src="./assets/App_logo_size.jpg" alt="App-Logo">
+    <img src="./assets/svaits2.png" alt="App-Logo">
   </mat-grid-tile>
 
   <mat-grid-tile [colspan]="4"  [rowspan]="1">
     <button mat-raised-button color="primary" routerLink="/overview" class="button-main">
-      Valuation Overview<mat-icon>explore</mat-icon>
+      Bewertungsübersicht<mat-icon>explore</mat-icon>
     </button>
   </mat-grid-tile>
 
-  <mat-grid-tile [colspan]="4" [rowspan]="4">
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="2" [rowspan]="4">
     <p class="welcomeText">
-      Der Stockinsider dient der Bewertung von an der Börse notierten Unternehmen.
+      SVAITs stellt ein Toolset zur Bewertung von an der Börse notierten Unternehmen.
       Die Berechnung einiger wichtiger Kennzahlen, sowie die Beantwortung entscheidender Fragen stehen dabei im Fokus.
       Zudem können die Daten ohne Anmeldung, sowie ohne die Speicherung persönlicher Daten, im lokalen Browser gesichert und geladen werden (siehe Icons in der Toolbar).
-      Alternativ zum Speichern im Browser kann je Aktie eine PDF Zusammenfassung exportiert werden, um ein Investment Journal zu pflegen.
+      <!-- Alternativ zum Speichern im Browser kann je Aktie eine PDF Zusammenfassung exportiert werden, um ein Investment Journal zu pflegen. -->
       Das langfristige Ziel ist, Investments an der Börse fundamental zu vereinfachen und transparenter zu gestalten.
     </p>
   </mat-grid-tile>
 
-  <mat-grid-tile [colspan]="4" [rowspan]="2">
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+  </mat-grid-tile>
+
+  <!-- <mat-grid-tile [colspan]="4" [rowspan]="2">
     <p class="welcomeText">
       Das Tool ist für eine Desktop Nutzung Optimiert. Auf mobilen Geräten kann es aktuell durchaus zu Einschränkungen kommen. Dies bitte ich zu Entschuldigen
     </p>
-  </mat-grid-tile>
+  </mat-grid-tile> -->
 
   <mat-grid-tile [colspan]="4" [rowspan]="1">
     <mat-divider></mat-divider>
