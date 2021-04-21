@@ -3,6 +3,8 @@ import { IStock } from './core/IStockData';
 import { StockService } from './core/stock.service';
 import { StoragehandlerService } from './core/storagehandler.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-root',
@@ -12,8 +14,12 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'SVAITs';
 
-  constructor(private _stockSrv: StockService, private _storageSrv: StoragehandlerService, private router: Router) {
+  constructor(private _stockSrv: StockService, private _storageSrv: StoragehandlerService, private router: Router, private titleService: Title) {
+    this.setTitle("SVAITs");
+  }
 
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
   }
 
   public saveData() {
