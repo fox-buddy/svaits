@@ -20,7 +20,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
 
   public manualGrowthInput: boolean = false;
   public showNetAssetValue: boolean = false;
-  public showFutureDividendValue: boolean = true;
+  public showDividendValue: boolean = true;
 
   private stockName: string;
   private stockIndex: number;
@@ -174,6 +174,7 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
       this.calculateCashFlowResuls(false);
     }
 
+    this.calculateStockChances();
     this.calculateFairDividentResults();
 
     this.measuresHaveBeenCalculated = true;
@@ -315,8 +316,22 @@ export class StockDataCalculationComponent implements OnInit, OnDestroy {
 
   private calculateFairDividentResults() {
     this.stockInWork.resultData.healthyDividend = StockCalculator.calculateDividend(
-      this.stockInWork.resultData.fairValue, this.stockInWork.inputData.dividendPerYearPercent
+      this.stockInWork.resultData.stockPrice, this.stockInWork.inputData.dividendPerYearPercent
     );
+  }
+
+  private calculateStockChances() {
+    const stockValue = StockCalculator.stockPrice(
+      this.stockInWork.inputData.marktKapitalisierungInMillionenZumStichtag * 1000000, this.stockInWork.inputData.anzahlAktien
+    );
+
+    this.stockInWork.resultData.stockPrice = (stockValue) ? stockValue : 0;
+
+    const differenceToFairVal = StockCalculator.differenceFairToCurrentPriceAbsolute(stockValue, this.stockInWork.resultData.fairValueWithSecurityMargin);
+    this.stockInWork.resultData.kursDifferenzAbsolut = (differenceToFairVal) ? differenceToFairVal : 0;
+
+    const differenceToFairValRelative = StockCalculator.differenceFairToCurrentPriceRelative(stockValue, this.stockInWork.resultData.fairValueWithSecurityMargin);
+    this.stockInWork.resultData.kursDifferenzPercent = (differenceToFairValRelative) ? differenceToFairValRelative : 0;
   }
 
   // Tempalte Helpers

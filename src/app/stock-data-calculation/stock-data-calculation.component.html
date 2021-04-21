@@ -1619,6 +1619,20 @@
     <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-topper">
     </mat-grid-tile>
 
+    <ng-container *ngIf="stockInWork.resultData.stockPrice">
+      <!-- Beschriftung -->
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <span class="mat-small end-val">Aktueller Pries je Aktie</span>
+      </mat-grid-tile>
+      <!-- Value Field -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{(stockInWork.resultData.stockPrice).toFixed(2)}}</span>
+      </mat-grid-tile>
+      <!-- Einheit -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{stockInWork.inputData.currencyCode}}</span>
+      </mat-grid-tile>
+    </ng-container>
 
     <!-- Beschriftung -->
     <mat-grid-tile [colspan]="3" [rowspan]="1">
@@ -1646,21 +1660,7 @@
       <span class="mat-small">{{stockInWork.inputData.currencyCode}}</span>
     </mat-grid-tile>
 
-    <ng-container *ngIf="showFutureDividendValue">
 
-      <!-- Beschriftung -->
-      <mat-grid-tile [colspan]="3" [rowspan]="1">
-        <span class="mat-small">Fair Value Dividende</span>
-      </mat-grid-tile>
-      <!-- Value Field -->
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-small">{{(stockInWork.resultData.healthyDividend).toFixed(2)}}</span>
-      </mat-grid-tile>
-      <!-- Einheit -->
-      <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <span class="mat-small">{{stockInWork.inputData.currencyCode}}</span>
-      </mat-grid-tile>
-    </ng-container>
 
     <!-- Erklärung -->
     <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
@@ -1694,6 +1694,73 @@
     <mat-grid-tile [colspan]="5" [rowspan]="1">
       <mat-divider></mat-divider>
     </mat-grid-tile>
+
+
+    <ng-container *ngIf="showDividendValue">
+
+      <!-- Beschriftung -->
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <span class="mat-small">jährliche Dividende pro Aktie</span>
+      </mat-grid-tile>
+      <!-- Value Field -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{(stockInWork.resultData.healthyDividend).toFixed(2)}}</span>
+      </mat-grid-tile>
+      <!-- Einheit -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{stockInWork.inputData.currencyCode}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
+        <span class="mat-small input-desc-text">Die aktuelle jährliche Dividende.</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="5" [rowspan]="1">
+        <mat-divider></mat-divider>
+      </mat-grid-tile>
+    </ng-container>
+
+
+    <ng-container *ngIf="stockInWork.resultData.kursDifferenzAbsolut">
+      <!-- Beschriftung -->
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <span class="mat-small">Kurschance Absolut</span>
+      </mat-grid-tile>
+      <!-- Value Field -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{(stockInWork.resultData.kursDifferenzAbsolut).toFixed(2)}}</span>
+      </mat-grid-tile>
+      <!-- Einheit -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{stockInWork.inputData.currencyCode}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
+        <span class="mat-small input-desc-text">Die absolute Differenz des aktuellen Kurses zum berechneten fairen (inneren) Wert je Aktie</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="5" [rowspan]="1">
+        <mat-divider></mat-divider>
+      </mat-grid-tile>
+    </ng-container>
+
+
+    <ng-container *ngIf="stockInWork.resultData.kursDifferenzPercent">
+      <!-- Beschriftung -->
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <span class="mat-small">Kurschance Relativ</span>
+      </mat-grid-tile>
+      <!-- Value Field -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">{{(stockInWork.resultData.kursDifferenzPercent).toFixed(2)}}</span>
+      </mat-grid-tile>
+      <!-- Einheit -->
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <span class="mat-small">%</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="5" [rowspan]="2" class="result-divider">
+        <span class="mat-small input-desc-text">Die mögliche Rendite des aktuellen Kurses zum berechneten fairen (inneren) Wert je Aktie</span>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="5" [rowspan]="1">
+        <mat-divider></mat-divider>
+      </mat-grid-tile>
+    </ng-container>
 
   </mat-grid-list>
 

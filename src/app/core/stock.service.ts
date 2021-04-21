@@ -164,7 +164,10 @@ export class StockService {
       kursDifferenzAbsolutDescription: "Die absolute Differenz des aktuellen Kurses zum berechneten fairen (inneren) Wert je Aktie",
 
       kursDifferenzPercent: 0,
-      kursDifferenzPercentDescription: "Die mögliche Rendite des aktuellen Kurses zum berechneten fairen (inneren) Wert je Aktie"
+      kursDifferenzPercentDescription: "Die mögliche Rendite des aktuellen Kurses zum berechneten fairen (inneren) Wert je Aktie",
+
+      stockPrice: 0,
+      stockPriceDescription: "Der aktuelle Kurs der Aktie auf Basis der Marktkapitalisierung und der Anzahl der ausgegebenen Aktien (eingegebene Werte, keine Live Abfrage)."
 
 
     };

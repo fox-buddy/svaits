@@ -50,6 +50,9 @@ export interface IStockResults {
   healthyDividend: number;
   healthyDividendDescription: string;
 
+  stockPrice: number;
+  stockPriceDescription: string
+
   kursDifferenzAbsolut: number;
   kursDifferenzAbsolutDescription: string;
 
