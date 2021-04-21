@@ -50,6 +50,12 @@ export interface IStockResults {
   healthyDividend: number;
   healthyDividendDescription: string;
 
+  kursDifferenzAbsolut: number;
+  kursDifferenzAbsolutDescription: string;
+
+  kursDifferenzPercent: number;
+  kursDifferenzPercentDescription: string;
+
 }
 
 export interface IStockInputs {
