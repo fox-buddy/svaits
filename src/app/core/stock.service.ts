@@ -158,7 +158,13 @@ export class StockService {
       navPerStockDescription: 'Net asset Value oder Nettoinventarwert zeigt den Wert der Immobilien pro Aktie. Hier kann man den Kursaufschlag (Kurs höher) oder Abschlag erkennen (Kurs niedriger).',
 
       healthyDividend: 0,
-      healthyDividendDescription: 'Die aktuelle jährliche Dividende'
+      healthyDividendDescription: 'Die aktuelle jährliche Dividende.',
+
+      kursDifferenzAbsolut: 0,
+      kursDifferenzAbsolutDescription: "Die absolute Differenz des aktuellen Kurses zum berechneten fairen (inneren) Wert je Aktie",
+
+      kursDifferenzPercent: 0,
+      kursDifferenzPercentDescription: "Die mögliche Rendite des aktuellen Kurses zum berechneten fairen (inneren) Wert je Aktie"
 
 
     };

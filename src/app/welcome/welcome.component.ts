@@ -25,7 +25,7 @@ export class WelcomeComponent implements OnInit {
       heading: "Notizen und Basisfragen", description: "Fragen, denen man sich vor einem Investment stellen sollte", cols: 4, rows: 2
     },
     {
-      heading: "Speichern und Exportieren der Bewertungen", description: "Ohne Anmeldung lokal im Browser Speichern, oder als PDF Exportieren", cols: 4, rows: 2
+      heading: "Speichern und Exportieren der Bewertungen", description: "Ohne Anmeldung lokal im Browser Speichern und Laden (Icons in der Toolbar)", cols: 4, rows: 2
     }
   ];
   private pageHintsTemplateFillInterval: any;

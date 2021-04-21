@@ -35,6 +35,16 @@ export class StockCalculator {
     return Number((marketCap/stockCount).toFixed(2));
   }
 
+  static differenceFairToCurrentPriceAbsolute(currentStockPrice: number, fairStockPrice: number) {
+    return Number((fairStockPrice-currentStockPrice).toFixed(2));
+  }
+
+  static differenceFairToCurrentPriceRelative(currentStockPrice: number, fairStockPrice: number) {
+    let difference = this.differenceFairToCurrentPriceAbsolute(currentStockPrice, fairStockPrice);
+
+    return Number(((difference/currentStockPrice) * 100).toFixed(2));
+  }
+
   static calculateGearintQuoteWith(gesamtVerbindlichkeiten: number, liquideMittel: number, eigenkapital: number) {
     if(eigenkapital === 0) {
       return 0;
