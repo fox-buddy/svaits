@@ -16,16 +16,16 @@ export class WelcomeComponent implements OnInit {
 
   public pageHints: IPageHints[] = [
     {
-      heading: "Basis Bewertung", description: "Grundlegende simple Bewertungskennzahlen, sowie finanzielle Stabilität des Unternehmens", cols: 1, rows: 2
+      heading: "Basis Bewertung", description: "Grundlegende simple Bewertungskennzahlen, sowie finanzielle Stabilität des Unternehmens", cols: 2, rows: 2
     },
     {
-      heading: "Discounted Cash Flow", description: "Zeigt den inneren Wert des Unternehmens auf Basis der Free Cash Flows oder den Funds from Operations (REIT)", cols: 1, rows: 2
+      heading: "Discounted Cash Flow", description: "Zeigt den inneren Wert des Unternehmens auf Basis der Free Cash Flows oder den Funds from Operations (REIT)", cols: 2, rows: 2
     },
     {
-      heading: "Notizen und Basisfragen", description: "Fragen, denen man sich vor einem Investment stellen sollte", cols: 1, rows: 2
+      heading: "Notizen und Basisfragen", description: "Fragen, denen man sich vor einem Investment stellen sollte", cols: 2, rows: 2
     },
     {
-      heading: "Speichern und Exportieren der Bewertungen", description: "Ohne Anmeldung lokal im Browser Speichern und Laden (Icons in der Toolbar)", cols: 1, rows: 2
+      heading: "Speichern und Exportieren der Bewertungen", description: "Ohne Anmeldung lokal im Browser Speichern und Laden (Icons in der Toolbar)", cols: 2, rows: 2
     }
   ];
   private pageHintsTemplateFillInterval: any;

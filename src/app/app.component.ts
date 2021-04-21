@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'insideStocks';
+  title = 'SVAITs';
 
   constructor(private _stockSrv: StockService, private _storageSrv: StoragehandlerService, private router: Router) {
 
