@@ -20,7 +20,19 @@ export class StockCalculator {
   static calculateDividend(stockPrice: number, dividendRateInPercent: number) {
     let dividendRatio = dividendRateInPercent/100;
 
+    if(dividendRateInPercent === 0) {
+      return 0;
+    }
+
     return Number((stockPrice*dividendRatio).toFixed(2));
+  }
+
+  static stockPrice(marketCap: number, stockCount: number) {
+    if(stockCount === 0) {
+      return 0;
+    }
+
+    return Number((marketCap/stockCount).toFixed(2));
   }
 
   static calculateGearintQuoteWith(gesamtVerbindlichkeiten: number, liquideMittel: number, eigenkapital: number) {
